@@ -2,6 +2,6 @@
 
 | Github Alias                                         | Name         |
 | ---------------------------------------------------- | ------------ |
-| [@your](https://github.com/your)                     | Alice A.     |
-| [@github-account](https://github.com/github-account) | Bob B.       |
-| [@goes-here](https://github.com/goes-here)           | Mallory M.   |
+| [@m-oehme](https://github.com/m-oehme)               | Max O.       |
+| [@6csharpmajor](https://github.com/6csharpmajor)     | Victor       |
+| [@USERNAME](https://github.com/USERNAME)             | NAME         |
