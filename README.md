@@ -4,4 +4,4 @@
 | ---------------------------------------------------- | ------------ |
 | [@m-oehme](https://github.com/m-oehme)               | Max O.       |
 | [@6csharpmajor](https://github.com/6csharpmajor)     | Victor       |
-| [@USERNAME](https://github.com/USERNAME)             | NAME         |
+| [@idsider](https://github.com/idsider)               | David        |
