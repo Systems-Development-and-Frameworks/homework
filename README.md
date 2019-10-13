@@ -2,6 +2,6 @@
 
 | Github Alias                                         | Name         |
 | ---------------------------------------------------- | ------------ |
-| [@your](https://github.com/your)                     | Alice A.     |
-| [@github-account](https://github.com/github-account) | Bob B.       |
-| [@goes-here](https://github.com/goes-here)           | Mallory M.   |
+| [@morhenny](https://github.com/morhenny)             |Yannik Morhenn|
+| [@juliusvi](https://github.com/juliusvi)             |Julius Vinnen |
+| [@eschoenawa](https://github.com/eschoenawa)         |Emil Schoenawa|
