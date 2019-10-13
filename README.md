@@ -2,6 +2,6 @@
 
 | Github Alias                                         | Name         |
 | ---------------------------------------------------- | ------------ |
-| [@your](https://github.com/your)                     | Alice A.     |
+| [@Veake](https://github.com/Veake)                   | Max R.       |
 | [@github-account](https://github.com/github-account) | Bob B.       |
 | [@goes-here](https://github.com/goes-here)           | Mallory M.   |
