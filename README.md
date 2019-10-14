@@ -3,4 +3,4 @@
 | Github Alias                                         | Name         |
 | ---------------------------------------------------- | ------------ |
 | [@ChristianHesels](https://github.com/ChristianHesels)                     | Christian     |
-| [@github-account](https://github.com/XnasaV) | Max R.       |
+| [@XnasaV](https://github.com/XnasaV) | Max R.       |
