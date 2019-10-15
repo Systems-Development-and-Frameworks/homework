@@ -2,6 +2,6 @@
 
 | Github Alias                                         | Name         |
 | ---------------------------------------------------- | ------------ |
-| [@your](https://github.com/your)                     | Alice A.     |
-| [@github-account](https://github.com/github-account) | Bob B.       |
-| [@goes-here](https://github.com/goes-here)           | Mallory M.   |
+| [JElci](https://github.com/JElci)                     | Jeffrey Elci    |
+| [karlchen7](https://github.com/karlchen7) | Maximilian Karl       |
+| [florian196](https://github.com/florian196)           | Florian Tornack  |
