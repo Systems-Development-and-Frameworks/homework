@@ -1,3 +1,9 @@
+# Systems Development and Frameworks - Group Assignments - Winter Term 2019/20
+
+| Github Alias                                         | Name         |
+| ---------------------------------------------------- | ------------ |
+| [@martinneumann](https://github.com/martinneumann)   | Martin N.    |
+
 # Exercise \#1
 
 Implement a simple todo app with VueJS.
