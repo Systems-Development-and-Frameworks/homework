@@ -1,1 +1,1 @@
-export default Vue.component('list-item', {})
+export default Vue.component('list-item', {});
