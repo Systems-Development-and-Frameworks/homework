@@ -3,5 +3,5 @@
 | Github Alias    | Name         |
 | --------------- | ------------ |
 | @michaelef123           | Michael Franz     |
-| @chuvantinh | Chu Văn Tình      |
+| @Chuvantinh | Chu Văn Tình      |
 | @itfak     | Arnold Feussi   |
