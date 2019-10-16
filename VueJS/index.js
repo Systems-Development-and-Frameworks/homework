@@ -1,13 +1,18 @@
-import List from './components/List.js'
-import ListItem from './components/ListItem.js'
+// import List from './components/List.js'
+// import ListItem from './components/ListItem.js'
 
-new Vue({
+Vue.component('todo-item', {
+  props: ['todo'],
+  template: '<li>{{ todo.text }}</li>'
+})
+
+var app = new Vue({
   el: '#app',
   data: {
-    todos: [
-      { id: '1', message: 'Foo', },
-      { id: '2', message: 'Bar', },
-      { id: '3', message: 'Baz', }
+    items: [
+      { id: 0, text: 'Vegetables' },
+      { id: 1, text: 'Cheese' },
+      { id: 2, text: 'Whatever else humans are supposed to eat' }
     ]
   }
 })
