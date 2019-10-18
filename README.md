@@ -5,7 +5,7 @@ Folgende Studenten nehmen als Gruppe an dieser Übung teil:
 535285  
 549906  
   
-# installation guide  
+# Installation guide  
 https://vuejs.org/v2/guide/installation.html 
 
 # Quick installation guide
@@ -17,5 +17,5 @@ https://vuejs.org/v2/guide/installation.html
 2. Install npm und Node.js:  
  [Win / Mac / Unix: Node.js/npm](https://nodejs.org/en/download/current/)  
  
-3. Install Visual Studio Code (if not installed with Node.js/nmp package automatically)
+3. Install Visual Studio Code (if not installed with Node.js/nmp package automatically)  
  [Win / Mac / Unix: VS Code](https://code.visualstudio.com/download)  
