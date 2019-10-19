@@ -27,7 +27,8 @@ export default {
       this.items.splice(indexId,1);
       for (var i=0; i<this.items.length; i++){
         if (this.items[i].indexId == indexId){
-          this.items.remove(i)
+          this.items.pop(i)
+          
         }
       }
     }

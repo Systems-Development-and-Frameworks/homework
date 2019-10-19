@@ -10,7 +10,7 @@
 export default {
   name: "list",
   props: {
-    entry: String,
+    entry: Object,
     deleteentry: Function
   },
   data: function() {
