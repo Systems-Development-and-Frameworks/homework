@@ -12,10 +12,10 @@ export default {
   data: function() {
     return {
       items: [
-        { indexId: 0, text: "Take out the trash" },
-        { indexId: 1, text: "Get A+ in SDF" },
-        { indexId: 2, text: "Trashtalk the vue 'Getting started' guide" },
-        { indexId: 3, text: "git commit -m 'this'" }
+        { id: 0, visible: true, text: "Take out the trash" },
+        { id: 1, visible: true, text: "Get A+ in SDF" },
+        { id: 2, visible: true, text: "Trashtalk the vue 'Getting started' guide" },
+        { id: 3, visible: true, text: "git commit -m 'this'" }
       ]
     };
   },
@@ -23,12 +23,11 @@ export default {
     List
   },
   methods: {
-    deleteEntryb: function(indexId) {
-      this.items.splice(indexId,1);
+    deleteEntryb: function(id) {
+      
       for (var i=0; i<this.items.length; i++){
-        if (this.items[i].indexId == indexId){
-          this.items.pop(i)
-          
+        if (this.items[i].id == id){
+          this.items.splice(i,1);
         }
       }
     }

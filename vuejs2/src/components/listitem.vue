@@ -1,8 +1,11 @@
 <template>
   <div id="line">
-    <button type="button" id="button">Edit</button>
-    <li id="text">{{ entry.text }}</li>
-    <button @click="$emit('deleteEntry', entry.indexId)" type="button">Delete</button>
+    <div>
+      <button type="button" id="button" @click="edit">Edit</button>
+      <button v-bind:disabled="entry.visible" type="button" id="buttonSave" @click="save">Save</button>
+    </div>
+    <li id="text">{{ entry.text }} | {{entry.visible}} </li>
+    <button @click="$emit('deleteEntry', entry.id)" type="button">Delete</button>
   </div>
 </template>
 
@@ -15,6 +18,12 @@ export default {
   },
   data: function() {
     return { counter: 0 };
+  },
+  methods: {
+    edit: function(){
+      alert("test")
+      this.entry.visible = false
+    }
   }
 };
 </script>

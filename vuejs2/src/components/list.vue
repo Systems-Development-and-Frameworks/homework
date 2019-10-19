@@ -17,8 +17,8 @@ export default {
     listitem
   },
   methods: {
-    deleteEntry: function(indexId) {
-      this.$emit("deleteEntryb", indexId)
+    deleteEntry: function(id) {
+      this.$emit("deleteEntryb", id)
     }
   }
 };
