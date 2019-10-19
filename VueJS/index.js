@@ -8,6 +8,6 @@ new Vue({
       { id: '1', message: 'Foo', },
       { id: '2', message: 'Bar', },
       { id: '3', message: 'Baz', }
-    ]
+    ] // feel free to put the `todos` array where you find it most suitable
   }
 })
