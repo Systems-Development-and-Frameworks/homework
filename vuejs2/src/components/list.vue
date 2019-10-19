@@ -1,6 +1,6 @@
 <template>
-  <ol>
-    <listitem v-for="item in items" v-bind:entry="item" v-bind:key="item.id"></listitem>
+  <ol id="grid">
+    <listitem @deleteEntry="deleteEntry" v-for="item in items" v-bind:entry="item" v-bind:key="item.id"></listitem>
   </ol>
 </template>
 
@@ -15,9 +15,22 @@ export default {
   },
   components: {
     listitem
+  },
+  methods: {
+    deleteEntry: function(indexId) {
+      this.$emit("deleteEntryb", indexId)
+    }
   }
 };
 </script>
 
 <style scoped>
+#grid {
+  display: grid;
+  /* grid-template-columns: 60px auto 80px; */
+  /* grid-template-columns: 200px; */
+  grid-row-gap: 20px;
+  justify-items: start
+}
+
 </style>

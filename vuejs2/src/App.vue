@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <List v-bind:items="items"/>
+    <List @deleteEntryb="deleteEntryb" v-bind:items="items"/>
   </div>
 </template>
 
@@ -12,15 +12,25 @@ export default {
   data: function() {
     return {
       items: [
-        { id: 0, text: "Take out the trash" },
-        { id: 1, text: "Get A+ in SDF" },
-        { id: 2, text: "Trashtalk the vue 'Getting started' guide" }
+        { indexId: 0, text: "Take out the trash" },
+        { indexId: 1, text: "Get A+ in SDF" },
+        { indexId: 2, text: "Trashtalk the vue 'Getting started' guide" },
+        { indexId: 3, text: "git commit -m 'this'" }
       ]
     };
   },
-
   components: {
     List
+  },
+  methods: {
+    deleteEntryb: function(indexId) {
+      this.items.splice(indexId,1);
+      for (var i=0; i<this.items.length; i++){
+        if (this.items[i].indexId == indexId){
+          this.items.remove(i)
+        }
+      }
+    }
   }
 };
 </script>
