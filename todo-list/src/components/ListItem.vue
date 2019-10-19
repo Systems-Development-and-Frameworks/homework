@@ -11,7 +11,6 @@
         <div v-if="editMode" class="column">
             <button @click="saveNewName">Save</button>
             <button @click="cancelNewName">Cancel</button>
-            <button @click="onDeleteClicked">Delete</button>
         </div>
         <div v-else class="column">
             <button @click="startEditMode">Edit</button>
