@@ -4,4 +4,4 @@
 | --------------- | ------------ |
 | @michaelef123           | Michael Franz     |
 | @Chuvantinh | Chu Văn Tình      |
-| @itfak     | Arnold Feussi   |
+| @itfak     | Arnauld Feussi   |
