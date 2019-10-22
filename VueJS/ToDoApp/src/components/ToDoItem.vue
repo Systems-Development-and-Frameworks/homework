@@ -3,9 +3,9 @@
     <input v-if="editModeOn" ref="editRef" v-model="todoEditTextInput" value="todo.text" @keydown.enter="save">
     <span v-else>
       {{todo.text}}
-      <button  @click="edit()" >Edit</button>
+      <button @click="edit()" >Edit</button>
     </span>
-    <button>Remove</button>
+    <button @click="$emit('removeTodo', todo.id)">Remove</button>
   </div>
 </template>
 
@@ -16,6 +16,7 @@
         text: String
       },
       editTodo: Function,
+      removeTodo: Function,
     },
     data() {
       return {

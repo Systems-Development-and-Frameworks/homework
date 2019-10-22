@@ -6,6 +6,7 @@
         v-for="todo in todos" :key="todo.id"
         :todo="todo"
         @editTodo="editTodo"
+        @removeTodo="removeTodo"
       />
     </ul>
   </div>
@@ -51,6 +52,11 @@
           if (todo.id === todoId) {
             todo.text = todoText;
           }
+        });
+      },
+      removeTodo(todoId) {
+        this.todos = this.todos.filter(todo => {
+          return todo.id !== todoId
         });
       }
     }
