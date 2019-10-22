@@ -2,31 +2,16 @@
   <div id="app">
     <img src="./assets/logo.png">
     <h1>Simple Todo App</h1>
-    <ToDoList
-    :todos="todos"/>
+    <ToDoList/>
   </div>
 </template>
 
 <script>
   import ToDoList from "./components/ToDoList.vue";
-
-  let todosExample = [];
-  for(let i = 0; i < 10; i++){
-    todosExample[i] = {
-      id: i,
-      text: "Example of a note"
-    }
-  }
-
   export default {
     components: {
       ToDoList,
     },
-    data() {
-      return {
-        todos: todosExample
-      }
-    }
   }
 </script>
 
