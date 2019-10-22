@@ -1,6 +1,6 @@
 <template>
   <ol id="grid">
-    <listitem @deleteEntry="deleteEntry" v-for="item in items" v-bind:entry="item" v-bind:key="item.id"></listitem>
+    <listitem @deleteEntry="deleteEntry" @edit="enableEditMode" v-for="item in items" v-bind:entry="item" v-bind:key="item.id"></listitem>
   </ol>
 </template>
 
@@ -19,6 +19,9 @@ export default {
   methods: {
     deleteEntry: function(id) {
       this.$emit("deleteEntryb", id)
+    },
+    enableEditMode: function(id) {
+      this.$emit("enableEditModeb", id)
     }
   }
 };
