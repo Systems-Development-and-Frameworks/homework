@@ -4,7 +4,9 @@
     <ul>
       <ToDoItem
         v-for="todo in todos" :key="todo.id"
-        :todo="todo"/>
+        :todo="todo"
+        @editTodo="editTodo"
+      />
     </ul>
   </div>
 </template>
@@ -43,6 +45,13 @@
         idCounter++;
         this.todos = [newTodo, ...this.todos];
         console.log()
+      },
+      editTodo(todoId, todoText) {
+        this.todos.filter(todo => {
+          if (todo.id === todoId) {
+            todo.text = todoText;
+          }
+        });
       }
     }
   }
