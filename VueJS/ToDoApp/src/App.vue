@@ -2,13 +2,23 @@
   <div id="app">
     <img src="./assets/logo.png">
     <h1>Simple Todo App</h1>
+    <ToDoItem
+      :text="text"/>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'app',
-}
+  import ToDoItem from "./components/ToDoItem.vue";
+  export default {
+    components: {
+      ToDoItem,
+    },
+    data() {
+      return {
+        text: "Note"
+      }
+    }
+  }
 </script>
 
 <style lang="scss">
