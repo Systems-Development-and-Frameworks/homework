@@ -7,7 +7,7 @@
     </div>
     <form id="text">
       <li id="text" v-if="!entry.editMode">{{ entry.text }} | {{entry.editMode}}</li>
-      <input type="text" name="fname" v-model="entry.text" v-if="entry.editMode"/>
+      <input type="text" name="newText" v-model="entry.text" v-if="entry.editMode"/>
     </form>
     <button @click="$emit('deleteEntry', entry.id)" type="button">Delete</button>
   </div>
