@@ -45,7 +45,6 @@
         }
         idCounter++;
         this.todos = [newTodo, ...this.todos];
-        console.log()
       },
       editTodo(todoId, todoText) {
         this.todos.filter(todo => {
