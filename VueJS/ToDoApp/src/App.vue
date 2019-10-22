@@ -2,20 +2,30 @@
   <div id="app">
     <img src="./assets/logo.png">
     <h1>Simple Todo App</h1>
-    <ToDoItem
-      :text="text"/>
+    <ToDoList
+    :todos="todos"/>
   </div>
 </template>
 
 <script>
-  import ToDoItem from "./components/ToDoItem.vue";
+  import ToDoList from "./components/ToDoList.vue";
+
+  let todoExample = {
+    text:"Note"
+  }
+
   export default {
     components: {
-      ToDoItem,
+      ToDoList,
     },
     data() {
       return {
-        text: "Note"
+        todos: [
+          todoExample,
+          todoExample,
+          todoExample,
+          todoExample
+        ]
       }
     }
   }

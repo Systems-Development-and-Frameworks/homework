@@ -1,14 +1,17 @@
 <template>
-  <div>{{text}}
-  <button>Edit</button>
-  <button>Remove</button>
+  <div>
+    {{todo.text}}
+    <button>Edit</button>
+    <button>Remove</button>
   </div>
 </template>
 
 <script>
   export default {
     props:{
-      text: String,
+      todo: {
+        text: String
+      },
     }
   }
 </script>
