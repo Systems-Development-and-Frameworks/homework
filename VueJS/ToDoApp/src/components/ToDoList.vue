@@ -8,15 +8,6 @@
 
 <script>
   import ToDoItem from "./ToDoItem.vue";
-
-  let todosExample = [];
-  for(let i = 0; i < 10; i++){
-    todosExample[i] = {
-      id: i,
-      text: "Example of a note"
-    }
-  }
-
   export default {
     components: {
       ToDoItem,

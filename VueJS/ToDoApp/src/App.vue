@@ -10,8 +10,12 @@
 <script>
   import ToDoList from "./components/ToDoList.vue";
 
-  let todoExample = {
-    text:"Note"
+  let todosExample = [];
+  for(let i = 0; i < 10; i++){
+    todosExample[i] = {
+      id: i,
+      text: "Example of a note"
+    }
   }
 
   export default {
@@ -20,12 +24,7 @@
     },
     data() {
       return {
-        todos: [
-          todoExample,
-          todoExample,
-          todoExample,
-          todoExample
-        ]
+        todos: todosExample
       }
     }
   }
