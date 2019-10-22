@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <List @deleteEntryb="deleteEntryb" @enableEditModeb="enableEditModeb" v-bind:items="items"/>
+    <List @deleteEntryb="deleteEntryb" @toggleEditModeb="toggleEditModeb" v-bind:items="items"/>
   </div>
 </template>
 
@@ -30,10 +30,11 @@ export default {
         }
       }
     },
-    enableEditModeb: function (id){
+    toggleEditModeb: function (id){
+
       for (var i=0; i<this.items.length; i++){
         if (this.items[i].id == id){
-          this.items[id].editMode = true;
+          this.items[i].editMode = !this.items[i].editMode;
         }
       }
     }
