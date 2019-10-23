@@ -21,7 +21,7 @@ export default Vue.component('list-item', {
             </button>
             </li>
             <li v-else >                
-                <input v-model="todo.message"> 
+                {{todo.id}}. {{todo.message}} 
                 <button v-on:click="editMe" type="button">
                     Edit
                 </button>
