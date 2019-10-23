@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="todoItem">
     <span v-if="editModeOn">
       <input ref="editRef" v-model="todoEditTextInput" value="todo.text" @keydown.enter="save">
       <button @click="save()" >Save</button>
@@ -39,3 +39,9 @@
     }
   }
 </script>
+
+<style lang="scss">
+  .todoItem{
+    margin: 20px;
+  }
+</style>
