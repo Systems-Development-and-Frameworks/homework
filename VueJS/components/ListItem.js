@@ -1,8 +1,14 @@
 export default Vue.component('list-item', {
-    props: ['todo'],
+    props: ['todo'], 
+    data: () => {
+        return {
+            editMode: false,
+        }
+
+    },
     template: `
         <form id="test">
-            <li>                
+            <li v-if="editMode == true" >                
                 <input v-model="todo.message"> 
                 <button v-on:click="saveMe">
                     Save
@@ -14,11 +20,24 @@ export default Vue.component('list-item', {
                     Delete
             </button>
             </li>
-        </form>        
+            <li v-else >                
+                <input v-model="todo.message"> 
+                <button v-on:click="editMe">
+                    Edit
+                </button>
+                <button v-on:click="deleteMe">
+                    Delete
+                </button>
+
+            </li>
+        </form> 
     `,
     methods: {
         editMe: function(event) {
-            alert('Hallo ' + this.todo.id + " soll editiert werden!")
+            console.log(this.editMode)
+            this.editMode = true;
+            console.log(this.editMode)
+            //alert('Hallo ' + this.todo.id + " soll editiert werden!")     
         },
         
         saveMe: function(event) {
@@ -27,9 +46,12 @@ export default Vue.component('list-item', {
 
         deleteMe: function(event) {
             alert('Hallo ' + this.todo.id + " soll gelöscht werden!")
-        }, 
+        },
+
         cancelMe: function(event) {
-            alert('Hallo ' + this.todo.id + " soll gelöscht werden!")
+            console.log(this.editMode)
+            this.editMode = false;
+            console.log(this.editMode)
         } 
     }
 })
