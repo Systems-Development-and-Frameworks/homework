@@ -12,6 +12,8 @@
         <div id="app">
             <list
                 v-bind:todos="todos"
+                @update-todo="updateTodo"
+                @delete-todo="deleteTodo"
             ></list>
         </div>
 
