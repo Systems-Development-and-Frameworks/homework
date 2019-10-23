@@ -10,22 +10,22 @@ export default Vue.component('list-item', {
         <form id="test">
             <li v-if="editMode == true" >                
                 <input v-model="todo.message"> 
-                <button v-on:click="saveMe">
+                <button v-on:click="saveMe" type="button">
                     Save
                 </button>
-                <button v-on:click="cancelMe">
+                <button v-on:click="cancelMe" type="button">
                     Cancel
                 </button>
-                <button v-on:click="deleteMe">
+                <button v-on:click="deleteMe" type="button">
                     Delete
             </button>
             </li>
             <li v-else >                
                 <input v-model="todo.message"> 
-                <button v-on:click="editMe">
+                <button v-on:click="editMe" type="button">
                     Edit
                 </button>
-                <button v-on:click="deleteMe">
+                <button v-on:click="deleteMe" type="button">
                     Delete
                 </button>
 
