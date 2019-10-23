@@ -9,7 +9,7 @@ export default Vue.component('list-item', {
     template: `
         <form id="test">
             <li v-if="editMode == true" >                
-                <input v-model="todo.message"> 
+                <input type="text"> 
                 <button v-on:click="saveMe" type="button">
                     Save
                 </button>
@@ -39,6 +39,7 @@ export default Vue.component('list-item', {
         
         saveMe: function(event) {
             alert('Hallo ' + this.todo.id + " soll gespeichert werden!")
+            console.log(this.event.getTag)
         },
 
         deleteMe: function(event) {
