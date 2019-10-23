@@ -1,7 +1,13 @@
 export default Vue.component('list', {
-    props: ['todo'],
+    props: ['todos'],
     template: `
-        <list-item v-bind:todo=todo></list-item>
+        <div>
+            <list-item 
+                v-for="todo in todos"            
+                v-bind:key="todo.id"
+                v-bind:todo="todo">
+            </list-item>
+        </div>
    `
 })
 
