@@ -1,11 +1,12 @@
 <template>
   <div id="app">
-    <List @deleteEntryb="deleteEntryb" @toggleEditModeb="toggleEditModeb" v-bind:items="items"/>
+    <h1>Frontend-Einkaufslisten-Bearbeitungs-Und-Erstellungsmaschine</h1>
+    <List @deleteEntryb="deleteEntryb" @toggleEditModeb="toggleEditModeb" @addEntry="addEntry" v-bind:items="items"/>
   </div>
 </template>
 
 <script>
-import List from "./components/listalt.vue";
+import List from "./components/list.vue";
 export default {
   name: "app",
   data: function() {
@@ -15,7 +16,8 @@ export default {
         { id: 1, editMode: false, text: "Get A+ in SDF" },
         { id: 2, editMode: false, text: "Trashtalk the vue 'Getting started' guide" },
         { id: 3, editMode: false, text: "git commit -m 'this'" }
-      ]
+      ],
+        maxId: 4
     };
   },
   components: {
@@ -23,20 +25,24 @@ export default {
   },
   methods: {
     deleteEntryb: function(id) {
-      for (var i=0; i<this.items.length; i++){
-        if (this.items[i].id == id){
+      for (var i=0; i<this.items.length; i++) {
+        if (this.items[i].id === id) {
           this.items.splice(i,1);
         }
       }
     },
-    toggleEditModeb: function (id){
+    toggleEditModeb: function (id) {
 
-      for (var i=0; i<this.items.length; i++){
-        if (this.items[i].id == id){
+      for (var i=0; i<this.items.length; i++) {
+        if (this.items[i].id === id) {
           this.items[i].editMode = !this.items[i].editMode;
         }
       }
-    }
+    },
+      addEntry: function() {
+        this.items.push({ id: this.maxId+1, editMode: true, text: "insert please..." });
+        this.maxId++
+      }
   }
 };
 </script>

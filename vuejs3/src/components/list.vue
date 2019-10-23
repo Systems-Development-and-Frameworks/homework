@@ -1,10 +1,19 @@
 <template>
-<div>
-  <ol id="grid">
-    <listitem @deleteEntry="deleteEntry" @toggleEditMode="toggleEditMode" v-for="item in items" v-bind:entry="item" v-bind:key="item.id"></listitem>
-  </ol>
-  <!-- <input id=type="text"/> -->
-  <button type="button" id="btnAdd" @click="$emit('toggleEditMode', entry.id)">Add</button>
+  <div>
+    <div class="container px-lg-5">
+      <listitem
+        @deleteEntry="deleteEntry"
+        @toggleEditMode="toggleEditMode"
+        v-for="item in items"
+        v-bind:entry="item"
+        v-bind:key="item.id"
+      ></listitem>
+      <div class="row mx-lg-n5">
+        <div class="col-12 py-3 border bg-light">
+      <b-button class="btn btn-success" type="button" @click="$emit('addEntry')" id="btnAdd">Add</b-button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -22,28 +31,14 @@ export default {
   },
   methods: {
     deleteEntry: function(id) {
-      this.$emit("deleteEntryb", id)
+      this.$emit("deleteEntryb", id);
     },
     toggleEditMode: function(id) {
-      this.$emit("toggleEditModeb", id)
+      this.$emit("toggleEditModeb", id);
     }
   }
 };
 </script>
 
 <style scoped>
-#grid {
-  display: grid;
-  /* grid-template-columns: 60px auto 80px; */
-  /* grid-template-columns: 200px; */
-  grid-row-gap: 20px;
-  justify-items: start
-}
-
-#btnAdd {
-  background-color: green;
-  color: white;
-  padding: 5px 20px 5px 20px;
-}
-
 </style>

@@ -1,15 +1,31 @@
 <template>
-  <div id="line">
-    <div>
-      <button v-if="!entry.editMode" type="button" id="button" @click="$emit('toggleEditMode', entry.id)">Edit</button>
-      <button v-if="entry.editMode" type="button" id="buttonSave" @click="$emit('toggleEditMode', entry.id)">Save</button>
+  <div class="row mx-lg-n5">
+    <div class="col-2 py-3 border bg-light">
+      <b-button
+        v-if="!entry.editMode"
+        type="button"
+        id="button"
+        @click="$emit('toggleEditMode', entry.id)"
+      >Edit</b-button>
+      <b-button
+        v-if="entry.editMode"
+        type="button"
+        id="buttonSave"
+        @click="$emit('toggleEditMode', entry.id)"
+        class="btn btn-success"
+      >Save</b-button>
       <!-- <button v-bind:disabled="entry.visible" type="button" id="buttonSave" @click="save">Save</button> -->
     </div>
-    <form id="text">
-      <li id="text" v-if="!entry.editMode">{{ entry.text }} | {{entry.editMode}}</li>
-      <input type="text" name="newText" v-model="entry.text" v-if="entry.editMode"/>
-    </form>
-    <button @click="$emit('deleteEntry', entry.id)" type="button">Delete</button>
+    <div class="col py-3 border bg-light">
+      <form class="text">
+        <p id="text" v-if="!entry.editMode">{{ entry.text }}</p>
+        <input type="text" name="newText" v-model="entry.text" v-if="entry.editMode" />
+      </form>
+    </div>
+    <div class="col-2 py-3 border bg-light">
+      <b-button class="btn btn-danger" @click="$emit('deleteEntry', entry.id)" type="button">Delete</b-button>
+
+    </div>
   </div>
 </template>
 
@@ -27,13 +43,7 @@ export default {
 </script>
 
 <style>
-#line {
-  display: grid;
-  grid-template-columns: 60px 450px 80px;
-  grid-gap: 40px;
-}
-
-#text {
+.text{
   text-align: left;
 }
 </style>
