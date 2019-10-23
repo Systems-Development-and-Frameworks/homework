@@ -7,9 +7,8 @@ new Vue({
     List,
     ListItem
   },
-
   data: {
-    todos: [
+    todos:  [
       { id: '1', message: 'Foo', },
       { id: '2', message: 'Bar', },
       { id: '3', message: 'Baz', }

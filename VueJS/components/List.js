@@ -1,8 +1,16 @@
 export default Vue.component('list', {
     props: ['todo'],
     template: `
-        <div class="list">        
-            <list-item :todo=todo></list-item>
-        </div>
-    `
+        <list-item v-bind:todo=todo></list-item>
+   `
 })
+
+// import list, listitem
+// main() {
+//     indexMainArray { todos_0, ... }
+//     List var;
+
+//     for(render einzelene listItems) {
+//         ...for.
+//     }
+// }
