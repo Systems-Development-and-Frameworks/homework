@@ -1,17 +1,19 @@
 <template>
-  <div>
-    <span class="mR10">{{id}}.</span>
+  <li>
+    <!-- <span class="mR10">{{id}}.</span> -->
     <div class="mR10" v-if="onEdit">
-      <input @input="changeMessage" :value="message" />
+      <input @input="changeMessage" />
     </div>
     <div class="mR10" v-else>{{message}}</div>
     <div>
       <button @click="setEditMode(true)" v-if="!this.onEdit">Edit</button>
-      <button @click="saveChanges()" v-if="this.onEdit">Done</button>
-      <button @click="setEditMode(false)" v-if="this.onEdit">Cancel</button>
-      <button @click="deleteListItem(id)">Delete</button>
+      <span v-if="this.onEdit">
+        <button @click="saveChanges()">Save</button>
+        <button @click="setEditMode(false)">Cancel</button>
+      </span>
+      <button v-if="!onEdit" @click="deleteListItem(id)">Delete</button>
     </div>
-  </div>
+  </li>
 </template>
 
 <script>
@@ -24,7 +26,7 @@ export default {
   data() {
     return {
       onEdit: false,
-      newMsg: String
+      newMsg: ""
     };
   },
   methods: {
@@ -33,7 +35,9 @@ export default {
     },
     saveChanges() {
       this.setEditMode(false);
-      this.$emit("messageChanged", this.newMsg);
+
+      if (this.newMsg.trim().length === 0) alert("Enter sth");
+      else this.$emit("messageChanged", this.newMsg);
     },
     changeMessage(event) {
       this.newMsg = event.target.value;

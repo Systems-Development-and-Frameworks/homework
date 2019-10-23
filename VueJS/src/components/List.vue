@@ -1,49 +1,49 @@
 <template>
   <div>
     <h2>List</h2>
-    <div v-for=" item in this.todos" v-bind:key="item.id">
+    <ol>
       <list-item
+        v-bind:key="item.id"
+        v-for="item in this.todos"
         v-bind:id="item.id"
         v-bind:message="item.message"
         v-bind:onEdit="item.onEdit"
         @deleteListItem="deleteListItem($event)"
         @messageChanged="editListItem(item.id, $event)"
       ></list-item>
-    </div>
+    </ol>
   </div>
 </template>
 
 <script>
 import ListItem from "./ListItem.vue";
-// import Todo from "../models/Todo.js";
 
 export default {
   name: "list",
-  props: {
-    todos: Array
-  },
   components: {
     ListItem
   },
   data() {
     return {
-      changedTodos: Array
+      todos: [
+        { id: "1", message: "Foo" },
+        { id: "2", message: "Bar" },
+        { id: "3", message: "Baz" }
+      ]
     };
   },
   methods: {
     editListItem(id, message) {
-      this.changedTodos = this.todos;
-      this.changedTodos.forEach(element => {
+      this.todos.forEach(element => {
         if (element.id === id) {
           element.message = message;
         }
       });
     },
     deleteListItem(id) {
-      // this.changedTodos = this.todos;
-      this.changedTodos = this.todos.filter(element => element.id != id);
+      this.todos = this.todos.filter(element => element.id != id);
 
-      this.$emit("listChanged", this.changedTodos);
+      // this.$emit("listChanged", this.changedTodos);
     }
   }
 };
@@ -51,7 +51,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
+/* h3 {
   margin: 40px 0 0;
 }
 ul {
@@ -64,5 +64,5 @@ li {
 }
 a {
   color: #42b983;
-}
+} */
 </style>
