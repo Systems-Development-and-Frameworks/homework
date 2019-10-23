@@ -1,8 +1,17 @@
 <!-- development version, includes helpful console warnings -->
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
+<div id="hello">
+	<h2>{{ message }}</h2>
+</div>
+
 <div id="app">
-<!-- render your list here -->
+<todo-list
+	v-bind:todos="todos"
+	v-on:save="save"
+	v-on:remove="remove"
+	v-on:add="add"
+></todo-list>
 </div>
 
 <script type="module" src="/index.js"></script>
