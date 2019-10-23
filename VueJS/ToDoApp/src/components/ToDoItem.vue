@@ -1,6 +1,9 @@
 <template>
   <div>
-    <input v-if="editModeOn" ref="editRef" v-model="todoEditTextInput" value="todo.text" @keydown.enter="save">
+    <span v-if="editModeOn">
+      <input ref="editRef" v-model="todoEditTextInput" value="todo.text" @keydown.enter="save">
+      <button @click="save()" >Save</button>
+    </span>
     <span v-else>
       {{todo.text}}
       <button @click="edit()" >Edit</button>
