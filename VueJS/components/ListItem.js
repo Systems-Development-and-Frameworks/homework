@@ -34,10 +34,7 @@ export default Vue.component('list-item', {
     `,
     methods: {
         editMe: function(event) {
-            console.log(this.editMode)
             this.editMode = true;
-            console.log(this.editMode)
-            //alert('Hallo ' + this.todo.id + " soll editiert werden!")     
         },
         
         saveMe: function(event) {
@@ -49,12 +46,7 @@ export default Vue.component('list-item', {
         },
 
         cancelMe: function(event) {
-            console.log(this.editMode)
             this.editMode = false;
-            console.log(this.editMode)
         } 
     }
 })
-            // <button v-on:click="count++">
-            //     You clicked me {{ count }} times.
-            // </button>

@@ -10,13 +10,3 @@ export default Vue.component('list', {
         </div>
    `
 })
-
-// import list, listitem
-// main() {
-//     indexMainArray { todos_0, ... }
-//     List var;
-
-//     for(render einzelene listItems) {
-//         ...for.
-//     }
-// }
