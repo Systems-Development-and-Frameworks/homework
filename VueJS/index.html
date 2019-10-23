@@ -1,8 +1,24 @@
-<!-- development version, includes helpful console warnings -->
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Todo App EX#1</title>  
+    </head>
+<body>
+        <div id="helloworld">
+            <p>{{ message }} </p>
+            <p>{{ something }} </p>
+        </div>
 
-<div id="app">
-<!-- render your list here -->
-</div>
+        <div id="app">
+            <list
+                v-for="todo in todos"
+                v-bind:key="todo.id"
+                v-bind:todo="todo"
+            ></list>
+        </div>
 
-<script type="module" src="/index.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="./components/HelloWorld.js"></script>
+        <script type="module" src="index.js"></script>  
+</body>
+</html>
