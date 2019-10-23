@@ -1,10 +1,10 @@
 # Systems Development and Frameworks - Group Assignments - Winter Term 2019/20
 
-## Vue Project Setup
+## Run Vue Project
 
-cd /VueJS/ToDoApp
-npm install
-npm run dev
+- cd /VueJS/ToDoApp
+- npm install
+- npm run dev
 
 | Github Alias                                         | Name         |
 | ---------------------------------------------------- | ------------ |
