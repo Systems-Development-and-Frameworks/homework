@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <List @deleteEntryb="deleteEntryb" @toggleEditModeb="toggleEditModeb" v-bind:items="items"/>
+    <List @deleteEntryb="deleteEntryb" v-bind:items="items"/>
   </div>
 </template>
 
@@ -12,10 +12,10 @@ export default {
   data: function() {
     return {
       items: [
-        { id: 0, editMode: false, text: "Take out the trash" },
-        { id: 1, editMode: false, text: "Get A+ in SDF" },
-        { id: 2, editMode: false, text: "Trashtalk the vue 'Getting started' guide" },
-        { id: 3, editMode: false, text: "git commit -m 'this'" }
+        { indexId: 0, text: "Take out the trash" },
+        { indexId: 1, text: "Get A+ in SDF" },
+        { indexId: 2, text: "Trashtalk the vue 'Getting started' guide" },
+        { indexId: 3, text: "git commit -m 'this'" }
       ]
     };
   },
@@ -23,18 +23,12 @@ export default {
     List
   },
   methods: {
-    deleteEntryb: function(id) {
+    deleteEntryb: function(indexId) {
+      this.items.splice(indexId,1);
       for (var i=0; i<this.items.length; i++){
-        if (this.items[i].id == id){
-          this.items.splice(i,1);
-        }
-      }
-    },
-    toggleEditModeb: function (id){
-
-      for (var i=0; i<this.items.length; i++){
-        if (this.items[i].id == id){
-          this.items[i].editMode = !this.items[i].editMode;
+        if (this.items[i].indexId == indexId){
+          this.items.pop(i)
+          
         }
       }
     }

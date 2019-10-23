@@ -1,15 +1,8 @@
 <template>
   <div id="line">
-    <div>
-      <button v-if="!entry.editMode" type="button" id="button" @click="$emit('toggleEditMode', entry.id)">Edit</button>
-      <button v-if="entry.editMode" type="button" id="buttonSave" @click="$emit('toggleEditMode', entry.id)">Save</button>
-      <!-- <button v-bind:disabled="entry.visible" type="button" id="buttonSave" @click="save">Save</button> -->
-    </div>
-    <form id="text">
-      <li id="text" v-if="!entry.editMode">{{ entry.text }} | {{entry.editMode}}</li>
-      <input type="text" name="newText" v-model="entry.text" v-if="entry.editMode"/>
-    </form>
-    <button @click="$emit('deleteEntry', entry.id)" type="button">Delete</button>
+    <button type="button" id="button">Edit</button>
+    <li id="text">{{ entry.text }}</li>
+    <button @click="$emit('deleteEntry', entry.indexId)" type="button">Delete</button>
   </div>
 </template>
 
