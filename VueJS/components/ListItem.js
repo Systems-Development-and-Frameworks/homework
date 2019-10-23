@@ -38,9 +38,9 @@ export default Vue.component('list-item', {
         },
         
         saveMe: function(todo) {
-            console.log("(Kind)\nHallo todo[" + todo.id + " | " + todo.message + "]" 
-                        + "\". Dank v-on:input=\"updateMessage\" im imput-tag, wurdest hoffentlich geupdated!\n"
-                        + "Meine Eltern werden es nach der nächsten Zeile im Code dann bestimmt sehen.")
+            // console.log("(Kind)\nHallo todo[" + todo.id + " | " + todo.message + "]" 
+            //             + "\". Dank v-on:input=\"updateMessage\" im imput-tag, wurdest hoffentlich geupdated!\n"
+            //             + "Meine Eltern werden es nach der nächsten Zeile im Code dann bestimmt sehen.")
             this.todo.message = this.newMessage
             this.$emit('update-todo', todo)
             this.editMode = false
