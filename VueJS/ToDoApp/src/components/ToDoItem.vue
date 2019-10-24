@@ -1,19 +1,25 @@
 <template>
-  <div class="todoItem">
+  <b-list-group-item>
     <span v-if="editModeOn">
       <input ref="editRef" v-model="todoEditTextInput" value="todo.text" @keydown.enter="save">
-      <button @click="save()" >Save</button>
+      <b-button variant="outline-danger" @click="save()" >Save</b-button>
     </span>
     <span v-else>
       {{todo.text}}
-      <button @click="edit()" >Edit</button>
+      <b-button variant="outline-primary" @click="edit()" >Edit</b-button>
     </span>
-    <button @click="$emit('removeTodo', todo.id)">Remove</button>
-  </div>
+    <b-button variant="outline-danger" @click="$emit('removeTodo', todo.id)">Remove</b-button>
+  </b-list-group-item>
 </template>
 
 <script>
+  import { BButton, BListGroupItem } from 'bootstrap-vue'
+
   export default {
+    components: {
+      'b-button' : BButton,
+      'b-list-group-item' : BListGroupItem
+    },
     props:{
       todo: {
         text: String
@@ -39,9 +45,3 @@
     }
   }
 </script>
-
-<style lang="scss">
-  .todoItem{
-    margin: 20px;
-  }
-</style>

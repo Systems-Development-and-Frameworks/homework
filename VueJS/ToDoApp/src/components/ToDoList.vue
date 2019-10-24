@@ -1,19 +1,22 @@
 <template>
-  <div>
-    <input v-model="todoTextInput" placeholder="Add a To-Do" @keydown.enter="addTodo">
-    <button @click="addTodo()" >Add new To-Do</button>
-    <ul>
+  <div class="todoList">
+    <div class="newTodo">
+      <input v-model="todoTextInput" placeholder="Add a To-Do" @keydown.enter="addTodo">
+      <b-button variant="success" @click="addTodo()" >Add new To-Do</b-button>
+    </div>
+      <b-list-group>
       <ToDoItem
         v-for="todo in todos" :key="todo.id"
         :todo="todo"
         @editTodo="editTodo"
         @removeTodo="removeTodo"
       />
-    </ul>
+    </b-list-group>
   </div>
 </template>
 
 <script>
+  import { BButton, BListGroup } from 'bootstrap-vue'
   import ToDoItem from "./ToDoItem.vue";
 
   let idCounter = 0;
@@ -31,6 +34,8 @@
   export default {
     components: {
       ToDoItem,
+      'b-button' : BButton,
+      'b-list-group' : BListGroup
     },
     data() {
       return {
@@ -62,3 +67,13 @@
     }
   }
 </script>
+
+<style>
+  .todoList{
+    margin: 10%
+  }
+
+  .newTodo{
+    margin-bottom: 40px
+  }
+</style>
