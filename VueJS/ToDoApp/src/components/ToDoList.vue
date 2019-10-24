@@ -70,10 +70,12 @@
 
 <style>
   .todoList{
-    margin: 10%
+    margin-right: 5%;
+    margin-left: 5%
   }
 
   .newTodo{
+    margin-top: 50px;
     margin-bottom: 40px
   }
 </style>
