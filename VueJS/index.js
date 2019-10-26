@@ -8,6 +8,7 @@ new Vue({
     ListItem
   },
   data: {
+    lastId: 3,
     todos:  [
       { id: '1', message: 'Foo', },
       { id: '2', message: 'Bar', },
@@ -15,6 +16,11 @@ new Vue({
     ]
   },
   methods: {
+    newTodo: function() {      
+      this.lastId++
+      this.todos.push({id : this.lastId, message: ""})
+      // console.log("New Todo: [" + this.lastId + "]")     
+    },  
     updateTodo: function(passedTodo) {
         // console.log("(Großeltern) \nIch erhielt die todo [" + passedTodo.id + " | " + passedTodo.message + "] via $emit ")
         // console.log("(Großeltern) \nFinde den entsprechenden index passend zur ID(" + passedTodo.id +") in todos[]")
