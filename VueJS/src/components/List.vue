@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>List</h2>
+    <h2>Todo List</h2>
     <ol>
       <list-item
         v-bind:key="item.id"
@@ -42,27 +42,13 @@ export default {
     },
     deleteListItem(id) {
       this.todos = this.todos.filter(element => element.id != id);
-
-      // this.$emit("listChanged", this.changedTodos);
     }
   }
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-/* h3 {
-  margin: 40px 0 0;
+div {
+  margin: 5% 0 0 10%;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-} */
 </style>
