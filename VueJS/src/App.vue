@@ -1,17 +1,24 @@
 <template>
   <div id="app">
-    <TodoList v-bind:todoList="todoList" v-on:delete-todo="deleteTodo" v-on:change-text="changeText"/>
+    <Header />
+    <TodoList
+      v-bind:todoList="todoList"
+      v-on:delete-todo="deleteTodo"
+      v-on:change-text="changeText"
+    />
     <AddTodo v-on:add-todo="addTodo" />
   </div>
 </template>
 
 <script>
+import Header from "./components/layout/Header";
 import TodoList from "./components/TodoList";
 import AddTodo from "./components/AddTodo";
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
+    Header,
     TodoList,
     AddTodo
   },
@@ -34,7 +41,7 @@ export default {
           done: false
         }
       ]
-    }
+    };
   },
   methods: {
     deleteTodo(id) {
@@ -51,8 +58,20 @@ export default {
       this.todoList.push(newTodo);
     }
   }
-}
+};
 </script>
 
 <style>
+.button {
+  flex: 2;
+  border: none;
+  background: #4caf50;
+  color: #fff;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: #43a047;
+}
 </style>
