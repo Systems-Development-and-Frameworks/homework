@@ -1,17 +1,33 @@
 <template>
   <li>
-    <!-- <span class="mR10">{{id}}.</span> -->
-    <div class="mR10" v-if="onEdit">
-      <input @input="changeMessage" />
-    </div>
-    <div class="mR10" v-else>{{message}}</div>
-    <div>
-      <button @click="setEditMode(true)" v-if="!this.onEdit">Edit</button>
-      <span v-if="this.onEdit">
-        <button @click="saveChanges()">Save</button>
-        <button @click="setEditMode(false)">Cancel</button>
+    <div class="itemContainer">
+      <span class="messageSection">
+        <span v-if="onEdit">
+          <input @input="changeMessage" />
+        </span>
+        <span v-else>{{message}}</span>
       </span>
-      <button v-if="!onEdit" @click="deleteListItem(id)">Delete</button>
+
+      <div class="mb5">
+        <span class="buttonContainer" v-if="!this.onEdit">
+          <a @click="setEditMode(true)">
+            <img class="icon" src="../assets/edit_circ.png" />
+          </a>
+          <span class="space" />
+          <a @click="deleteListItem(id)">
+            <img class="icon" src="../assets/delete_circ.png" />
+          </a>
+        </span>
+        <span class="buttonContainer" v-if="this.onEdit">
+          <a @click="saveChanges()">
+            <img class="icon" src="../assets/save_circ.png" />
+          </a>
+          <span class="space" />
+          <a @click="setEditMode(false)">
+            <img class="icon" src="../assets/cancel_circ.png" />
+          </a>
+        </span>
+      </div>
     </div>
   </li>
 </template>
@@ -55,24 +71,45 @@ export default {
   flex: 4;
 }
 
-.inputSection {
+.itemContainer {
+  border-bottom-style: inset;
+  margin-bottom: 20px;
+  border-bottom-color: #42b983;
+  display: flex;
+  width: 30%;
+}
+
+.buttonContainer {
+  display: flex;
+}
+
+.mb5 {
+  margin-bottom: 5px;
+}
+
+.messageSection {
+  display: flex;
+  align-self: center;
+  justify-self: center;
+  margin-left: 15px;
   flex: 2;
 }
 
-.itemContainer {
-  flex-direction: row;
-  flex: 1;
+.icon {
+  width: 30px;
+  height: 30px;
 }
 
-.idSection {
-  flex: 1;
+.space {
+  margin-right: 20px;
 }
 
-.mR10 {
-  margin-right: 10px;
+a {
+  display: flex;
+  align-content: center;
 }
 
-div {
-  display: inline;
+input {
+  color: #42b983;
 }
 </style>
