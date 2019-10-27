@@ -49,6 +49,6 @@ export default {
 
 <style scoped>
 div {
-  margin: 60px 0 0 50px;
+  margin: 5% 0 0 10%;
 }
 </style>

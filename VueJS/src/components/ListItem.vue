@@ -66,11 +66,6 @@ export default {
 </script>
 
 <style scoped>
-.editSection {
-  flex-direction: row;
-  flex: 4;
-}
-
 .itemContainer {
   border-bottom-style: inset;
   margin-bottom: 20px;
