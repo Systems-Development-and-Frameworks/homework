@@ -1,7 +1,12 @@
 <template>
   <div>
     <h2>Todo List</h2>
-    <ol>
+		<AddListItem
+			v-model="newItemText"
+			@keydown.enter="addItem"
+      @click="addItem"
+		/>
+    <ol v-if="todos.length">
       <list-item
         v-bind:key="item.id"
         v-for="item in this.todos"
@@ -12,27 +17,46 @@
         @messageChanged="editListItem(item.id, $event)"
       ></list-item>
     </ol>
+    <p v-else>
+			Nothing left in the list. Add a new todo in the input above.
+		</p>
   </div>
 </template>
 
 <script>
 import ListItem from "./ListItem.vue";
+import AddListItem from './AddListItem.vue'
+
+
+let nextItemId = 1
 
 export default {
   name: "list",
   components: {
-    ListItem
+    ListItem,
+    AddListItem
   },
   data() {
     return {
+      newItemText: '',
       todos: [
-        { id: "1", message: "Foo" },
-        { id: "2", message: "Bar" },
-        { id: "3", message: "Baz" }
+        {id: nextItemId++, message: "Foo" },
+        {id: nextItemId++, message: "Bar" },
+        {id: nextItemId++, message: "Baz" }
       ]
     };
   },
   methods: {
+      addItem() {
+      const trimmedText = this.newItemText.trim();
+      if (trimmedText) {
+        this.todos.push({
+          id: nextItemId++,
+          message: trimmedText
+        });
+        this.newItemText = "";
+      }
+    },
     editListItem(id, message) {
       this.todos.forEach(element => {
         if (element.id === id) {
