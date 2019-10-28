@@ -1,11 +1,19 @@
 # Exercise \#1
 
 ## Usage
+You need nodejs to execute this project!
 First of all, you have to install vue cli:
 ```
 npm install -g @vue/cli
 ```
-
+Then you have to download all dependencies by following command inside the project directoy
+ ```
+npm install 
+```
+After that, you can start the server with:
+ ```
+npm run serve 
+```
 
 Implement a simple todo app with VueJS.
 
