@@ -1,5 +1,12 @@
 # Exercise \#1
 
+## Usage
+First of all, you have to install vue cli:
+```
+npm install -g @vue/cli
+```
+
+
 Implement a simple todo app with VueJS.
 
 Each item in the todo app should:
