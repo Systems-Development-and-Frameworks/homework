@@ -1,8 +1,14 @@
 <!-- development version, includes helpful console warnings -->
+<meta charset="utf-8" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
 <div id="app">
-<!-- render your list here -->
+    <ol>
+        <list-item v-on:remove-item="removeItem(todo.id)" v-for="todo in todos" v-bind:key="todo.id"
+            v-bind:message="todo.message">
+            {{ todo.message }}
+        </list-item>
+    </ol>
 </div>
 
-<script type="module" src="/index.js"></script>
+<script type="module" src="./index.js"></script>

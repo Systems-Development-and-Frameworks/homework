@@ -9,5 +9,10 @@ new Vue({
       { id: '2', message: 'Bar', },
       { id: '3', message: 'Baz', }
     ]
+  },
+  methods: {
+    removeItem(key) {
+      this.todos.splice(this.todos.findIndex(x => x.id === key), 1);
+    }
   }
 })
