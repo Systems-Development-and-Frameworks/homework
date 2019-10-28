@@ -11,20 +11,20 @@
       <div class="mb5">
         <span class="buttonContainer" v-if="!this.onEdit">
           <a @click="setEditMode(true)">
-            <img class="icon" src="../assets/edit_circ.png" />
+            <img title="Edit" class="icon" src="../assets/edit_circ.png" />
           </a>
           <span class="space" />
           <a @click="deleteListItem(id)">
-            <img class="icon" src="../assets/delete_circ.png" />
+            <img title="Delete" class="icon" src="../assets/delete_circ.png" />
           </a>
         </span>
         <span class="buttonContainer" v-if="this.onEdit">
           <a @click="saveChanges()">
-            <img class="icon" src="../assets/save_circ.png" />
+            <img title="Save" class="icon" src="../assets/save_circ.png" />
           </a>
           <span class="space" />
           <a @click="setEditMode(false)">
-            <img class="icon" src="../assets/cancel_circ.png" />
+            <img title="Cancel" class="icon" src="../assets/cancel_circ.png" />
           </a>
         </span>
       </div>
@@ -36,7 +36,7 @@
 export default {
   name: "list-item",
   props: {
-    id: String,
+    id: Number,
     message: String
   },
   data() {
@@ -61,11 +61,14 @@ export default {
     deleteListItem(id) {
       this.$emit("deleteListItem", id);
     }
+
+
+    
   }
 };
 </script>
 
-<style scoped>
+<style>
 .itemContainer {
   border-bottom-style: inset;
   margin-bottom: 20px;
@@ -76,6 +79,7 @@ export default {
 
 .buttonContainer {
   display: flex;
+  cursor:pointer;
 }
 
 .mb5 {
