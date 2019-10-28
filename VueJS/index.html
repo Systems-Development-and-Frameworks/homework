@@ -1,8 +1,25 @@
 <!-- development version, includes helpful console warnings -->
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-
+<h1>Hello ToDo App</h1>
 <div id="app">
-<!-- render your list here -->
+    <div v-for="(todo,index) in todos" :row="todo.id"
+    >
+        <ul>
+            <li v-if="editmode[todo.id]"><input v-model="tempValues[index].message"  class="input"/>
+                <button @click="disableEditing(todo.id)">Cancel</button>
+                <button @click="saveEdit(todo.id)">Save</button>
+            </li>
+            <li v-else>{{todo.id}} : {{todo.message}}
+                <button @click="enableEditing(todo.id)">Edit</button>
+                <button @click="removeTodo(todo.id)">Delete</button>
+            </li>
+        </ul>
+    </div>
+    <form v-on:submit.prevent="addNewTodo">
+        <label for="new-todo">Add Todo</label>
+        <input  v-model="newTodoText" id="new-todo"/>
+        <button>Add</button>
+    </form>
 </div>
 
 <script type="module" src="/index.js"></script>
