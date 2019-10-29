@@ -2,5 +2,5 @@
  * List component
  */
 export default Vue.component('list', {
-    template: '<ol></ol>'
+    template: '<ul></ul>'
 })

@@ -2,7 +2,16 @@
  * List item component
  */
 export default Vue.component('list-item', {
-    props: ['id', 'message'],
+    props: {
+        id: String,
+        message: String,
+    },
+    data: {
+        oldMessage: String
+    },
+    created: function () {
+        this.oldMessage = this.message
+    },
     data: function () {
         return {
             isHidden: true
@@ -13,13 +22,29 @@ export default Vue.component('list-item', {
             console.log('clicked')
             console.log(`${this.isHidden}`)
             this.isHidden = !this.isHidden
+        },
+        setOldMessage() {
+            this.oldMessage = this.message
+        },
+        resetMessage() {
+            this.$emit('update:message', this.oldMessage)
+        }
+    },
+    computed: {
+        changeMessage: {
+            get: function () {
+                return this.message
+            },
+            set: function (value) {
+                this.$emit('update:message', value)
+            }
         }
     },
     template:
-        '<li>{{ message }}\
-        <input v-if="!isHidden" v-model="message">\
-        <button v-if="isHidden" v-on:click="$emit(`save-changes`)">Save</button>\
-        <button v-if="isHidden>Cancel</button>\
-        <button v-on:click="showEditForm()">Edit</button>\
+        '<li><span v-if="isHidden">{{ message }}</span>\
+        <input v-model="changeMessage" v-if="!isHidden">\
+        <button v-if="!isHidden" v-on:click="showEditForm()">Save</button>\
+        <button v-if="!isHidden" v-on:click="showEditForm(), resetMessage()">Cancel</button>\
+        <button v-if="isHidden" v-on:click="showEditForm(), setOldMessage()">Edit</button>\
         <button v-on:click="$emit(`remove-item`)">Delete</button></li>'
 })

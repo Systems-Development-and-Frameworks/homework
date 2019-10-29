@@ -9,7 +9,7 @@ new Vue({
       { id: '2', message: 'Bar', },
       { id: '3', message: 'Baz', }
     ],
-    currentIndex = 3,       // key for new todo item
+    currentIndex: 3,       // key for new todo item
   },
   methods: {
     removeItem(key) {
@@ -17,10 +17,9 @@ new Vue({
     },
     addItem() {
       this.todos.push({
-        id = (currentIndex++).toString(),
-        message = "",
+        id: (currentIndex++).toString(),
+        message: "",
       });
     }
-
   }
 })
