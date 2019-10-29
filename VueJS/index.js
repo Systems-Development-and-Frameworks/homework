@@ -1,3 +1,6 @@
+// import List from './components/List.js'
+// import ListItem from './components/ListItem.js'
+
 Vue.component('list-item', {
   props: ['todo'],
   template: `
