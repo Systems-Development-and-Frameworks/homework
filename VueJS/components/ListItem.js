@@ -9,6 +9,9 @@ export default Vue.component('list-item', {
     data: {
         oldMessage: String
     },
+    /**
+     * Sets the message value for resetting at cancel.
+     */
     created: function () {
         this.oldMessage = this.message
     },
@@ -18,14 +21,23 @@ export default Vue.component('list-item', {
         }
     },
     methods: {
+        /**
+         * Toggles the edit form.
+         */
         showEditForm() {
             console.log('clicked')
             console.log(`${this.isHidden}`)
             this.isHidden = !this.isHidden
         },
+        /**
+         * Sets the reset message value when user opens the form.
+         */
         setOldMessage() {
             this.oldMessage = this.message
         },
+        /**
+         * Resets the message value to previously saved value.
+         */
         resetMessage() {
             this.$emit('update:message', this.oldMessage)
         }
@@ -42,7 +54,7 @@ export default Vue.component('list-item', {
     },
     template:
         '<li><span v-if="isHidden">{{ message }}</span>\
-        <input v-model="changeMessage" v-if="!isHidden">\
+        <input v-model="changeMessage" v-if="!isHidden" max="40">\
         <button v-if="!isHidden" v-on:click="showEditForm()">Save</button>\
         <button v-if="!isHidden" v-on:click="showEditForm(), resetMessage()">Cancel</button>\
         <button v-if="isHidden" v-on:click="showEditForm(), setOldMessage()">Edit</button>\

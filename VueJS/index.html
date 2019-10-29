@@ -3,6 +3,7 @@
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
 <div id="app">
+    <button v-on:click="addItem()">Add New Item</button>
     <ol>
         <list-item v-on:update:message="todo.message = $event" v-on:show-edit-form="showEditForm()"
             v-on:remove-item="removeItem(todo.id)" v-for="todo in todos" v-bind:key="todo.id"

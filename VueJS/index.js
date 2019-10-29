@@ -12,13 +12,21 @@ new Vue({
     currentIndex: 3,       // key for new todo item
   },
   methods: {
+    /**
+     * Removes an item from the todo list.
+     * @param {*} key Key of that item.
+     */
     removeItem(key) {
       this.todos.splice(this.todos.findIndex(x => x.id === key), 1);
     },
+    /**
+     * Adds a new item to the list.
+     * The id preincrements from the starting index 3, the message is 'New Item <index>'.
+     */
     addItem() {
       this.todos.push({
-        id: (currentIndex++).toString(),
-        message: "",
+        id: (++this.currentIndex).toString(),
+        message: `New Item ${this.currentIndex}`,
       });
     }
   }
