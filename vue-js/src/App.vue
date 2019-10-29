@@ -5,6 +5,7 @@
 </template>
 
 <script>
+
 import List from "./components/task1/List";
 
 export default {

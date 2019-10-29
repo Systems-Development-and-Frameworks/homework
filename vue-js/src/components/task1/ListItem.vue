@@ -1,15 +1,19 @@
 <template>
   <div id="list-item">
     <div v-if="edit">
-      <li>{{item.text}}</li>
+      <li>{{item.text}}
       <button v-on:click="setSavingMode">Edit</button>
-      <button @click="$emit('delete-item')">Delete</button>
+      <button  @click="$emit('delete-item')">Delete</button>
+      </li>
     </div>
     <div v-else>
+      <li>
       <input id="new-item-text" v-model="item.text" />
       <button v-on:click="saveNewText">Save</button>
       <button v-on:click="cancelSavingMode">Cancel</button>
+      </li>
     </div>
+    
     
   </div>
 </template>
@@ -38,3 +42,9 @@ export default {
   }
 }
 </script>
+
+<style>
+li {
+  text-align: left;
+}
+</style>
