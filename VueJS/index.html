@@ -1,8 +1,23 @@
 <!-- development version, includes helpful console warnings -->
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+            <div id="app">
+                <todo-list
+	                v-bind:items="items"
+	                v-on:save="save"
+	                v-on:remove="remove"
+	                v-on:add="add"
+                ></todo-list>
+            </div>
+        <script src="index.js" type="module"></script>
+    </body>
+</html>
 
-<div id="app">
-<!-- render your list here -->
-</div>
 
-<script type="module" src="/index.js"></script>
+
+
+
