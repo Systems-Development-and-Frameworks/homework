@@ -4,8 +4,8 @@
 
 <div id="app">
     <ol>
-        <list-item v-on:remove-item="removeItem(todo.id)" v-for="todo in todos" v-bind:key="todo.id"
-            v-bind:message="todo.message">
+        <list-item v-on:show-edit-form="showEditForm()" v-on:remove-item="removeItem(todo.id)" v-for="todo in todos"
+            v-bind:key="todo.id" v-bind:message="todo.message">
             {{ todo.message }}
         </list-item>
     </ol>
