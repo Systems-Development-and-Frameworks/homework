@@ -25,8 +25,6 @@ export default Vue.component('list-item', {
          * Toggles the edit form.
          */
         showEditForm() {
-            console.log('clicked')
-            console.log(`${this.isHidden}`)
             this.isHidden = !this.isHidden
         },
         /**
