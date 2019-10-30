@@ -1,8 +1,17 @@
-<!-- development version, includes helpful console warnings -->
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<html>
 
-<div id="app">
-<!-- render your list here -->
-</div>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
 
-<script type="module" src="/index.js"></script>
+<body>
+    <div id="app">
+        </h1>
+        <ol>
+            <todo-item v-for="item in items" v-bind:todo="item" v-bind:key="item.id"></todo-item>
+        </ol>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>

@@ -1,7 +1,7 @@
 # Systems Development and Frameworks - Group Assignments - Winter Term 2019/20
 
-| Github Alias                                         | Name         |
-| ---------------------------------------------------- | ------------ |
-| [@your](https://github.com/your)                     | Alice A.     |
-| [@github-account](https://github.com/github-account) | Bob B.       |
-| [@goes-here](https://github.com/goes-here)           | Mallory M.   |
+| Github alias                                       | Name     |
+| -------------------------------------------------- | -------- |
+| [JeeTee0/d064467](https://github.com/JeeTee0)      | Oskar S. |
+| [medizinmensch](https://github.com/medizinmensch/) | Youri S. |
+| [menno4000](https://github.com/menno4000)          | Max L.   |
