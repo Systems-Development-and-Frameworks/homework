@@ -14,4 +14,6 @@ Here is how the result should look like:
 ![screencast](./exercise-vuejs.gif)
 
 Use computed properties and events where possible and make use of the component
-composition pattern.
+pattern.
+
+Get extra praise for implementing the "Add todo" button! :heart:

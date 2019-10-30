@@ -1,4 +1,4 @@
-# SDF Gruppenarbeit WiSe 2019-20
+# Systems Development and Frameworks - Group Assignments - Winter Term 2019/20
 
 | Github alias                                       | Name     |
 | -------------------------------------------------- | -------- |
