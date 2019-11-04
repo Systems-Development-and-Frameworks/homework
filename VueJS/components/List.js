@@ -12,7 +12,6 @@ export default Vue.component('list', {
         handleAdd(text) {
             let highestId = 0;
             this.value.forEach(item => {
-                console.log(item);
                 if (item.id > highestId) {
                     highestId = item.id;
                 }
