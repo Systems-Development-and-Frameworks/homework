@@ -4,11 +4,8 @@ export default Vue.component('add-button', {
             this.isAdding = false;
             this.$emit('submit', this.addText);
         },
-        handleCancel() {
-            this.isAdding = false;
-        },
-        handleStartAdding() {
-            this.isAdding = true;
+        toggleAdding() {
+            this.isAdding = !this.isAdding;
             this.addText = '';
         },
     }
@@ -19,10 +16,15 @@ export default Vue.component('add-button', {
             addText: '',
         };
     },
-    template: `<div class="add-button"><button v-if="!isAdding" @click="handleStartAdding"><slot></slot></button>` +
-        `<template v-else>` +
-        `<input v-model="addText" />` +
-        `<button @click="handleSubmit">Add</button>` +
-        `<button @click="handleCancel">Cancel</button>` +
-        `</template></div>`,
+    template:
+        `<div class="add-button">
+            <button v-if="!isAdding" @click="toggleAdding">
+                <slot></slot>
+            </button>
+            <template v-else>
+                <input v-model="addText" />
+                <button @click="handleSubmit">Add</button>
+                <button @click="toggleAdding">Cancel</button>
+            </template>
+        </div>`,
 });
