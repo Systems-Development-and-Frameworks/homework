@@ -28,7 +28,6 @@ describe('ListItem', () => {
 
     describe('click on `Edit` button', () => {
       beforeAll(() => {
-        console.log(wrapper);
         wrapper.find('.edit').trigger('click');
       });
 
