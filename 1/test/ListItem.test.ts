@@ -28,6 +28,7 @@ describe('ListItem', () => {
 
     describe('click on `Edit` button', () => {
       beforeAll(() => {
+        console.log(wrapper);
         wrapper.find('.edit').trigger('click');
       });
 
@@ -52,7 +53,9 @@ describe('ListItem', () => {
     });
 
     describe('click on `Delete` button', () => {
-      wrapper.find('.delete').trigger('click');
+      beforeAll(() => {
+        wrapper.find('.delete').trigger('click');
+      });
 
       test('$emits `delete`', () => {
         expect(wrapper.emitted('delete')).toBeTruthy();
