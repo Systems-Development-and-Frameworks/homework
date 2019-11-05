@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <h1>Frontend-Einkaufslisten-Bearbeitungs-Und-Erstellungsmaschine</h1>
-    <List @deleteEntryb="deleteEntryb" @toggleEditModeb="toggleEditModeb" @addEntry="addEntry" v-bind:items="items"/>
+    <List @delete-entry-b="deleteEntryb" @toggle-edit-mode-b="toggleEditModeb" @add-entry="addEntry" :items="items"/>
   </div>
 </template>
 
@@ -56,7 +56,7 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-/* 
+/*
 h1,
 h2 {
   font-weight: normal;

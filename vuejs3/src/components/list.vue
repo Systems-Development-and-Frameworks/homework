@@ -5,8 +5,8 @@
         @deleteEntry="deleteEntry"
         @toggleEditMode="toggleEditMode"
         v-for="item in items"
-        v-bind:entry="item"
-        v-bind:key="item.id"
+        :entry="item"
+        :key="item.id"
       ></listitem>
       <div class="row mx-lg-n5">
         <div class="col-12 py-3 border bg-light">
@@ -31,10 +31,10 @@ export default {
   },
   methods: {
     deleteEntry: function(id) {
-      this.$emit("deleteEntryb", id);
+      this.$emit("delete-entry-b", id);
     },
     toggleEditMode: function(id) {
-      this.$emit("toggleEditModeb", id);
+      this.$emit("toggle-edit-mode-b", id);
     }
   }
 };

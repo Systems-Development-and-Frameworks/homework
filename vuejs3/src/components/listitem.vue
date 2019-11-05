@@ -23,7 +23,7 @@
       </form>
     </div>
     <div class="col-2 py-3 border bg-light">
-      <b-button class="btn btn-danger" @click="$emit('deleteEntry', entry.id)" type="button">Delete</b-button>
+      <b-button class="btn btn-danger" @click="$emit('delete-entry', entry.id)" type="button">Delete</b-button>
 
     </div>
   </div>
@@ -31,10 +31,10 @@
 
 <script>
 export default {
-  name: "list",
+  name: "listItem",
   props: {
     entry: Object,
-    deleteentry: Function
+    deleteEntry: Function
   },
   data: function() {
     return { counter: 0 };
