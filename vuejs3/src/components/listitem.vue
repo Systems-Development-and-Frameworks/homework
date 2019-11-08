@@ -3,13 +3,15 @@
     <div class="col-2 py-3 border bg-light">
       <b-button
         v-if="!entry.editMode"
+        name="edit-button"
         type="button"
-        id="button"
+        id="buttonEdit"
         @click="$emit('toggleEditMode', entry.id)"
       >Edit</b-button>
       <b-button
         v-if="entry.editMode"
         type="button"
+        name="save-button"
         id="buttonSave"
         @click="$emit('toggleEditMode', entry.id)"
         class="btn btn-success"
