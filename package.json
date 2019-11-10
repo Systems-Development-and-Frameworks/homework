@@ -8,7 +8,7 @@
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
     "test": "jest",
-    "lint": "eslint --ext .js,.vue ."
+    "lint": "./node_modules/.bin/eslint . ./**/*.vue"
   },
   "dependencies": {
     "bootstrap": "^4.0.0-beta.2",
