@@ -19,12 +19,13 @@ describe('listitem.vue', () => {
 
   const newText = "this is the updated text";
   const editButton = wrapper.findAll('button').at(0);
+  const deleteButton = wrapper.findAll('button').at(1);
   //console.log(editButton.element);
   //console.log(wrapper.html());
 
   describe('when the edit button is pressed', () => {
     editButton.trigger('click');
-    it('emitted a ToggleEditMode event', () => {
+    it('emits a ToggleEditMode event', () => {
       expect(wrapper.emitted('toggleEditMode'));
     });
     //the test cases below do not work, as logic for html changes resides outside the listitem component
@@ -35,6 +36,12 @@ describe('listitem.vue', () => {
     // it('renders the save button', () => {
     //   expect(wrapper.html()).toContain('type="button" name="save-button" id="buttonSave"')
     // })
-
   });
-})
+
+  describe('when the delete button is pressed', () => {
+    deleteButton.trigger('click');
+    it('emits a DeleteEntry event', () => {
+      expect(wrapper.emitted('deleteEntry'));
+    });
+  });
+});
