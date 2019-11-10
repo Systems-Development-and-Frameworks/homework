@@ -7,3 +7,4 @@ describe('App.vue', () => {
     expect(wrapper.contains('div')).toBe(true);
   });
 });
+
