@@ -8,6 +8,8 @@
 
 ## Project
 
+[![Build Status](https://travis-ci.com/medizinmensch/Systems-Development-and-Frameworks.svg?branch=setup-travis)](https://travis-ci.com/medizinmensch/Systems-Development-and-Frameworks)
+
 This Project is made possible by vue-cli and bootstrap
 
 
