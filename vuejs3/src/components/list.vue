@@ -10,7 +10,7 @@
       ></listitem>
       <div class="row mx-lg-n5">
         <div class="col-12 py-3 border bg-light">
-      <b-button class="btn btn-success" type="button" @click="$emit('addEntry')" id="btnAdd">Add</b-button>
+      <button class="btn btn-success" type="button" @click="$emit('addEntry')" id="btnAdd">Add</button>
         </div>
       </div>
     </div>
@@ -23,7 +23,6 @@ import listitem from "./listitem.vue";
 export default {
   name: "list",
   props: {
-    msg: String,
     items: Array
   },
   components: {
