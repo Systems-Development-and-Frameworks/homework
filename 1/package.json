@@ -5,10 +5,12 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "test": "jest",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "core-js": "^3.1.2",
+    "jest": "^24.9.0",
     "vue": "^2.6.10"
   },
   "devDependencies": {
