@@ -4,7 +4,6 @@ node_js:
 
 script:
     - yarn install
-    - ./node_modules/.bin/eslint --init
     - yarn run build
     - yarn run lint
     - yarn test
