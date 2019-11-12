@@ -3,7 +3,6 @@ node_js:
     - 9
 
 script:
-    - yarn install
     - yarn run build
     - yarn run lint
     - yarn test
