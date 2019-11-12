@@ -17,7 +17,7 @@ export default {
         { id: 2, editMode: false, text: "Trashtalk the vue 'Getting started' guide" },
         { id: 3, editMode: false, text: "git commit -m 'this'" }
       ],
-        maxId: 4
+        maxId: 3
     };
   },
   components: {
@@ -31,7 +31,7 @@ export default {
         }
       }
     },
-    toggleEditModeb: function (id) {
+    toggleEditModeb: function(id) {
 
       for (var i=0; i<this.items.length; i++) {
         if (this.items[i].id === id) {
