@@ -1,4 +1,4 @@
-import { mount, shallowMount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 import listitem from '../src/components/listitem.vue';
 
 describe('listitem.vue', () => {
@@ -17,7 +17,7 @@ describe('listitem.vue', () => {
     expect(wrapper.html()).not.toContain('<input type="text" name="newText">');
   });
 
-  const newText = "this is the updated text";
+  //const newText = "this is the updated text";
   const editButton = wrapper.findAll('button').at(0);
   const deleteButton = wrapper.findAll('button').at(1);
   //console.log(editButton.element);

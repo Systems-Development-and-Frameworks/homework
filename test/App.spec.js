@@ -1,6 +1,5 @@
 import { mount } from '@vue/test-utils';
 import app from '../src/App.vue';
-import listitem from '../src/components/listitem.vue'
 
 describe('App.vue', () => {
 
@@ -9,9 +8,10 @@ describe('App.vue', () => {
     expect(wrapper.contains('div')).toBe(true);
   });
 
-  //for some unforsaken reason, this one refuses to work. 
+  //for some unforsaken reason, this one refuses to work.
   describe('when the toggleEditModeb function is called', () => {
-    wrapper.findAll(listitem).at(0).vm.$emit('toggleEditMode', 0);
+    const editButton = wrapper.findAll('button').at(0);
+    editButton.trigger('click')
     it('opens an input field in a listitem component', () => {
         expect(wrapper.html()).toContain('input');
     });
