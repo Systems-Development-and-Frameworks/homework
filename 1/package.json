@@ -6,39 +6,75 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test": "jest",
-    "lint": "vue-cli-service lint"
+    "lint": "eslint --ext .js,.vue ."
   },
   "dependencies": {
     "core-js": "^3.1.2",
+    "cross-env": "^6.0.3",
     "jest": "^24.9.0",
     "vue": "^2.6.10"
   },
   "devDependencies": {
+    "@babel/core": "~7.7.2",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/preset-env": "~7.7.1",
+    "@storybook/addon-a11y": "^5.2.5",
+    "@storybook/addon-actions": "^5.2.5",
+    "@storybook/vue": "~5.2.5",
     "@vue/cli-plugin-babel": "^4.0.0",
     "@vue/cli-plugin-eslint": "^4.0.0",
     "@vue/cli-service": "^4.0.0",
-    "babel-eslint": "^10.0.1",
-    "eslint": "^5.16.0",
-    "eslint-plugin-vue": "^5.0.0",
+    "@vue/test-utils": "^v1.0.0-beta.29",
+    "async-validator": "^3.2.1",
+    "babel-core": "~7.0.0-bridge.0",
+    "babel-eslint": "~10.0.3",
+    "babel-jest": "~24.9.0",
+    "babel-loader": "~8.0.6",
+    "core-js": "~2.6.10",
+    "css-loader": "~3.2.0",
+    "eslint": "~5.16.0",
+    "eslint-config-prettier": "~6.5.0",
+    "eslint-config-standard": "~12.0.0",
+    "eslint-loader": "~3.0.2",
+    "eslint-plugin-import": "~2.18.2",
+    "eslint-plugin-jest": "~23.0.2",
+    "eslint-plugin-node": "~10.0.0",
+    "eslint-plugin-prettier": "~3.1.1",
+    "eslint-plugin-promise": "~4.2.1",
+    "eslint-plugin-standard": "~4.0.1",
+    "eslint-plugin-vue": "~5.2.3",
+    "faker": "^4.1.0",
+    "flush-promises": "^1.0.2",
+    "fuse.js": "^3.4.5",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "~24.9.0",
+    "mutation-observer": "^1.0.3",
+    "node-sass": "~4.13.0",
+    "prettier": "~1.18.2",
+    "sass-loader": "~8.0.0",
+    "style-loader": "~0.23.1",
+    "style-resources-loader": "~1.2.1",
+    "vue-jest": "~3.0.5",
+    "vue-loader": "~15.7.2",
+    "vue-svg-loader": "~0.14.0",
     "vue-template-compiler": "^2.6.10"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "rules": {},
-    "parserOptions": {
-      "parser": "babel-eslint"
-    }
   },
   "postcss": {
     "plugins": {
       "autoprefixer": {}
+    }
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "vue"
+    ],
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1"
+    },
+    "transform": {
+      "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
+      ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest"
     }
   },
   "browserslist": [
