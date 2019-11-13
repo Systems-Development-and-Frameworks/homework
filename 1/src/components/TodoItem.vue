@@ -29,7 +29,7 @@
         ,
         methods: {
             markComplete() {
-                this.todo.completed = !this.todo.completed
+                this.completed = !this.completed
             },
             editTodo(id, newMessage) {
                 this.$emit('edit-todo', id, newMessage)
