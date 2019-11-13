@@ -7,13 +7,8 @@ import Counter from './counter'
 const wrapper = mount(ListItem)
 
 describe('given a `todo`', () => {
-    // not success
     it('renders todo text', () => {
-        expect(wrapper.text()=='Save Cancel Remove')
-    })
-
-    it('does not show input field', () => {
-        expect(wrapper.contains('input')).toBe(true)
+        expect(wrapper.text()).toContain('Save');
     })
 })
 
@@ -25,7 +20,7 @@ describe('  Clik on Edit button', () => {
     })
 })
 
-describe('     Edit text and Submit', () => {
+describe('Edit text and Submit', () => {
     it(' $emit save with editted todo', () => {
         expect(wrapper.emitted('save', () => {
             wrapper.contains('input').tobe(false)
