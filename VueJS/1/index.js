@@ -1,5 +1,6 @@
 import List from "./components/List.js"
 import ListItem from "./components/ListItem.js"
+
 new Vue({
     el: '#hello',
     data: {
