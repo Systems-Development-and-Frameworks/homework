@@ -1,7 +1,7 @@
-# Systems Development and Frameworks - Group Assignments - Winter Term 2019/20
+# Systems-Development-and-Frameworks
 
-| Github Alias                                         | Name         |
-| ---------------------------------------------------- | ------------ |
-| [@your](https://github.com/your)                     | Alice A.     |
-| [@github-account](https://github.com/github-account) | Bob B.       |
-| [@goes-here](https://github.com/goes-here)           | Mallory M.   |
+| Github Alias    | Name         |
+| --------------- | ------------ |
+| @michaelef123 | Michael Franz     |
+| @Chuvantinh | Chu Văn Tình      |
+| @itfak     | Arnauld Feussi   |
