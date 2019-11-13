@@ -1,5 +1,5 @@
-import List from "./1/components/List.js"
-import ListItem from "./1/components/ListItem.js"
+import List from "./components/List.js"
+import ListItem from "./components/ListItem.js"
 new Vue({
     el: '#hello',
     data: {
