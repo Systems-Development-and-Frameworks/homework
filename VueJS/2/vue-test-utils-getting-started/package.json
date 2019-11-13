@@ -1,0 +1,22 @@
+{
+  "name": "vue-test-utils-getting-started",
+  "version": "1.0.0",
+  "dependencies": {
+    "vue": "^2.6.10"
+  },
+  "devDependencies": {
+    "@vue/test-utils": "^1.0.0-beta.29",
+    "babel-jest": "^21.2.0",
+    "babel-preset-env": "^1.7.0",
+    "eslint": "^6.6.0",
+    "eslint-plugin-vue": "^5.2.3",
+    "jest": "^21.2.1",
+    "regenerator-runtime": "^0.11.1",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Evan You",
+  "license": "MIT"
+}
