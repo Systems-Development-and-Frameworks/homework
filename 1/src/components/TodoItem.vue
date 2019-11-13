@@ -1,16 +1,18 @@
 <template>
     <div class="todo-item" v-bind:class="{'is-complete':todo.completed}">
-        <p v-if="!isInEditMode">
+        <div v-if="!isInEditMode">
             <input type="checkbox" v-on:change="markComplete">
             {{todo.message}}
             <button @click="isInEditMode=!isInEditMode" class="edit"> Edit</button>
             <button @click="$emit('del-todo', todo.id)" class="del"> X</button>
-        </p>
-        <p v-else>
-            <input v-model="newMessage" placeholder="Edit todo">
-            <button @click="editTodo(todo.id, newMessage)" class="edit">Save</button>
+        </div>
+        <div id="edit" v-else>
+            <form @submit.prevent="editTodo(todo.id, newMessage)">
+                <input type="text" v-model="newMessage" :placeholder="todo.message">
+                <input type="submit" class="edit" value="Save" :disabled="!newMessage">
+            </form>
             <button @click="isInEditMode = !isInEditMode" class="edit">Cancel</button>
-        </p>
+        </div>
     </div>
 </template>
 
@@ -65,5 +67,9 @@
         border-radius: 50%;
         cursor: pointer;
         float: right;
+    }
+
+    #edit {
+     display: flex;
     }
 </style>

@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import AddTodo from './AddTodo.vue'
+import AddTodo from '../src/components/AddTodo.vue'
 
 describe('AddTodo', () => {
 test('is a Vue instance', () => {

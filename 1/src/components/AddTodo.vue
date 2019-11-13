@@ -2,7 +2,7 @@
     <div>
         <form @submit.prevent="addTodo">
             <input type="text" v-model="message" name="title" placeholder="Add Todo...">
-            <input type="submit" value="Add" class="btn">
+            <input type="submit" value="Add" class="btn" :disabled="!message">
         </form>
     </div>
 </template>

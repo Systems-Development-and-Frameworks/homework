@@ -35,8 +35,8 @@ export default {
       this.todos.push(newTodo)
     },
     editTodo(id, newMessage) {
-      this.todos.filter(todo => {
-        if(todo.id == id) {
+      this.todos.map(todo => {
+        if(todo.id === id) {
           todo.message = newMessage
         }
       })
