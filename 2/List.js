@@ -1,4 +1,4 @@
-export default Vue.component('todos', {
+export default {
     template: `<div>
 		<ul>
 			<todo-item
@@ -11,4 +11,4 @@ export default Vue.component('todos', {
 		<button v-on:click="$emit('add')">Add new todo</button>
 		</div>`,
     props: ['todos']
-})
+}

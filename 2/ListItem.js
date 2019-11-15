@@ -1,7 +1,8 @@
-export default Vue.component('todo-item', {
+//todo_item
+export default {
     template: `<li>
 	<template v-if="editing">
-		{{ todo.id }} . {{ todo.message }}
+		<p>{{ todo.id }} . {{ todo.message }}</p>
 		<button v-on:click="editing=false">Edit</button>
 	</template>
 	<template v-else>
@@ -14,9 +15,9 @@ export default Vue.component('todo-item', {
     props: ['todo'],
     data: function() {
         return {
-            editing: !(this.todo.message === ""),
-            input: this.todo.message,
-            identifier: this.todo.id
+            editing: false,
+            input: 'test',
+            identifier: 1
         }
     },
     methods: {
@@ -28,4 +29,4 @@ export default Vue.component('todo-item', {
             this.$emit('remove', this.identifier)
         }
     }
-})
+}
