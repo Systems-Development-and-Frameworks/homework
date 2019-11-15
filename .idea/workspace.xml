@@ -1,28 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3f3d10c3-1ac2-4022-8691-cadc4e0092e8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/1/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/1/components/List.js" beforeDir="false" afterPath="$PROJECT_DIR$/1/components/List.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1/components/ListItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/1/components/ListItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1/exercise-vuejs.gif" beforeDir="false" afterPath="$PROJECT_DIR$/1/exercise-vuejs.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/1/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/1/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/2/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2/build-server-badge.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2/build-server-checks.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2/code-suggestions.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2/terminal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/3/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/3/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3/crud.png" beforeDir="false" afterPath="$PROJECT_DIR$/3/crud.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3/permissions.png" beforeDir="false" afterPath="$PROJECT_DIR$/3/permissions.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VueJS/1/components/List.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/VueJS/1/components/ListItem.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/VueJS/1/exercise-vuejs.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/VueJS/1/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/VueJS/1/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/VueJS/2/vue-test-utils-getting-started" beforeDir="false" />
-    </list>
+    <list default="true" id="3f3d10c3-1ac2-4022-8691-cadc4e0092e8" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,10 +16,48 @@
           <entry key="project.opened" value="1" />
         </counts>
       </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="html" value="1" />
+          <entry key="js" value="1" />
+          <entry key="md" value="1" />
+          <entry key="png" value="1" />
+          <entry key="yml" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="HTML" value="1" />
+          <entry key="Image" value="1" />
+          <entry key="JavaScript" value="1" />
+          <entry key="Markdown" value="1" />
+          <entry key="YAML" value="1" />
+        </counts>
+      </usages-collector>
     </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.travis.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="17" selection-start-column="17" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/.travis.yml" />
+      </list>
+    </option>
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
@@ -55,6 +72,9 @@
     <packageJsonPaths>
       <path value="$PROJECT_DIR$/2/package.json" />
     </packageJsonPaths>
+  </component>
+  <component name="PhpServers">
+    <servers />
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
@@ -108,15 +128,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1573849242832</updated>
-      <workItem from="1573849244968" duration="228000" />
+      <workItem from="1573849244968" duration="620000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="228000" />
+    <option name="totallyTimeSpent" value="620000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="836" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24964234" />
@@ -144,5 +165,37 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/3/permissions.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/1/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/1/index.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/3/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.travis.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="17" selection-start-column="17" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>
