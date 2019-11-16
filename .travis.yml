@@ -6,11 +6,11 @@ node_js:
   - node
 
 install:
-  -   npm ci
+  -   npm install
 
-script: 
-  - npm run lint
+script:
   - npm test
 
 notifications:
-  email:chuvantinh1991@gmail.com
+  email:
+  - chuvantinh1991@gmail.com
