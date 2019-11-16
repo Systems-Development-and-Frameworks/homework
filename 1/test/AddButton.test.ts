@@ -16,7 +16,7 @@ describe('AddButton', () => {
     });
 
     test('does not show input field', () => {
-      expect(wrapper.contains('input')).toBeFalsy();
+      expect(wrapper.contains('input')).toBe(false);
     });
 
     describe('click on `Add` button', () => {
@@ -29,7 +29,7 @@ describe('AddButton', () => {
       });
 
       test('shows input field', () => {
-        expect(wrapper.contains('input')).toBeTruthy();
+        expect(wrapper.contains('input')).toBe(true);
       });
 
       describe('set text and submit', () => {

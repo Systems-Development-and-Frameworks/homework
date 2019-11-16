@@ -21,7 +21,6 @@ export default Vue.component('list-item', {
       this.$emit('delete', this.item);
     },
   },
-  computed: {},
   template: `<div class="list-item">
                     {{item.id}}.
                 <template v-if="isEditing">

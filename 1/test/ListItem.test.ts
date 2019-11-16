@@ -19,7 +19,7 @@ describe('ListItem', () => {
     });
 
     test('renders `item.message`', () => {
-      expect(wrapper.html()).toContain(`<span>${todoItem.message}</span>`);
+      expect(wrapper.html()).toContain(`<span>test</span>`);
     });
 
     test('does not show input field', () => {

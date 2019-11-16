@@ -19,6 +19,6 @@ new Vue({
   },
   template: `<div>
                 <h1>ToDo List</h1>
-                <list v-model="todos"></list>
+                <list :todos="todos"></list>
              </div>`,
 });

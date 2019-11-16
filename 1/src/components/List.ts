@@ -3,31 +3,33 @@ import Vue from 'vue';
 import { TodoItem } from '../index';
 
 export default Vue.component('list', {
-  props: ['value'],
+  props: ['todos'],
+  computed: {
+    nextId() {
+      return Math.max(
+        ...this.todos.map((todo: TodoItem) => {
+          return +todo.id;
+        }),
+      );
+    },
+  },
   methods: {
     handleInput(newItem: TodoItem, oldItem: TodoItem) {
       const index = this.findIndex(oldItem);
-      this.value.splice(index, 1, newItem);
+      this.todos.splice(index, 1, newItem);
     },
     handleDelete(item: TodoItem) {
       const index = this.findIndex(item);
-      this.value.splice(index, 1);
+      this.todos.splice(index, 1);
     },
     handleAdd(text: string) {
-      let highestId = 0;
-      this.value.forEach((item: TodoItem) => {
-        if (+item.id > highestId) {
-          highestId = +item.id;
-        }
-      });
-
-      this.value.push({
-        id: (highestId + 1).toString(),
+      this.todos.push({
+        id: (this.nextId + 1).toString(),
         message: text,
       });
     },
     findIndex(item: TodoItem) {
-      const index = this.value.findIndex((localItem: TodoItem) => {
+      const index = this.todos.findIndex((localItem: TodoItem) => {
         return localItem.id === item.id;
       });
       if (index < 0) {
@@ -38,9 +40,9 @@ export default Vue.component('list', {
   },
   template: `<div class="list">
                 <add-button @submit="handleAdd">Add ToDo</add-button>
-                <p v-if="value.length === 0">Currently, there are no items.</p>
+                <p v-if="todos.length === 0">Currently, there are no items.</p>
                 <div class="list-items" v-else>
-                    <list-item v-for="(item, index) in value" :key="item.id" :item="item" @input="handleInput($event, item)" @delete="handleDelete($event)"></list-item>
+                    <list-item v-for="(item, index) in todos" :key="item.id" :item="item" @input="handleInput($event, item)" @delete="handleDelete($event)"></list-item>
                 </div>
              </div>`,
 });

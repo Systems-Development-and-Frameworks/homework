@@ -8,16 +8,14 @@ import ListItem from '../src/components/ListItem';
 
 const todoItems: TodoItem[] = [{ id: '1', message: 'test' }, { id: '2', message: 'second' }];
 
-// TODO finish all tests
-
 describe('List', () => {
-  let wrapper: Wrapper<Vue & { value: TodoItem[] }>;
+  let wrapper: Wrapper<Vue & { todos: TodoItem[] }>;
 
-  describe('given a `value` that is not empty', () => {
+  describe('given a `todos` that is not empty', () => {
     beforeAll(() => {
       wrapper = shallowMount(List, {
         propsData: {
-          value: todoItems.slice(),
+          todos: todoItems.slice(),
         },
         components: {
           AddButton,
@@ -30,20 +28,16 @@ describe('List', () => {
       expect(wrapper.contains(ListItem)).toBeTruthy();
     });
 
-    test('does not render list-empty info', () => {
-      expect(wrapper.html()).not.toContain('<p>Currently, there are no items.</p>');
-    });
-
-    describe('can handle events', () => {
-      describe('can handle AddButton events', () => {
+    describe('events', () => {
+      describe('`AddButton`', () => {
         let addButton: Wrapper<Vue>;
         beforeAll(() => {
           addButton = wrapper.find(AddButton);
         });
 
-        test('can handle add', () => {
+        test('appends a new todo to the list', () => {
           addButton.vm.$emit('submit', 'New Todo');
-          expect(wrapper.vm.value[wrapper.vm.value.length - 1].message).toBe('New Todo');
+          expect(wrapper.vm.todos[wrapper.vm.todos.length - 1].message).toBe('New Todo');
         });
       });
 
@@ -55,24 +49,28 @@ describe('List', () => {
 
         test('can handle `input`', () => {
           listItem.vm.$emit('input', { id: '1', message: 'edited' });
-          expect(wrapper.vm.value[0].message).toBe('edited');
+          expect(wrapper.vm.todos[0].message).toBe('edited');
         });
 
         test('can handle `delete`', () => {
+          expect(wrapper.vm.todos).toHaveLength(3);
           listItem.vm.$emit('delete', { id: '2', message: 'second' });
-          expect(wrapper.vm.value.some((item: TodoItem) => {
-            return item.message === 'second';
-          })).toBeFalsy();
+          expect(
+            wrapper.vm.todos.some((item: TodoItem) => {
+              return item.message === 'second';
+            }),
+          ).toBeFalsy();
+          expect(wrapper.vm.todos).toHaveLength(2);
         });
       });
     });
   });
 
-  describe('given a `value` that is empty', () => {
+  describe('given a `todos` that is empty', () => {
     beforeAll(() => {
       wrapper = shallowMount(List, {
         propsData: {
-          value: [],
+          todos: [],
         },
         components: {
           AddButton,
@@ -81,12 +79,34 @@ describe('List', () => {
       });
     });
 
-    test('renders list-empty info', () => {
-      expect(wrapper.html()).toContain('<p>Currently, there are no items.</p>');
-    });
-
     test('does not render ListItems', () => {
       expect(wrapper.contains(ListItem)).toBeFalsy();
+    });
+  });
+
+  describe('does not render list-empty info', () => {
+    test('except `todos` is empty', () => {
+      wrapper = shallowMount(List, {
+        propsData: {
+          todos: todoItems.slice(),
+        },
+        components: {
+          AddButton,
+          ListItem,
+        },
+      });
+      const wrapperEmpty = shallowMount(List, {
+        propsData: {
+          todos: [],
+        },
+        components: {
+          AddButton,
+          ListItem,
+        },
+      });
+
+      expect(wrapper.html()).not.toContain('<p>Currently, there are no items.</p>');
+      expect(wrapperEmpty.html()).toContain('<p>Currently, there are no items.</p>');
     });
   });
 });
