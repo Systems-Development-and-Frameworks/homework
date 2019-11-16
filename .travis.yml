@@ -3,7 +3,7 @@ node_js:
   - node
 
 before_script:
-  - cd 1/
+  - cd frontend/
   - npm install
   - npm run build
 
