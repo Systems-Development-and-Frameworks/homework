@@ -1,12 +1,15 @@
-import { mount, shallowMount, Wrapper } from '@vue/test-utils';
+import { shallowMount, Wrapper } from '@vue/test-utils';
+import { TodoItem } from 'core';
 import { Vue } from 'vue/types/vue';
 
-import { TodoItem } from '../src';
 import AddButton from '../src/components/AddButton';
 import List from '../src/components/List';
 import ListItem from '../src/components/ListItem';
 
-const todoItems: TodoItem[] = [{ id: '1', message: 'test' }, { id: '2', message: 'second' }];
+const todoItems: TodoItem[] = [
+  { id: '1', description: 'test', isDone: false, createdAt: new Date(new Date().getTime() - 600000).toISOString() },
+  { id: '2', description: 'second', isDone: true, createdAt: new Date().toISOString() },
+];
 
 describe('List', () => {
   let wrapper: Wrapper<Vue & { todos: TodoItem[] }>;
@@ -37,7 +40,7 @@ describe('List', () => {
 
         test('appends a new todo to the list', () => {
           addButton.vm.$emit('submit', 'New Todo');
-          expect(wrapper.vm.todos[wrapper.vm.todos.length - 1].message).toBe('New Todo');
+          expect(wrapper.vm.todos[wrapper.vm.todos.length - 1].description).toBe('New Todo');
         });
       });
 
@@ -48,16 +51,16 @@ describe('List', () => {
         });
 
         test('can handle `input`', () => {
-          listItem.vm.$emit('input', { id: '1', message: 'edited' });
-          expect(wrapper.vm.todos[0].message).toBe('edited');
+          listItem.vm.$emit('input', { id: '1', description: 'edited' });
+          expect(wrapper.vm.todos[0].description).toBe('edited');
         });
 
         test('can handle `delete`', () => {
           expect(wrapper.vm.todos).toHaveLength(3);
-          listItem.vm.$emit('delete', { id: '2', message: 'second' });
+          listItem.vm.$emit('delete', { id: '2', description: 'second' });
           expect(
             wrapper.vm.todos.some((item: TodoItem) => {
-              return item.message === 'second';
+              return item.description === 'second';
             }),
           ).toBeFalsy();
           expect(wrapper.vm.todos).toHaveLength(2);

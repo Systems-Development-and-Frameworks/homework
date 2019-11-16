@@ -1,6 +1,5 @@
+import { TodoItem } from 'core';
 import Vue from 'vue';
-
-import { TodoItem } from '../index';
 
 export default Vue.component('list', {
   props: ['todos'],
@@ -23,10 +22,13 @@ export default Vue.component('list', {
       this.todos.splice(index, 1);
     },
     handleAdd(text: string) {
-      this.todos.push({
+      const item: TodoItem = {
         id: (this.nextId + 1).toString(),
-        message: text,
-      });
+        description: text,
+        isDone: false,
+        createdAt: new Date().toISOString(),
+      };
+      this.todos.push(item);
     },
     findIndex(item: TodoItem) {
       const index = this.todos.findIndex((localItem: TodoItem) => {

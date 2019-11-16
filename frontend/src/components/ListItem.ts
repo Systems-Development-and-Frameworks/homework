@@ -11,11 +11,11 @@ export default Vue.component('list-item', {
   methods: {
     toggleEditing() {
       this.isEditing = !this.isEditing;
-      this.editText = this.item.message;
+      this.editText = this.item.description;
     },
     handleSave() {
       this.isEditing = false;
-      this.$emit('input', { ...this.item, message: this.editText });
+      this.$emit('input', { ...this.item, description: this.editText });
     },
     handleDelete() {
       this.$emit('delete', this.item);
@@ -26,7 +26,7 @@ export default Vue.component('list-item', {
                 <template v-if="isEditing">
                     <input v-model="editText" />
                 </template>
-                <span v-else>{{item.message}}</span>
+                <span v-else>{{item.description}}</span>
                 <div class="list-item-buttons">
                     <template v-if="isEditing">
                         <button class="save" @click="handleSave">Save</button>

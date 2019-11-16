@@ -1,0 +1,6 @@
+{
+  "extends": "@veake/tslint-config",
+  "rules": {
+    "no-import-side-effect": false
+  }
+}
