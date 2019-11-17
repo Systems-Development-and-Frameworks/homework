@@ -6,9 +6,11 @@ node_js:
   - node
 
 install:
-  -   npm install
+  - cd 2
+  - npm install
 
 script:
+  - cd 2
   - npm test
 
 notifications:
