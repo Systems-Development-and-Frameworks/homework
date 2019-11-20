@@ -3,6 +3,8 @@
 | Github Alias                                         | Name         |
 | ---------------------------------------------------- | ------------ |
 | [@Veake](https://github.com/Veake)                   | Maximilian R.|
+| [@martinneumann](https://github.com/martinneumann)   | Martin N.    |
+|  [@rico-stucke](https://github.com/rico-stucke)      | Rico S.      |
 
 
 ## Installation
