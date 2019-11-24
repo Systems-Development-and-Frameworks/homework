@@ -19,13 +19,16 @@
   "dependencies": {
     "apollo-server": "^2.9.9",
     "apollo-server-testing": "^2.9.9",
+    "dotenv": "^8.2.0",
     "graphql": "^14.5.8",
     "graphql-middleware": "^4.0.2",
     "graphql-shield": "^7.0.2",
     "graphql-tools": "^4.0.6",
+    "jsonwebtoken": "^8.5.1",
     "uuid": "^3.3.3"
   },
   "devDependencies": {
+    "@types/jsonwebtoken": "^8.3.5",
     "@types/jest": "^24.0.21",
     "@types/type-is": "^1.6.3",
     "@types/uuid": "^3.4.6",

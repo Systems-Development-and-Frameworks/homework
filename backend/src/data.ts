@@ -4,7 +4,6 @@ const users: User[] = [
   {
     name: 'test',
     assignedTo: [],
-    token: 'ed9d38e9-d4b1-40e8-a52c-f00d8ba4c0fd',
   },
 ];
 

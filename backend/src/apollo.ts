@@ -170,9 +170,9 @@ export function makeServerWithMiddlewares(data: TodoContextData): ApolloServer {
   const schemaWithMiddlewares = applyMiddleware(schema, permissions);
   return new ApolloServer({
     schema: schemaWithMiddlewares,
-    context: (ctx) => ({
+    context: async (ctx) => ({
       ...ctx,
-      user: { ...getAuthUser(data, ctx.req) },
+      user: await getAuthUser(data, ctx.req),
       data: {
         ...data,
       },

@@ -1,25 +1,44 @@
-import { ApolloServer, gql, makeExecutableSchema } from 'apollo-server';
-import { ApolloServerTestClient, createTestClient } from 'apollo-server-testing';
+import { gql, makeExecutableSchema, ApolloServer } from 'apollo-server';
+import { createTestClient, ApolloServerTestClient } from 'apollo-server-testing';
+import { TodoItem } from 'core';
+import { Request } from 'express-serve-static-core';
 import { applyMiddleware } from 'graphql-middleware';
 
 import { makeServerWithMiddlewares, resolvers, typeDefs } from '../src/apollo';
 import { DEFAULT_TODOS, DEFAULT_USERS } from '../src/data';
-import { permissions } from '../src/permissions';
-import { TodoItem } from 'core';
+import { sign } from '../src/jwt';
+import { getAuthUser, permissions } from '../src/permissions';
+import { TodoContext, TodoContextData } from '../src/Interfaces';
 
 function makeAuthorizedServerWithMiddlewares(): ApolloServer {
   const schema = makeExecutableSchema({ typeDefs, resolvers });
   const schemaWithMiddlewares = applyMiddleware(schema, permissions);
   return new ApolloServer({
     schema: schemaWithMiddlewares,
-    context: (ctx) => ({
-      ...ctx,
-      user: { ...DEFAULT_USERS[0] },
-      data: {
-        users: [...DEFAULT_USERS],
+    context: async (ctx: TodoContext, req?: Request) => {
+      const data: TodoContextData = {
         todos: [...DEFAULT_TODOS],
-      },
-    }),
+        users: [...DEFAULT_USERS],
+      };
+
+      const authToken = await sign(data.users[0]);
+      if (req) {
+        req.headers.Authorization = `Bearer ${authToken}`;
+      } else {
+        // for test only make a custom request-object
+        req = {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
+        } as any;
+      }
+
+      return {
+        ...ctx,
+        user: await getAuthUser(data, req),
+        data: { ...data },
+      };
+    },
   });
 }
 

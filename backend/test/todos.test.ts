@@ -1,11 +1,11 @@
 import { gql } from 'apollo-server';
 import { createTestClient } from 'apollo-server-testing';
 import { GraphQLResponse } from 'apollo-server-types';
+import uuid = require('uuid');
 import { v4String } from 'uuid/interfaces';
 
 import { makeServer } from '../src/apollo';
 import { DEFAULT_TODOS, DEFAULT_USERS } from '../src/data';
-import uuid = require('uuid');
 
 const testClient = createTestClient(
   makeServer({
