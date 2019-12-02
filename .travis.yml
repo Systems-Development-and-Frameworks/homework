@@ -11,9 +11,6 @@ install:
   - cd ../backend
   - npm install
 
-before_script:
-  - cd ./1
-
 script:
   - npm test
   - cd ../frontend
