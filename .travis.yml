@@ -4,10 +4,18 @@ node_js:
 
 before_script:
   - cd ./1
+
+install:
+  - cd ./frontend
+  - npm install
+  - cd ../backend
   - npm install
 
 script:
-  - npm run test
+  - npm test
+  - cd ../frontend
+  - npm test
 
 after_success:
+  - cd ./frontend
   - npm run build
