@@ -1,4 +1,0 @@
-npm init --yes
-npm install apollo-server graphql
-touch index.js
-
