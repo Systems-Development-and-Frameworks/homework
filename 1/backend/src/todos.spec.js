@@ -11,8 +11,14 @@ let token, mutate
 beforeAll(async () => {
     const server = new ApolloServer({
         typeDefs,
-        resolvers
-    })
+        resolvers,
+        context: () => {
+            return {
+                token: "meinsupertoken"
+            }
+        }
+    });
+
     const client = createTestClient(server);
     mutate = client.mutate
     let res = await mutate({
@@ -60,7 +66,11 @@ const DELETE_TODO = gql`
 
 const FINISH_TODO = gql`
 	mutation FinishTodo($id: ID!){
-   		finishTodo(id: $id)
+   		finishTodo(id: $id) {
+   		    id,
+   		    message,
+   		    completed
+   		}
     }`;
 
 
@@ -112,7 +122,7 @@ describe('Updates Todo Item', () => {
 
 describe('Delete Todo', () => {
     it("deletes Todo", async () => {
-        const todo = await mutate({mutation: DELETE_TODO, variables: {id: 1}})
+        const todo = await mutate({mutation: DELETE_TODO, variables: {id: 2}})
         expect(todo.data).toMatchObject(
             {"deleteTodo": true}
         )
@@ -131,6 +141,7 @@ describe('Finish Todo', () => {
         expect(todo.data).toMatchObject(
             {
                 "finishTodo": {
+                    "id": "1",
                     "message": "Einkaufen",
                     "completed": true
                 }

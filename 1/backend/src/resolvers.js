@@ -12,7 +12,6 @@ const resolvers = {
     Mutation: {
         addTodo: (parent, args, context) => {
             if(args.message != "" && args.message != null && context.token) {
-                console.log("This works 2")
                 let newTodo = {
                     id: findNextId(),
                     message: args.message,
