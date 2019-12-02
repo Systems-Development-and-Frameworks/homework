@@ -16,13 +16,8 @@ type Mutation {
 	finishTodo(id: ID!): Todo
 	deleteTodo(id: ID!): Boolean
 	editTodo(id: ID!, message: String!): Todo
+	login(usr: String!, pwd: String!): String
 }		
-
-type UpdateTodoResponse {
-  success: Boolean!
-  message: String
-  todos: [Todo]
-}
 `;
 
 

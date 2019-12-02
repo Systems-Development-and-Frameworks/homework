@@ -2,16 +2,18 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "apollo_todo.js",
+  "main": "src/index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "node src/index"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "apollo-server": "^2.9.12",
-    "graphql": "^14.5.8"
+    "graphql": "^14.5.8",
+    "jsonwebtoken": "^8.5.1"
   },
   "devDependencies": {
     "jest": "^24.9.0"
