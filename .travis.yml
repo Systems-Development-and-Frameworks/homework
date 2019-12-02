@@ -2,7 +2,7 @@ language: node_js
 node_js:
   - node
 
-before_script:
+before_install:
   - cd ./1
 
 install:
@@ -10,6 +10,9 @@ install:
   - npm install
   - cd ../backend
   - npm install
+
+before_script:
+  - cd ./1
 
 script:
   - npm test
