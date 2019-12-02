@@ -16,6 +16,7 @@
     "jsonwebtoken": "^8.5.1"
   },
   "devDependencies": {
+    "apollo-server-testing": "^2.9.12",
     "jest": "^24.9.0"
   }
 }
