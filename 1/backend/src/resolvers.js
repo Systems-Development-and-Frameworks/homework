@@ -12,6 +12,7 @@ const resolvers = {
     Mutation: {
         addTodo: (parent, args, context) => {
             if(args.message != "" && args.message != null && context.token) {
+                console.log("This works 2")
                 let newTodo = {
                     id: findNextId(),
                     message: args.message,
@@ -59,8 +60,9 @@ const resolvers = {
                 let currentUsr = data.user.find(usr => usr.login === args.usr)
                 if (currentUsr != null && currentUsr.password === args.pwd){
                     const token = jwt.sign(
-                        { email: currentUsr.name, id: currentUsr.id },
+                        { name: currentUsr.name, id: currentUsr.id },
                         SECRET_KEY,
+                        { expiresIn: '1d' }
                     )
                     return token
                 }

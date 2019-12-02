@@ -1,4 +1,3 @@
-const {AuthenticationError} = require("apollo-server-errors");
 const { ApolloServer } = require('apollo-server');
 const jwt = require('jsonwebtoken');
 const fs = require('fs');
@@ -11,10 +10,10 @@ const resolvers = require('./resolvers')
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  context: ({req}) => {
-    const token = req.headers.authorization;
-    if (token){
-      return(jwt.verify(token, SECRET_KEY) ? token : null);
+  context: ({ req}) => {
+    req_header = req.headers.authorization;
+    if (req_header){
+      return {token: jwt.verify(req_header, SECRET_KEY)}
     }
   }
 });
