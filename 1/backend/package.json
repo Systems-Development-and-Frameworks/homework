@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "apollo-server-testing": "^2.9.12",
-    "jest": "^24.9.0"
+    "jest": "^24.9.0",
+    "neo4j-driver": "^4.0.0"
   }
 }
