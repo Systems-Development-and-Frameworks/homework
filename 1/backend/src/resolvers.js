@@ -1,30 +1,76 @@
 const jwt = require('jsonwebtoken');
 const fs = require('fs');
+const { uuid } = require('uuidv4');
 
-data = require('./data');
+let data;
 
 let SECRET_KEY = fs.readFileSync('./src/key/secret.key', 'utf8');
 
 const resolvers = {
     Query: {
-        todos: () => JSON.parse(JSON.stringify(data.todos))
+        todos: async (parent, args, context) => {
+            // JSON.parse(JSON.stringify(data.todos))
+            const { driver } = context
+            const getTodoCypher = `
+                    MATCH (todo)
+                    RETURN todo.id, todo.message, todo.completed
+                `
+
+            const session = driver.session()
+            try {
+                data =  await session.run(getTodoCypher)
+                const todos = await data.records.map(record => ({
+                        id: record.get('todo.id'),
+                        message: record.get('todo.message'),
+                        completed: record.get('todo.completed')
+
+                }))
+                json_data = JSON.parse(JSON.stringify(todos))
+                console.log(json_data)
+                return json_data
+            } finally {
+                await session.close()
+            }
+        }
     },
     Mutation: {
-        addTodo: (parent, args, context) => {
+        addTodo: async (parent, args, context) => {
             if(args.message != "" && args.message != null && context.token) {
-                let newTodo = {
-                    id: findNextId(),
+                const { driver } = context
+                const createTodoCypher = `
+                    CREATE (todo:Todo {params})
+                    RETURN todo
+                `
+                const params = {
                     message: args.message,
                     completed: false,
-                };
-                data.todos.push(newTodo);
-                return newTodo;
+                    id: uuid()
+                }
+                const session = driver.session()
+                try {
+                    await session.run(createTodoCypher, {params})
+                } finally {
+                    await session.close()
+                }
+                data.todos.push(params);
+                return params;
             }
             return;
         },
-        deleteTodo: (parent, args, context) => {
+        deleteTodo: async (parent, args, context) => {
             if (args.id != null && context.token){
-                let index = data.todos.findIndex(td => td.id === parseInt(args.id));
+                const { driver } = context
+                const deleteTodoCypher = `
+                    MATCH (todo:Todo {id: $id})
+                    DELETE todo
+                `
+                const session = driver.session()
+                try {
+                    await session.run(deleteTodoCypher, {id: args.id})
+                } finally {
+                    await session.close()
+                }
+                let index = data.todos.findIndex(td => td.id === args.id);
                 if (index > 0){
                     data.todos.splice( index, 1)
                     return true
@@ -32,9 +78,21 @@ const resolvers = {
                 return false
             }
         },
-        editTodo: (parent, args, context) => {
+        editTodo: async (parent, args, context) => {
             if (args.id != null && args.message != null && context.token){
-                tod = data.todos.find(td => td.id === parseInt(args.id))
+                const { driver } = context
+                const deleteTodoCypher = `
+                    MATCH (todo:Todo {id: $id})
+                    SET todo.message = $message
+                `
+                const session = driver.session()
+                try {
+                    await session.run(deleteTodoCypher, {id: args.id, message: args.message})
+                } finally {
+                    await session.close()
+                }
+
+                tod = data.todos.find(td => td.id === args.id)
                 if (tod){
                     tod.message = args.message;
                     return tod;
