@@ -10,10 +10,10 @@ const resolvers = require('./resolvers')
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  context: ({ req}) => {
-    req_header = req.headers.authorization;
-    if (req_header){
-      return {token: jwt.verify(req_header, SECRET_KEY)}
+  context: async ({ req}) => {
+    const token = req.headers.authorization.replace('Bearer ', '')
+    if (token){
+      return {token: jwt.verify(token, SECRET_KEY)}
     }
   }
 });
