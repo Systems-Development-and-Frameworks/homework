@@ -17,7 +17,6 @@ if (!driver) {
   driver = neo4j.driver(uri, neo4j.auth.basic(username, password))
 }
 
-
 const server = new ApolloServer({
   typeDefs,
   resolvers,

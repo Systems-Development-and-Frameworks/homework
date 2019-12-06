@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const fs = require('fs');
 const {uuid} = require('uuidv4');
 
-let data, user;
+let data;
 
 let SECRET_KEY = fs.readFileSync('./src/key/secret.key', 'utf8');
 
