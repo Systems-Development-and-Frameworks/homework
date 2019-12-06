@@ -3,19 +3,11 @@ const {createTestClient} = require('apollo-server-testing');
 const neo4j = require('neo4j-driver');
 const typeDefs = require('./schema.js');
 const resolvers = require('./resolvers.js');
+const {getDriver} = require('./neo4j.js')
 
-let query, mutate
+let query, mutate, test_id
 
-let driver, test_id;
-const uri = "bolt://127.0.0.1:7687";
-const username = "neo4j";
-const password = "neo4j";
-
-if (!driver) {
-    driver = neo4j.driver(uri, neo4j.auth.basic(username, password))
-}
-
-
+const driver = getDriver()
 
 beforeEach(async () => {
     const server = new ApolloServer({
@@ -32,9 +24,6 @@ beforeEach(async () => {
     const client = createTestClient(server);
     mutate = client.mutate
     query = client.query
-    let res = await mutate({
-        mutation: LOGIN
-    });
 })
 
 beforeEach(async () => {

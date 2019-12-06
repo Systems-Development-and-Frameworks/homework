@@ -2,20 +2,14 @@ const neo4j = require('neo4j-driver');
 const { ApolloServer } = require('apollo-server');
 const jwt = require('jsonwebtoken');
 const fs = require('fs');
+const { getDriver } = require('./neo4j.js')
 
 var SECRET_KEY = fs.readFileSync('./src/key/secret.key', 'utf8');
 
 const typeDefs = require('./schema');
 const resolvers = require('./resolvers');
 
-let driver;
-const uri = "bolt://127.0.0.1:7687";
-const username = "neo4j";
-const password = "neo4j";
-
-if (!driver) {
-  driver = neo4j.driver(uri, neo4j.auth.basic(username, password))
-}
+const driver = getDriver()
 
 const server = new ApolloServer({
   typeDefs,
