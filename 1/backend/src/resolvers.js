@@ -38,7 +38,7 @@ const resolvers = {
                 const {driver} = context
                 const createTodoCypher = `
                     CREATE (todo:Todo {params})
-                    RETURN todo
+                    RETURN todo.id, todo.message, todo.completed
                 `
                 const params = {
                     message: args.message,
@@ -47,13 +47,53 @@ const resolvers = {
                 }
                 const session = driver.session()
                 try {
-                    await session.run(createTodoCypher, {params})
+                    data = await session.run(createTodoCypher, {params})
+                    const [todo] = await data.records.map(record => ({
+                        id: record.get('todo.id'),
+                        message: record.get('todo.message'),
+                        completed: record.get('todo.completed')
+
+                    }))
+                    return todo;
                 } finally {
                     await session.close()
                 }
-                return params;
             }
             return;
+        },
+        addUser: async (parent, args, context) => {
+            if (args.login != "" && args.login != null && args.password != "" && args.password  != null) {
+                const {driver} = context
+                const createUserCypher = `
+                    CREATE (user:User {params})
+                    RETURN user
+                `
+                const session = driver.session()
+                try {
+                    await session.run(createUserCypher)
+                } finally {
+                    await session.close()
+                }
+                return true
+            }
+            return false;
+        },
+        deleteUser: async (parent, args, context) => {
+            if (args.login != "" && args.login != null && args.password != "" && args.password  != null) {
+                const {driver} = context
+                const createUserCypher = `
+                    MATCH (user:User {params})
+                    DELETE user
+                `
+                const session = driver.session()
+                try {
+                    await session.run(createUserCypher)
+                } finally {
+                    await session.close()
+                }
+                return true
+            }
+            return false;
         },
         deleteTodo: async (parent, args, context) => {
             if (args.id != null && context.token) {

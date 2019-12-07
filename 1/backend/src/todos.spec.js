@@ -29,16 +29,13 @@ beforeEach(async () => {
 beforeEach(async () => {
     const todo = await mutate({mutation: CREATE_TODO})
     test_id = todo.data.addTodo.id
+    await mutate({mutation: ADD_USER})
 })
 
 afterEach(async () => {
     await mutate({mutation: DELETE_TODO, variables: {id: test_id}})
+    await mutate({mutation: DELETE_USER})
 })
-
-const LOGIN = gql`
-	mutation FirstLogin{
-  login(usr:"dducky", pwd:"phantomiasiscool")
-}`;
 
 const GET_TODOS = gql`
 query AllTodos{
@@ -56,6 +53,16 @@ const CREATE_TODO = gql`
             message,
 			completed
         }
+    }`;
+
+const ADD_USER = gql`
+	mutation AddUser{
+		addUser(login: "milan", password: "password")
+    }`;
+
+const DELETE_USER = gql`
+	mutation DeleteUser{
+		deleteUser(login: "milan", password: "password")
     }`;
 
 const EDIT_TODO = gql`

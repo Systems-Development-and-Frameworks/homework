@@ -11,8 +11,15 @@ type Todo {
 	completed: Boolean!
 }
 
+type User {
+    login: String!
+    password: String!
+}
+
 type Mutation {
 	addTodo(message: String!): Todo
+	addUser(login: String, password: String): Boolean
+	deleteUser(login: String, password: String): Boolean
 	finishTodo(id: ID!): Todo
 	deleteTodo(id: ID!): Boolean
 	editTodo(id: ID!, message: String!): Todo
