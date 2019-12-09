@@ -3,23 +3,12 @@
 To execute:
 
 * Install npm
-* Install vue cli: "npm install -g @vue/cli"
-* Run "npm install" in the VueJS Folder
-* Run "npm run serve' in the VueJS Folder
+* Install Neo4j Community server and run on Port 7687
+* Username and Password should both be "neo4j" (Or change in the neo4j.js file)
+* Create a User in Neo4j to login
+* Run "npm install" in the Backend or Frontend
+* Run "npm run serve' for Frontend
+* Rund "npm run start' for Backend
 
-<<<<<<< HEAD:VueJS/README.md
 =======
-* Edit: display a form to update the todo
-* Save: update the todo and display it
-* Cancel: cancel the form submission
-* Delete: delete the todo
 
-Here is how the result should look like:
-
-![screencast](./exercise-vuejs.gif)
-
-Use computed properties and events where possible and make use of the component
-pattern.
-
-Get extra praise for implementing the "Add todo" button! :heart:
->>>>>>> origin/master:1/README.md
