@@ -30,6 +30,27 @@ const resolvers = {
             } finally {
                 await session.close()
             }
+        },
+        completedTodos: async (parent, args, context) => {
+            const {driver} = context
+            const getCompletedTodosCypher = `
+                    MATCH (todo:Todo) WHERE todo.completed = true 
+                    RETURN todo.id, todo.message, todo.completed ORDER BY todo.message
+             `
+            const session = driver.session()
+            try {
+                data = await session.run(getCompletedTodosCypher)
+                const todos = await data.records.map(record => ({
+                    id: record.get('todo.id'),
+                    message: record.get('todo.message'),
+                    completed: record.get('todo.completed')
+
+                }))
+                json_data = JSON.parse(JSON.stringify(todos))
+                return json_data
+            } finally {
+                await session.close()
+            }
         }
     },
     Mutation: {
@@ -62,7 +83,7 @@ const resolvers = {
             return;
         },
         addUser: async (parent, args, context) => {
-            if (args.login != "" && args.login != null && args.password != "" && args.password  != null) {
+            if (args.login != "" && args.login != null && args.password != "" && args.password != null) {
                 const {driver} = context
                 const createUserCypher = `
                     CREATE (user:User {params})
@@ -79,7 +100,7 @@ const resolvers = {
             return false;
         },
         deleteUser: async (parent, args, context) => {
-            if (args.login != "" && args.login != null && args.password != "" && args.password  != null) {
+            if (args.login != "" && args.login != null && args.password != "" && args.password != null) {
                 const {driver} = context
                 const createUserCypher = `
                     MATCH (user:User {params})
@@ -132,7 +153,7 @@ const resolvers = {
                         return response
 
                     }
-                return null
+                    return null
                 } finally {
                     await session.close()
                 }

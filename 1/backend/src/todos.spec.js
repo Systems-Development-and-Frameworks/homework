@@ -1,6 +1,6 @@
 const {ApolloServer, gql} = require('apollo-server-express');
 const {createTestClient} = require('apollo-server-testing');
-const neo4j = require('neo4j-driver');
+
 const typeDefs = require('./schema.js');
 const resolvers = require('./resolvers.js');
 const {getDriver} = require('./neo4j.js')
@@ -9,7 +9,7 @@ let query, mutate, test_id
 
 const driver = getDriver()
 
-beforeEach(async () => {
+beforeAll(async () => {
     const server = new ApolloServer({
         typeDefs,
         resolvers,
@@ -26,8 +26,8 @@ beforeEach(async () => {
     query = client.query
 })
 
-beforeEach(async () => {
-    const todo = await mutate({mutation: CREATE_TODO})
+beforeEach(async() => {
+    const todo = await mutate({mutation: CREATE_TODO, variables: {message: "Test"}})
     test_id = todo.data.addTodo.id
     await mutate({mutation: ADD_USER})
 })
@@ -46,9 +46,18 @@ query AllTodos{
   }
 }`;
 
+const GET_COMPLETED_TODOS = gql`
+query CompletedTodos{
+  completedTodos{
+    message
+    completed
+    id
+  }
+}`;
+
 const CREATE_TODO = gql`
-	mutation CreateTodo{
-		addTodo(message: "Tests implementieren") {
+	mutation CreateTodo($message: String!){
+		addTodo(message: $message) {
 			id,
             message,
 			completed
@@ -96,10 +105,34 @@ describe('Get Todo', () => {
     })
 })
 
+describe('Get completed todos only (DESC)', () =>{
+    let todo
+    it("Receives all completed todos", async() => {
+        const todo_c = await mutate({mutation: CREATE_TODO, variables: {message: "c"}})
+        const todo_a = await mutate({mutation: CREATE_TODO, variables: {message: "a"}})
+        const todo_b = await mutate({mutation: CREATE_TODO, variables: {message: "b"}})
+
+        await mutate({mutation: FINISH_TODO, variables: {id: todo_c.data.addTodo.id}})
+        await mutate({mutation: FINISH_TODO, variables: {id: todo_a.data.addTodo.id}})
+        await mutate({mutation: FINISH_TODO, variables: {id: todo_b.data.addTodo.id}})
+
+        todo = await query({query: GET_COMPLETED_TODOS})
+        expect(todo.data.completedTodos[0].completed).toEqual(true)
+        expect(todo.data.completedTodos[1].completed).toEqual(true)
+        expect(todo.data.completedTodos[2].completed).toEqual(true)
+
+        await mutate({mutation: DELETE_TODO, variables: {id: todo_c.data.addTodo.id}})
+        await mutate({mutation: DELETE_TODO, variables: {id: todo_a.data.addTodo.id}})
+        await mutate({mutation: DELETE_TODO, variables: {id: todo_b.data.addTodo.id}})
+
+    })
+})
+
 describe('Create Todo Item', () => {
     it("Creates a new Todo", async () => {
-        const todo = await mutate({mutation: CREATE_TODO})
+        const todo = await mutate({mutation: CREATE_TODO, variables: {message: "test"}})
         expect(todo.data.addTodo.id).toEqual(expect.any(String))
+        await mutate({mutation: DELETE_TODO, variables: {id: todo.data.addTodo.id}})
     })
 })
 
