@@ -71,6 +71,15 @@ const EDIT_TODO = gql`
    		}
     }`;
 
+const FINSIH_WITH_MERGE = gql`
+	mutation MergeTodo($id: ID!){
+   		finishWithMerge(id: $id){
+   		id,
+     	message,
+     	completed
+   		}
+    }`;
+
 const DELETE_TODO = gql`
 	mutation DeleteTodo($id: ID!){
    		deleteTodo(id: $id)
@@ -166,6 +175,16 @@ describe('Finish Todo', () => {
         expect(todo.data).toMatchObject(
             {
                 "finishTodo": null
+            }
+        )
+    })
+    it("Finishes with Merge", async () => {
+        const todo = await mutate({mutation: FINSIH_WITH_MERGE, variables: {id: test_id}})
+        expect(todo.data.finishWithMerge).toMatchObject(
+            {
+                "id": test_id,
+                "message": "Test",
+                "completed": true
             }
         )
     })

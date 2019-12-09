@@ -17,6 +17,11 @@ type User {
     password: String!
 }
 
+type Assignment {
+    user: String!
+    todo: ID!
+}
+
 type Mutation {
 	addTodo(message: String!): Todo
 	addUser(login: String, password: String): Boolean
@@ -25,6 +30,8 @@ type Mutation {
 	finishTodo(id: ID!): Todo
 	deleteTodo(id: ID!): Boolean
 	editTodo(id: ID!, message: String!): Todo
+	finishWithMerge(id: ID!): Todo
+	assignTodoToUser(user: String!, id: ID!): Assignment
 	login(usr: String!, pwd: String!): String
 }		
 `;

@@ -165,6 +165,60 @@ const resolvers = {
             }
 
         },
+        finishWithMerge: async (parent, args, context) => {
+            if (args.id != null && context.token) {
+                const {driver} = context
+                const mergeTodoCypher = `
+                    MERGE (todo:Todo {id: $id})
+                    ON MATCH SET todo.completed = True
+                    RETURN todo.id, todo.message, todo.completed
+                `
+                const session = driver.session()
+                try {
+                    const _response = await session.run(mergeTodoCypher, {id: args.id})
+                    const [response] = await _response.records.map(record => ({
+                        id: record.get('todo.id'),
+                        message: record.get('todo.message'),
+                        completed: record.get('todo.completed')
+                    }))
+                    if (response) {
+                        return response
+
+                    }
+                    return null
+                } finally {
+                    await session.close()
+                }
+            }
+
+        },
+        assignTodoToUser: async (parent, args, context) => {
+            if (args.id != null && args.user != null && context.token) {
+                const {driver} = context
+                const assignCypher = `
+                    MATCH (u:User), (t:Todo)
+                    WHERE u.login = $login AND t.id = $id
+                    CREATE p=(u)<-[a:ASSIGNED]-(t)
+                    RETURN p
+                `
+                const session = driver.session()
+                try {
+                    const _response = await session.run(assignCypher, {id: args.id})
+                    const [response] = await _response.records.map(record => ({
+                        id: record.get('todo.id'),
+                        message: record.get('todo.message'),
+                        completed: record.get('todo.completed')
+                    }))
+                    if (response) {
+                        return response
+
+                    }
+                    return null
+                } finally {
+                    await session.close()
+                }
+            }
+        },
         finishTodo: async (parent, args, context) => {
             if (args.id != null && context.token) {
                 const {driver} = context
