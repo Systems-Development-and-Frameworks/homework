@@ -29,10 +29,12 @@ beforeAll(async () => {
 beforeEach(async() => {
     const todo = await mutate({mutation: CREATE_TODO, variables: {message: "Test"}})
     test_id = todo.data.addTodo.id
+    await mutate({mutation: ADD_USER})
 })
 
 afterEach(async () => {
     await mutate({mutation: DELETE_TODO, variables: {id: test_id}})
+    await mutate({mutation: DELETE_USER})
 })
 
 const GET_TODOS = gql`
@@ -71,7 +73,7 @@ const EDIT_TODO = gql`
    		}
     }`;
 
-const FINSIH_WITH_MERGE = gql`
+const FINISH_TODO_MERGE = gql`
 	mutation MergeTodo($id: ID!){
    		finishWithMerge(id: $id){
    		id,
@@ -93,6 +95,22 @@ const FINISH_TODO = gql`
    		    completed
    		}
     }`;
+
+const ADD_USER = gql`
+	mutation AddUser{
+		addUser(login: "milan", password: "password")
+    }`;
+
+const DELETE_USER = gql`
+	mutation DeleteUser{
+		deleteUser(login: "milan", password: "password")
+    }`;
+
+const ASSIGN_USER_TO_TODO = gql`
+	mutation Assign($user: String!, $id: ID!){
+   		assignTodoToUser(user: $user, id: $id) 
+    }`;
+
 
 
 describe('Get Todo', () => {
@@ -128,6 +146,7 @@ describe('Get completed todos only (DESC)', () =>{
 
     })
 })
+
 
 describe('Create Todo Item', () => {
     it("Creates a new Todo", async () => {
@@ -179,7 +198,7 @@ describe('Finish Todo', () => {
         )
     })
     it("Finishes with Merge", async () => {
-        const todo = await mutate({mutation: FINSIH_WITH_MERGE, variables: {id: test_id}})
+        const todo = await mutate({mutation: FINISH_TODO_MERGE, variables: {id: test_id}})
         expect(todo.data.finishWithMerge).toMatchObject(
             {
                 "id": test_id,
@@ -187,5 +206,12 @@ describe('Finish Todo', () => {
                 "completed": true
             }
         )
+    })
+})
+
+describe('Assign Todo to User', () => {
+    it("Assigns todo to User", async () => {
+        const todo = await mutate({mutation: ASSIGN_USER_TO_TODO, variables: {user: "milan", id: test_id}})
+        expect(todo.data.assignTodoToUser).toEqual(true)
     })
 })

@@ -203,17 +203,8 @@ const resolvers = {
                 `
                 const session = driver.session()
                 try {
-                    const _response = await session.run(assignCypher, {id: args.id})
-                    const [response] = await _response.records.map(record => ({
-                        id: record.get('todo.id'),
-                        message: record.get('todo.message'),
-                        completed: record.get('todo.completed')
-                    }))
-                    if (response) {
-                        return response
-
-                    }
-                    return null
+                    await session.run(assignCypher, {login: args.user, id: args.id})
+                    return true
                 } finally {
                     await session.close()
                 }
