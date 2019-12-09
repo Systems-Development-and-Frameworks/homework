@@ -10,25 +10,30 @@ const resolvers = {
     Query: {
         todos: async (parent, args, context) => {
             // JSON.parse(JSON.stringify(data.todos))
-            const {driver} = context
-            const getTodoCypher = `
+            if (args.limit != "" && args.limit != null) {
+                const {driver} = context
+                let getTodoCypher
+
+                getTodoCypher = `
                     MATCH (todo:Todo)
-                    RETURN todo.id, todo.message, todo.completed
+                    RETURN todo.id, todo.message, todo.completed LIMIT $limit
                 `
 
-            const session = driver.session()
-            try {
-                data = await session.run(getTodoCypher)
-                const todos = await data.records.map(record => ({
-                    id: record.get('todo.id'),
-                    message: record.get('todo.message'),
-                    completed: record.get('todo.completed')
 
-                }))
-                json_data = JSON.parse(JSON.stringify(todos))
-                return json_data
-            } finally {
-                await session.close()
+                const session = driver.session()
+                try {
+                    data = await session.run(getTodoCypher, {limit: args.limit})
+                    const todos = await data.records.map(record => ({
+                        id: record.get('todo.id'),
+                        message: record.get('todo.message'),
+                        completed: record.get('todo.completed')
+
+                    }))
+                    json_data = JSON.parse(JSON.stringify(todos))
+                    return json_data
+                } finally {
+                    await session.close()
+                }
             }
         },
         completedTodos: async (parent, args, context) => {

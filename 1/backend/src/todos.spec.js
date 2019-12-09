@@ -29,17 +29,15 @@ beforeAll(async () => {
 beforeEach(async() => {
     const todo = await mutate({mutation: CREATE_TODO, variables: {message: "Test"}})
     test_id = todo.data.addTodo.id
-    await mutate({mutation: ADD_USER})
 })
 
 afterEach(async () => {
     await mutate({mutation: DELETE_TODO, variables: {id: test_id}})
-    await mutate({mutation: DELETE_USER})
 })
 
 const GET_TODOS = gql`
 query AllTodos{
-  todos{
+  todos(limit: 1){
     message
     completed
     id
@@ -62,16 +60,6 @@ const CREATE_TODO = gql`
             message,
 			completed
         }
-    }`;
-
-const ADD_USER = gql`
-	mutation AddUser{
-		addUser(login: "milan", password: "password")
-    }`;
-
-const DELETE_USER = gql`
-	mutation DeleteUser{
-		deleteUser(login: "milan", password: "password")
     }`;
 
 const EDIT_TODO = gql`
@@ -102,6 +90,10 @@ describe('Get Todo', () => {
     it("Receives all Todos", async () => {
         const todo = await query({query: GET_TODOS})
         expect(todo.data).toHaveProperty("todos")
+    })
+    it("Receives one todo (LIMIT 1)", async () => {
+        const todo = await query({query: GET_TODOS})
+        expect(todo.data.todos).toHaveLength(1)
     })
 })
 
