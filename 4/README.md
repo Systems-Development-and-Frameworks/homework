@@ -26,7 +26,7 @@ Connect your database with Neo4J
    ```
 4. Implement a filter (`WHERE` in cypher).
 5. Implement some ordering (`ORDER BY` in cypher).
-6. Implement pagination (`FIRST` and `LIMIT` in cypher).
+6. Implement pagination (`SKIP` and `LIMIT` in cypher).
 7. Implement an update mutation that uses `MERGE`.
 8. Write backend tests for all of the above.
 9. Request a review from @roschaefer.
