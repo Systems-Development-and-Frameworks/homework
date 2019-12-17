@@ -1,10 +1,10 @@
 import { mount, Wrapper } from '@vue/test-utils';
+import { TodoItem } from 'core';
 import { Vue } from 'vue/types/vue';
 
-import { TodoItem } from '../src';
 import ListItem from '../src/components/ListItem';
 
-const todoItem: TodoItem = { id: '1', message: 'test' };
+const todoItem: TodoItem = { id: '1', description: 'test', isDone: false, createdAt: new Date().toISOString() };
 
 describe('ListItem', () => {
   let wrapper: Wrapper<Vue>;
@@ -18,7 +18,7 @@ describe('ListItem', () => {
       });
     });
 
-    test('renders `item.message`', () => {
+    test('renders `item.description`', () => {
       expect(wrapper.html()).toContain(`<span>test</span>`);
     });
 
@@ -42,11 +42,12 @@ describe('ListItem', () => {
         });
 
         test('$emits `input` with edited item', () => {
-          const expectedObject: TodoItem = {
+          const expectedObject: Omit<TodoItem, 'createdAt'> = {
             id: '1',
-            message: 'edited',
+            description: 'edited',
+            isDone: false,
           };
-          expect(wrapper.emitted('input')[0][0]).toEqual(expectedObject);
+          expect(wrapper.emitted('input')[0][0]).toMatchObject(expectedObject);
         });
       });
     });

@@ -1,15 +1,15 @@
+import { TodoItem } from 'core';
 import Vue from 'vue';
 
 import './components/AddButton';
 import './components/List';
 import './components/ListItem';
 
-export interface TodoItem {
-  id: string;
-  message: string;
-}
-
-const todos: TodoItem[] = [{ id: '1', message: 'Foo' }, { id: '2', message: 'Bar' }, { id: '3', message: 'Baz' }];
+const todos: TodoItem[] = [
+  { id: '1', description: 'Foo', isDone: false, createdAt: new Date(new Date().getTime() - 600000).toISOString() },
+  { id: '2', description: 'Bar', isDone: false, createdAt: new Date().toISOString() },
+  { id: '3', description: 'Baz', isDone: true, createdAt: new Date(new Date().getTime() - 300000).toISOString() },
+];
 
 // tslint:disable-next-line
 new Vue({
