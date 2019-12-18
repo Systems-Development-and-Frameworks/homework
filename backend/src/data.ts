@@ -2,7 +2,7 @@ import { TodoItem, User } from 'core';
 
 const users: User[] = [
   {
-    name: 'test',
+    name: 'Martin Neumann',
     assignedTo: [],
   },
 ];

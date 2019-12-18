@@ -13,5 +13,8 @@
     "format:check": "cd core && npm run format:check && cd ../backend && npm run format:check && cd ../frontend && npm run format:check && cd ..",
     "format:fix": "cd core && npm run format:fix && cd ../backend && npm run format:fix && cd ../frontend && npm run format:fix && cd ..",
     "test": "cd backend && npm run test && cd ../frontend && npm run test && cd .. && echo Successfully ran all test suites"
+  },
+  "dependencies": {
+    "neo4j-driver": "^4.0.1"
   }
 }
