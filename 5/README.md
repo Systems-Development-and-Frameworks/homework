@@ -19,8 +19,7 @@ Learn how to use graphql-middlewares and start programming with NuxtJS.
    video as "unlisted". I recommend [PeerTube](https://joinpeertube.org/) to
    host the video but there is also this commercial platform called YouTube as
    an alternative. Send a link to your recorded video to htw@roschaefer.de.
-5. Write backend and frontend tests. Mock `this.$apollo` in your frontend tests
-   and respond with some mocked data or simulate an error.
+5. Write backend tests.
 6. Request a review from @roschaefer.
 7. Request a review from sb. else.
 
@@ -48,6 +47,7 @@ help out: https://human-connection.org/discord
    to the backend.
 3. Make use of apollo-module's [authentication helpers](https://github.com/nuxt-community/apollo-module#authentication)
    and have at least one page component which requires authentication.
+4. Write frontend tests, mock `this.$apollo` and respond with some mocked data or simulate an error.
 
 
 If you copy code from other groups, please give credit to them in your commit
