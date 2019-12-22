@@ -27,8 +27,13 @@ const session = driver.session();
 const currentDate = Date.now();
 
 const todoPromise = session.run(
-    'CREATE (a:Todo { id: "83cab48e-5fb7-4ca0-b0de-3e6177e927ca", description: "Number one", isDone: "true") RETURN a',
-    { createdAt: currentDate }
+    'CREATE (a:Todo) RETURN a',
+    {
+        id: "83cab48e- 5fb7 - 4ca0 - b0de - 3e6177e927ca",
+        description: "Number one",
+        isDone: "true",
+        createdAt: currentDate
+    },
 );
 
 
