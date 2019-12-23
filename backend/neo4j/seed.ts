@@ -27,31 +27,67 @@ const session = driver.session();
 const currentDate = Date.now();
 
 const todoPromise = session.run(
-    'CREATE (a:Todo) RETURN a',
+    'CREATE (a:Todo {id: $id, description: $description, isDone: $isDone, createdAt: $createdAt}) RETURN a',
     {
-        id: "83cab48e- 5fb7 - 4ca0 - b0de - 3e6177e927ca",
-        description: "Number one",
+        id: "83cab48e-5fb7-4ca0-b0de-3e6177e927ca",
+        description: "Build House",
         isDone: "true",
         createdAt: currentDate
     },
 );
 
+todoPromise.then(result => {
+    console.log(`Ran todo promise`);
 
-/**
- * 2. Users
- */
-const userName = 'Bob';
-const userPromise = session.run(
-    'CREATE (a:User {name: $name}) RETURN a',
-    { name: userName }
-);
 
-const promiseArray = [todoPromise, userPromise];
+    const userName = 'Bob';
+    const userPromise = session.run(
+        'CREATE (a:User {name: $name}) RETURN a',
+        { name: userName }
+    );
+    userPromise.then(result => {
+        console.log(`Ran user promise`);
+
+        const relationshipPromise = session.run(
+            'MATCH (a:User),(b:Todo)' +
+            'WHERE a.name = "Bob" AND b.id = "83cab48e-5fb7-4ca0-b0de-3e6177e927ca"' +
+            'CREATE (b)-[r:assignedTo]->(a)' +
+            'RETURN r'
+        );
+
+        relationshipPromise.then(result => {
+            console.log(`Ran relationship promise.`);
+
+        }).catch(message => {
+            console.log(message);
+            session.close();
+        });
+    }).catch(message => {
+        console.log(message);
+        session.close();
+    });
+}).catch(message => {
+    console.log(message);
+    session.close();
+});
+
+/*
+'CREATE (a:Todo) RETURN a',
+*/
+
+
+
+
+
+
+
+
 
 
 /**
  * Resolve all promises
  */
+/*
 Promise.all(promiseArray).then(results => {
     session.close();
     results.forEach(result => {
@@ -62,4 +98,7 @@ Promise.all(promiseArray).then(results => {
     });
     // on application exit:
     driver.close();
+}).catch(message => {
+    console.log(`Something went wrong: ${message}`);
 });
+*/
