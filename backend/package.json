@@ -17,6 +17,7 @@
     "format:fix": "prettier --write {src,test}/**/* --list-different"
   },
   "dependencies": {
+    "@types/mocha": "^5.2.7",
     "@types/node": "^12.12.20",
     "apollo-server": "^2.9.9",
     "apollo-server-testing": "^2.9.9",
@@ -29,8 +30,8 @@
     "uuid": "^3.3.3"
   },
   "devDependencies": {
+    "@types/jest": "^24.0.24",
     "@types/jsonwebtoken": "^8.3.5",
-    "@types/jest": "^24.0.21",
     "@types/type-is": "^1.6.3",
     "@types/uuid": "^3.4.6",
     "@veake/prettier-config": "^1.0.0",

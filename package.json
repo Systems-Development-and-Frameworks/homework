@@ -15,6 +15,7 @@
     "test": "cd backend && npm run test && cd ../frontend && npm run test && cd .. && echo Successfully ran all test suites"
   },
   "dependencies": {
+    "@types/jest": "^24.0.24",
     "neo4j-driver": "^4.0.1"
   }
 }
