@@ -16,7 +16,7 @@ const session = driver.session();
  */
 
 const createTodo = (id: string, description: string, isDone: boolean, createdAt: number) => {
-    return session.run('CREATE (a:Todo {id: $id, description: $description, isDone: $isDone, createdAt: $createdAt}) RETURN a',
+    return session.run('CREATE (a:TodoItem {id: $id, description: $description, isDone: $isDone, createdAt: $createdAt}) RETURN a',
         {
             id,
             description,
