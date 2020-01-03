@@ -1,0 +1,6 @@
+*.log
+*.aux
+svg-inkscape/*-tex.pdf
+svg-inkscape/*-tex.pdf_tex
+assets/code/graphql/node_modules/
+
