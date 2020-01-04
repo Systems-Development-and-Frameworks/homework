@@ -9,7 +9,7 @@ const driver = neo4j.driver(uri, neo4j.auth.basic(user, password));
 const session = driver.session();
 
 const removePromise = session.run(
-    'Match (n) DELETE n'
+    'Match (n) DETACH DELETE n'
 );
 
 removePromise.then(result => {

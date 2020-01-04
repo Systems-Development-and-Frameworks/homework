@@ -1,7 +1,7 @@
-import {gql} from 'apollo-server';
-import {createTestClient} from 'apollo-server-testing';
+import { gql } from 'apollo-server';
+import { createTestClient } from 'apollo-server-testing';
 
-import {makeNeo4jTestServer} from '../src/apollo';
+import { makeNeo4jTestServer } from '../src/apollo';
 import { CreateTodoArguments, TodosArguments } from '../src/Interfaces';
 
 let query: any;
@@ -22,7 +22,7 @@ describe('queries and mutations', () => {
         it('Retrieves the user Anderson', async () => {
             // 10 stunden rumprobieren warum der beknackte Name nicht in die query geht
             // und dann liegt es daran weil das Objekt variables heißen muss
-            const variables = {name: 'Anderson'};
+            const variables = { name: 'Anderson' };
             const getUserByName = gql`
             query getUserByName($name: String!){
                 getUserByName(name: $name){
@@ -50,7 +50,7 @@ describe('queries and mutations', () => {
 
             const todosOptions: TodosArguments = {
                 options: {
-                  }
+                }
             };
             const variables = todosOptions;
 
@@ -67,14 +67,14 @@ describe('queries and mutations', () => {
                     }
                 }
             `;
-            const queryResult = await query({query: todos, variables });
+            const queryResult = await query({ query: todos, variables });
             expect(queryResult.data.todos.length).toBe(5);
         });
         it('retrieves one todo if isDone is true', async () => {
             const todosOptions: TodosArguments = {
                 options: {
                     isDone: true
-                  }
+                }
             };
             const variables = todosOptions;
 
@@ -91,14 +91,14 @@ describe('queries and mutations', () => {
                     }
                 }
             `;
-            const queryResult = await query({query: todos, variables });
+            const queryResult = await query({ query: todos, variables });
             expect(queryResult.data.todos.length).toBe(1);
         });
         it('orders the todos by creation date desc', async () => {
             const todosOptions: TodosArguments = {
                 options: {
                     orderBy: 'desc'
-                  }
+                }
             };
             const variables = todosOptions;
 
@@ -115,7 +115,7 @@ describe('queries and mutations', () => {
                     }
                 }
             `;
-            const queryResult = await query({query: todos, variables });
+            const queryResult = await query({ query: todos, variables });
             const todosAreOrderedDesc = queryResult.data.todos[0].createdAt > queryResult.data.todos[1].createdAt;
             expect(todosAreOrderedDesc).toBe(true);
         });
@@ -124,7 +124,7 @@ describe('queries and mutations', () => {
     describe('create new todo', () => {
         it('LIVES', async () => {
 
-            const variables = {description: 'I AM ALIVE'};
+            const variables = { description: 'I AM ALIVE' };
 
             const createTodo = gql`
                 mutation createTodo($description: String!){
@@ -141,7 +141,7 @@ describe('queries and mutations', () => {
     });
     describe('delete todo', () => {
         it('gets deleted', async () => {
-            const variables = {id: 1};
+            const variables = { id: 1 };
             const deleteTodo = gql`
                 mutation deleteTodo($id: ID!){
                     deleteTodo(id: $id){
@@ -149,7 +149,7 @@ describe('queries and mutations', () => {
                     }
                 }
             `;
-            const mutationResult = await mutate({mutation: deleteTodo, variables});
+            const mutationResult = await mutate({ mutation: deleteTodo, variables });
             console.log(mutationResult);
             const itIsDeadJim = mutationResult.data.deleteTodo.id === null;
             expect(itIsDeadJim).toBe(true);
@@ -157,7 +157,7 @@ describe('queries and mutations', () => {
     })
     describe('finish todo', () => {
         it('gets finished', async () => {
-            const variables = {id: 4};
+            const variables = { id: 4 };
             const finishTodo = gql`
                 mutation finishTodo($id: ID!){
                     finishTodo(id: $id){
@@ -166,7 +166,7 @@ describe('queries and mutations', () => {
                     }
                 }
             `;
-            const mutationResult = await mutate({mutation: finishTodo, variables});
+            const mutationResult = await mutate({ mutation: finishTodo, variables });
             console.log(mutationResult);
             const itChanged = mutationResult.data.finishTodo.isDone === true;
             expect(itChanged).toBe(true);
