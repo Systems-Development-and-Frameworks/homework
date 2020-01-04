@@ -1,4 +1,4 @@
-import { User } from 'core';
+import { User } from '../../core';
 import dotenv from 'dotenv';
 import jwt, { VerifyErrors } from 'jsonwebtoken';
 

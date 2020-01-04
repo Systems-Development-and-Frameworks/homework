@@ -1,5 +1,5 @@
 import { AuthenticationError } from 'apollo-server';
-import { TodoItem, User } from 'core';
+import { TodoItem, User } from '../../core';
 import { Request } from 'express-serve-static-core';
 import { rule, shield } from 'graphql-shield';
 

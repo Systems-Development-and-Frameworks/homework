@@ -1,6 +1,6 @@
 import { gql, makeExecutableSchema, ApolloServer } from 'apollo-server';
 import { createTestClient, ApolloServerTestClient } from 'apollo-server-testing';
-import { TodoItem } from 'core';
+import { TodoItem } from '../../core';
 import { Request } from 'express-serve-static-core';
 import { applyMiddleware } from 'graphql-middleware';
 
