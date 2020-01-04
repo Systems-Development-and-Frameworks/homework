@@ -1,11 +1,12 @@
 import { ApolloServer } from 'apollo-server';
 import { gql, UserInputError } from 'apollo-server-core';
-import { TodoItem, User, Util } from 'core';
 import { DocumentNode } from 'graphql';
 import { applyMiddleware } from 'graphql-middleware';
 import { makeExecutableSchema, IResolvers } from 'graphql-tools';
 import neo4j, { Session, Transaction } from 'neo4j-driver';
 import uuid = require('uuid');
+
+import { TodoItem, User, Util } from '../../core';
 
 import { getAuthUser, permissions } from './permissions';
 import {
@@ -172,7 +173,7 @@ export const resolvers: IResolvers = {
     },
 
     async finishTodo(parent: any, args?: any, ctx?: any) {
-      
+
       const id = args!.id;
       const session: Session = ctx.driver.session();
       let finishedTodo: TodoItem;
@@ -183,7 +184,7 @@ export const resolvers: IResolvers = {
             `
             MATCH(todoItem: TodoItem { id: $id})
             SET todoItem.isDone = true
-            RETURN todoItem 
+            RETURN todoItem
             `,
             {id: String(id)}
           );
@@ -216,7 +217,7 @@ export const resolvers: IResolvers = {
             `
             MATCH(todoItem: TodoItem { id: $id})
             DELETE (todoItem)
-            RETURN (todoItem) 
+            RETURN (todoItem)
             `,
             {id: String(id)}
           );
