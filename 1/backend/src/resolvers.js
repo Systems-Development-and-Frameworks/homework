@@ -10,19 +10,19 @@ const resolvers = {
     Query: {
         todos: async (parent, args, context) => {
             // JSON.parse(JSON.stringify(data.todos))
-            if (args.limit != "" && args.limit != null) {
+            if (args.limit != "" && args.limit != null && args.skip != "" && args.skip != null) {
                 const {driver} = context
                 let getTodoCypher
 
                 getTodoCypher = `
                     MATCH (todo:Todo)
-                    RETURN todo.id, todo.message, todo.completed LIMIT $limit
+                    RETURN todo.id, todo.message, todo.completed ORDER BY todo.message SKIP $skip LIMIT $limit 
                 `
 
 
                 const session = driver.session()
                 try {
-                    data = await session.run(getTodoCypher, {limit: args.limit})
+                    data = await session.run(getTodoCypher, {limit: args.limit, skip: args.skip})
                     const todos = await data.records.map(record => ({
                         id: record.get('todo.id'),
                         message: record.get('todo.message'),
