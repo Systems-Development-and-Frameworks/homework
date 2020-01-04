@@ -49,7 +49,7 @@ const createUser = (id: string, name: string) => {
 
 const createRelation = (userId: string, todoId: string, relationship: string) => {
     return session.run(
-        'MATCH (a:User),(b:Todo)' +
+        'MATCH (a:User),(b:TodoItem)' +
         'WHERE a.id =' + '\"' + userId + '\"' + ' AND b.id = ' + '\"' + todoId + '\"' +
         'CREATE(a) - [r: ' + relationship + '] -> (b)' +
         'RETURN type(r)',
