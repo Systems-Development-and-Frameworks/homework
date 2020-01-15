@@ -1,8 +1,8 @@
-import { TodoItem, User } from 'core';
+import { TodoItem, User } from '../../core';
 
 const users: User[] = [
   {
-    name: 'test',
+    name: 'Martin Neumann',
     assignedTo: [],
   },
 ];

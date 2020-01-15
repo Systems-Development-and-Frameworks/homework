@@ -1,5 +1,6 @@
 import { Context } from 'apollo-server-core';
-import { TodoItem, User } from 'core';
+
+import { TodoItem, User } from '../../core';
 
 export interface TodosArguments {
   options?: {
