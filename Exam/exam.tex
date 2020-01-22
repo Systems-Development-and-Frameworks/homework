@@ -341,21 +341,60 @@ function filterTodos(mok, userAuth) {
 
 \question Neo4J
 
-Here is the visualization of a graph.
-\missingfigure{Add graph visualization of the current state in the database}
-When you send the following cypher statement to the database:
-\missingfigure{Add cypher statement}
 
 \begin{parts}
-  \part[3] How does the result set look like?
+  \part
+  Consider the cypher statements:
+  \begin{lstlisting}
+  CREATE(romeo:Person {name: 'Romeo'})
+  CREATE(juliet:Person {name: 'Juliet'})
+  \end{lstlisting}
+  Figure~\ref{fig:neo4j:graph-before-merge} shows how the graph looks initially.
+  \begin{figure}[h]
+    \centering
+    \includesvg[width=0.2\textwidth]{./assets/neo4j/before-merge.svg}
+    \caption{Romeo and Juliet at the beginning of the story}
+    \label{fig:neo4j:graph-before-merge}
+  \end{figure}
+
+  When you run the following statement:
+  \begin{lstlisting}
+  MERGE(:Person {name: 'Romeo'})-[:LOVES]->(:Person {name: 'Juliet'})
+  \end{lstlisting}
+
+  The graph looks like shown in figure~\ref{fig:neo4j:graph-after-merge}.
+  \begin{figure}[h]
+    \centering
+    \includesvg[width=0.4\textwidth]{./assets/neo4j/after-merge.svg}
+    \caption{Oops, we have two Romeos and two Juliets now}
+    \label{fig:neo4j:graph-after-merge}
+  \end{figure}
+  \begin{subparts}
+    \subpart[1]
+    How can you fix the cypher statement so that we don't get duplicate nodes?
+    \makeemptybox{8em}
+    \subpart[2]
+    What has happened, why have duplicate records been created at all? Can you
+    explain this?
+    \fillwithdottedlines{8em}
+  \end{subparts}
+
+  \part
+  Here is the visualization of a graph.
+  \missingfigure{Add graph visualization of the current state in the database}
+  When you send the following cypher statement to the database:
+  \missingfigure{Add cypher statement}
+  \begin{subparts}
+  \subpart[3] How does the result set look like?
   \makeemptybox{12em}
-  \part[3] How many records are in the result set?
+  \subpart[3] How many records are in the result set?
   \fillwithdottedlines{2em}
-  \part[3] Here is a graph visualization of a desired state in the database.
+  \subpart[3] Here is a graph visualization of a desired state in the database.
   \missingfigure{Add graph visualization of the desired state in the database}
   Write down a single cypher statement that produces the desired result.
   \makeemptybox{12em}
   \fillwithdottedlines{2em}
+  \end{subparts}
 \end{parts}
 
 \clearpage
