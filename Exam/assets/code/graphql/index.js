@@ -9,16 +9,16 @@ type Query {
 }
 `
 
-const logInput = async (resolve, root, args, context, info) => {
+const logInput = async (resolve, parent, args, context, info) => {
   console.log(`1. logInput: ${JSON.stringify(args)}`)
-  const result = await resolve(root, args, context, info)
+  const result = await resolve(parent, args, context, info)
   console.log(`5. logInput`)
   return result
 }
 
-const logResult = async (resolve, root, args, context, info) => {
+const logResult = async (resolve, parent, args, context, info) => {
   console.log(`2. logResult`)
-  const result = await resolve(root, args, context, info)
+  const result = await resolve(parent, args, context, info)
   console.log(`4. logResult: ${JSON.stringify(result)}`)
   return result
 }
@@ -27,11 +27,11 @@ const middlewares = [logInput, logResult]
 
 const resolvers = {
   Query: {
-    hello: (root, args, context, info) => {
+    hello: (parent, args, context, info) => {
       console.log(`3. resolver: hello`)
       return `Hello ${args.name ? args.name : 'world'}!`
     },
-    bye: (root, args, context, info) => {
+    bye: (parent, args, context, info) => {
       console.log(`3. resolver: bye`)
       return `Bye ${args.name ? args.name : 'world'}!`
     },

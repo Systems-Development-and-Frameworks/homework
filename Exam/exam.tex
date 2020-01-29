@@ -106,6 +106,11 @@ Robert Schäfer
 
 
 \question Project Management
+      \todo[inline]{ Mentoring }
+      \todo[inline]{ Knowledge transfer }
+      \todo[inline]{ Code Reviews }
+      \todo[inline]{ Testing }
+      \todo[inline]{ Continous Integration }
 
 \begin{parts}
   \part[1] Complete the following sentence:
@@ -136,13 +141,20 @@ The motto of our course is ``Le\_\_n and S\_\_\_e''
 
   \part[3]
   \todo[inline]{There will be at least three more questions here}
-  \part[2]
-  \todo[inline]{There will also be a question about continuous integration}
 \end{parts}
 
 \clearpage
 
 \question Git
+  \todo[inline]{ git rebase }
+  \todo[inline]{ git clean }
+  \todo[inline]{ git reflog }
+  \todo[inline]{ git reset }
+  \todo[inline]{ git blame }
+  \todo[inline]{ git remote }
+  \todo[inline]{ git checkout <REFERENCE> -- path/to/file }
+  \todo[inline]{ Difference between working tree and index }
+  \todo[inline]{ How to write better commit messages }
 \begin{parts}
 
 \part[1]
@@ -161,6 +173,9 @@ The motto of our course is ``Le\_\_n and S\_\_\_e''
 \fillwithdottedlines{8em}
 
 \part
+  \todo[inline]{We will do the following exercise the other way around: Instead
+  of you writing down the git commands that produce a given history, I will give
+  you some commands and your task is to draw the resulting git history.}
   Consider the following scenario: You forgot to create a feature branch and
   committed on branch \texttt{master} by accident.\\
 
@@ -229,9 +244,6 @@ The motto of our course is ``Le\_\_n and S\_\_\_e''
 
 \end{subparts}
 
-\part[2] TODO
-\todo[inline]{In the final exam, I will create a more elaborate scenario and
-assign more points to it}
 \end{parts}
 
 
@@ -247,6 +259,12 @@ assign more points to it}
 \makeemptybox{8em}
 
 \part
+  \todo[inline]{Array.prototype.forEach}
+  \todo[inline]{Array.prototype.map}
+  \todo[inline]{Array.prototype.find}
+  \todo[inline]{Array.prototype.filter}
+  \todo[inline]{Array.prototype.reduce}
+
 The following code examples have unnecessary temporary variables. How can you
 refactor the code examples and eliminate these temporary variables?
 \begin{lstlisting}[extendedchars=true,basicstyle=\footnotesize\ttfamily,language=JavaScript]
@@ -299,6 +317,10 @@ function filterTodos(mok, userAuth) {
   \fillwithdottedlines{8em}
 
   \part[2]
+  \todo[inline]{Few groups used type resolvers in their assignments.
+  Understanding the difference between a top level resolver and a type resolver
+  is crucial. You should also know the use cases, for what you should use a top
+  level resolver and when to use a type resolver.}
   Look at the implementation in figure~\ref{fig:apollo-server}. When we send
   the graphql query in figure~\ref{fig:graphql-query} to the server, what is the
   response of the server?
@@ -340,6 +362,10 @@ function filterTodos(mok, userAuth) {
 \clearpage
 
 \question Neo4J
+\todo[inline]{Behaviour of MERGE}
+\todo[inline]{Pattern with multiple hops (e.g. friend of a friend)}
+\todo[inline]{How to select nodes without a particular relationship}
+\todo[inline]{OPTIONAL MATCH}
 
 
 \begin{parts}
@@ -400,6 +426,14 @@ function filterTodos(mok, userAuth) {
 \clearpage
 
 \question VueJS and NuxtJS
+\todo[inline]{VueJS: component composition pattern}
+\todo[inline]{VueJS: data bindings and events}
+\todo[inline]{VueJS: computed properties}
+\todo[inline]{VueJS: watchers}
+\todo[inline]{Nuxt: asyncData}
+\todo[inline]{Nuxt: page components and routing}
+\todo[inline]{SSR: JS globals e.g. `document` or `window`}
+
 \begin{parts}
   \part[2] What are the pros and cons of a single page application and
   client-side-rendering in comparison with a traditional multi-page and
@@ -428,7 +462,10 @@ function filterTodos(mok, userAuth) {
 \clearpage
 
 \question Fullstack testing and Requirements Engineering
-\todo[inline]{Add description of a web application in detail}
+\todo[inline]{Benefits and drawbacks of fullstack testing}
+\todo[inline]{Common pitfalls of fullstack testing, e.g. timeouts and checking non-existing HTML elements}
+\todo[inline]{User story template - who, what, why?}
+\todo[inline]{Cucumber scenarios and readability}
 \begin{parts}
 \part[2]
 What are the issues with the following user story?
@@ -437,10 +474,24 @@ What are the issues with the following user story?
 Write down a cucumber scenario which could be a valid acceptance criteria for
 the user story.
 \end{parts}
+\clearpage
+
+\question CSS
+\missingfigure{Some HTML to select elements from}
+\begin{parts}
+\part[3]
+  Which element(s) are selected with this CSS selector?
+  \todo[inline]{Three different CSS selectors here}
+\part[1]
+  Write down a CSS selector to select all input fields in the above example
+
+\end{parts}
 
 \clearpage
 
 \question Code Review
+\todo[inline]{I will use a VueJS component or an apollo server test as a
+code example for the code review}
 \begin{parts}
 \part[10] Give a code review of the following pull request. Find and annotate
   issues in the code. You will get a point only if you can explain what the
@@ -450,6 +501,7 @@ the user story.
   find 5 issues, explain the problem \textbf{and} write down the source code as
   a suggestion to fix it. Anything in between is also possible.
 
+\todo[inline]{Non-atomic test cases}
 \todo[inline]{Mixing async/await with then/catch}
 \todo[inline]{Not sanitizing strings and having a cypher injection vulnerability}
 \todo[inline]{C-style for loop}
@@ -458,12 +510,12 @@ the user story.
 \todo[inline]{Multiline string without backticks}
 \todo[inline]{Using index literals or keys instead of array/object destructuring}
 \todo[inline]{Merge objects with ... spread operator}
-\todo[inline]{Secrets in source code}
-\todo[inline]{Not using jest's async expectations}
+\todo[inline]{Secrets (e.g. API keys or SSH keys) checked into source code}
+\todo[inline]{Not waiting for a promise to finish - tests pass before even checking a result}
 \todo[inline]{Nested if-clauses instead of guard clauses}
-\todo[inline]{Expose user listing in login resolver}
-\todo[inline]{Missing ID in type definitions}
-\todo[inline]{Not using hard-coded values for expectations}
+\todo[inline]{Expose user listing in login resolver - slight security issue}
+\todo[inline]{Clients cannot update their cache becaus types have no ID in type definitions}
+\todo[inline]{Not using hard-coded values for expectations - danger of false negatives}
 
 \end{parts}
 
