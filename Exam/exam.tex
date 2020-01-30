@@ -47,7 +47,7 @@
 
 %%%%% Cover page
 
-\coverfirstpageheader{HTW Berlin \\ Department of Computer Science}{\includesvg{assets/logo}}{Systems-Development\\ and Frameworks}
+\coverfirstpageheader{HTW Berlin \\ Department of Computer Science}{\includesvg{logo}}{Systems-Development\\ and Frameworks}
 \runningheadrule
 \runningfootrule
 \onehalfspacing
@@ -113,48 +113,85 @@ Robert Schäfer
       \todo[inline]{ Continous Integration }
 
 \begin{parts}
-  \part[1] Complete the following sentence:
-The motto of our course is ``Le\_\_n and S\_\_\_e''
+  \part[1] Vervollständige den folgenden Satz:
+  Das Motto unseres Kurses ist: ``Le\_\_n and S\_\_\_e''
 
   \part[1]
-  What is the bus factor? Write a definition.
-  \fillwithdottedlines{6em}
+  Was ist der Busfaktor? Schreibe eine Definition auf.
+  \fillwithdottedlines{4em}
 
   \part[1]
-  What is better: A high or a low bus factor?
-  \fillwithdottedlines{2em}
-
-
-\part[2]
-  In the lecture we covered five benefits of software testing. Please fill in at
-  least two of them in figure~\ref{fig:software-testing-benefits} and explain
-  them by example: What could go wrong without software testing with respect to
-  that benefit? Why does something work better with software testing?
-\fillwithdottedlines{12em}
-
-\begin{figure}[h]
-  \centering
-  \includesvg[width=0.4\textwidth]{assets/project-management/software-testing-benefits.svg}
-  \caption{Five benefits of software testing}
-  \label{fig:software-testing-benefits}
-\end{figure}
+  Was ist besser? Ein möglichst hoher Busfaktor oder ein niedriger Busfaktor?
+  \begin{choices}
+  \choice Ein hoher Busfaktor ist besser.
+  \choice Ein niedriger Busfaktor ist besser.
+  \end{choices}
+  Anwort: \fillin
 
   \part[3]
-  \todo[inline]{There will be at least three more questions here}
+  Wie kann der Wissenstransfer im Team gewährleistet werden?
+  Nenne mindestens drei unterscheidbare Methodiken, die wir im Kurs kennen
+  gelernt haben:
+  \fillwithdottedlines{6em}
+
+  \part[8]
+  Wobei helfen automatisierte Software-Tests?
+
+  Software-Tests helfen dabei:
+  \begin{checkboxes}
+  \choice Regressionen zu vermeiden
+  \choice das Verhaltens der Anwendung zu dokumentieren
+  \choice Abhängigkeiten im Quellcode zu erkennen und zu vermeiden
+  \choice bei der Software-Architektur, etwa bei beim Design von Schnittstellen
+  \choice bei der Wartung des Quellcodes, z.B. beim Refactoring
+  \choice die Korrektheit des Quellcodes zu beweisen
+  \choice sicherzustellen, dass die Anforderungen des Kunden bzw. Endbenutzers erfüllt sind
+  \choice Aussagen über das Laufzeitverhalten zu treffen, z.B. Komplexitätsklassen von Algorithmen
+  \end{checkboxes}
+
+  \part
+  Wir haben in unserem Kurs einen Software-Test als "positiv" definiert, wenn er
+  fehlschlägt. (Also ähnlich wie ein "positiver" medizinischer Test, welcher
+  aussagt, dass eine Testperson mit einer Krankheit infiziert sei.)
+
+  Fehlerhafte Software-Tests können zu folgenden Problemen führen:
+  \begin{choices}
+    \choice Das Team verliert an Disziplin und das Vertrauen in Software-Testing.
+      Es beginnt Änderungen am Quellcode zu akzeptieren, obwohl der Build-Server
+      fehlgeschlagen ist.
+    \choice Es kommt zu Verzögerungen beim Ausrollen der Anwendung (Deployment).
+    \choice Die Endbenutzer können betroffene Funktionen der Anwendung nicht mehr nutzen.
+    \choice Es können Sicherheitslücken entstehen.
+  \end{choices}
+
+  \begin{subparts}
+    \subpart[2]
+    Welche dieser Probleme entstehen durch "falsch-positive" Software-Tests?
+    Auswahl: \fillin
+    \subpart[2]
+    Welche dieser Probleme entstehen durch "falsch-negative" Software-Tests?
+    Auswahl: \fillin
+  \end{subparts}
+
+    \part[2]
+    Mit welcher Technik kann man "falsch-negative" Tests vorbeugen? Anders
+    gefragt: Wie kann man sicherstellen, dass ein Software-Test überhaupt einen
+    Fehler aufzeigen würde?
+    \fillwithdottedlines{4em}
+
 \end{parts}
 
-\clearpage
 
 \question Git
-  \todo[inline]{ git rebase }
-  \todo[inline]{ git clean }
-  \todo[inline]{ git reflog }
-  \todo[inline]{ git reset }
-  \todo[inline]{ git blame }
-  \todo[inline]{ git remote }
-  \todo[inline]{ git checkout <REFERENCE> -- path/to/file }
-  \todo[inline]{ Difference between working tree and index }
-  \todo[inline]{ How to write better commit messages }
+  \todo[inline]{git rebase}
+  \todo[inline]{git clean}
+  \todo[inline]{git reflog}
+  \todo[inline]{git reset}
+  \todo[inline]{git blame}
+  \todo[inline]{git remote}
+  \todo[inline]{git checkout <REFERENCE> -- path/to/file}
+  \todo[inline]{Difference between working tree and index}
+  \todo[inline]{How to write better commit messages}
 \begin{parts}
 
 \part[1]
@@ -188,7 +225,7 @@ The motto of our course is ``Le\_\_n and S\_\_\_e''
 
 \begin{figure}[h]
   \centering
-  \includesvg[width=0.8\textwidth]{assets/git/1.svg}
+  \includesvg[width=0.8\textwidth]{git/1.svg}
   \caption{After \texttt{git checkout -b feature-branch}}
   \label{fig:git:1}
 \end{figure}
@@ -201,7 +238,7 @@ The motto of our course is ``Le\_\_n and S\_\_\_e''
 
 \begin{figure}[h]
   \centering
-  \includesvg[width=0.8\textwidth]{assets/git/2.svg}
+  \includesvg[width=0.8\textwidth]{git/2.svg}
   \caption{Remove commits from \texttt{master}}
   \label{fig:git:2}
 \end{figure}
@@ -220,7 +257,7 @@ The motto of our course is ``Le\_\_n and S\_\_\_e''
 
 \begin{figure}[h]
   \centering
-  \includesvg[width=0.8\textwidth]{assets/git/3.svg}
+  \includesvg[width=0.8\textwidth]{git/3.svg}
   \caption{Commits contain changes of the commits on top of the respective nodes}
   \label{fig:git:3}
 \end{figure}
@@ -247,16 +284,31 @@ The motto of our course is ``Le\_\_n and S\_\_\_e''
 \end{parts}
 
 
-\clearpage
 
-\question Functional Programming
+\question Funktionale Programmierung
 
 \begin{parts}
-\part[1] What are higher order functions?
+\part[2] Was sind "higher order functions"?
 \fillwithdottedlines{2em}
 
-\part[1] Give an example of a higher order function in JavaScript:
-\makeemptybox{8em}
+\part[2] Im folgenden Code-Beispiel wird eine Funktion namens
+  \texttt{higherOrderFunction} deklariert, die Argumente der Funktion heißen
+  \texttt{some, arguments, you, can} und \texttt{choose}. Bitte schreibe
+  eine Implementierung, sodass die Funktion \emph{ganz offensichtlich} zu einer
+  "higher-order function" wird.
+\begin{lstlisting}[extendedchars=true,basicstyle=\footnotesize\ttfamily,language=JavaScript]
+function higherOrderFunction(some, arguments, you, can, choose) {
+  // Write down any implementation, which obviously turns this function into a
+  // higher order function.
+  // ...
+
+
+
+
+ // return ?
+ // If you want, return something
+}
+\end{lstlisting}
 
 \part
   \todo[inline]{Array.prototype.forEach}
@@ -265,8 +317,10 @@ The motto of our course is ``Le\_\_n and S\_\_\_e''
   \todo[inline]{Array.prototype.filter}
   \todo[inline]{Array.prototype.reduce}
 
-The following code examples have unnecessary temporary variables. How can you
-refactor the code examples and eliminate these temporary variables?
+  Die folgenden Code-Beispiele enthalten unnötige temporäre Zustände. Zustände
+  sind immer schlecht, weil sie mögliche Fehlerquellen sind. Wie können die
+  folgenden Code-Beispiele umgeschrieben (refactored) werden, um die unnötigen
+  Zustände zu eliminieren? Das Verhalten des Codes darf sich nicht verändern.
 \begin{lstlisting}[extendedchars=true,basicstyle=\footnotesize\ttfamily,language=JavaScript]
 function findNextId (){
   let lastId = 0;
@@ -299,22 +353,51 @@ function filterTodos(mok, userAuth) {
 
 \begin{subparts}
   \subpart[3]
-  You will get a point per code example if you can name the right method which
-  you could apply.
+  Es gibt für jedes Code-Beispiel einen Punkt, wenn die richtige Funktion von
+  \texttt{Array.prototype} ausgewählt wird.
   \subpart[3]
-  You will get a point per code example if you can write down the correct (or
-  almost correct) refactored source code.
+  Für jedes korrekte Refactoring eines Code-Beispiels gibt es einen weiteren
+  Punkt. Geringfügige Syntax-Fehler führen zu keinem Punktabzug.
 \end{subparts}
 \end{parts}
 
 
-\clearpage
+\question Authorization and Authentication
+\begin{parts}
+\part[2]
+  Was bedeuten die Begriffe ``Authorization'' und ``Authentication''? Erkläre,
+  welche Aufgaben mit den Begriffen gemeint sind und grenze sie voneinander ab.
+  \fillwithdottedlines{6em}
+\part[1]
+  Richtig oder Falsch: Die Nutzdaten (der Payload) eines JWT (JSON-Web-Token)
+  werden verschlüsselt übertragen.
+  \begin{choices}
+    \choice Richtig
+    \choice Falsch
+  \end{choices}
+\part[1]
+  Richtig oder Falsch: Wenn der Schlüssel zur Überprüfung der Signatur der
+  JSON-Web-Token erneuert wird, werden alle bis dahin ausgelieferten Token
+  invalidiert. 
+  \begin{choices}
+    \choice Richtig
+    \choice Falsch
+  \end{choices}
+\end{parts}
+
 \question GraphQL and Apollo-Server
 
 \begin{parts}
-\part[1] What are the problems that GraphQL solves in comparison with REST?
-  Explain how exactly GraphQL solves these problems.
-  \fillwithdottedlines{8em}
+\part[7] Welche Probleme löst GraphQL in Bezug auf REST?
+  \begin{checkboxes}
+  \choice HTTP-Caching Mechanismen werden besser ausgenutzt .
+  \choice Auf dem Client kann die Benutzeroberfläche automatisch aktualisiert werden.
+  \choice Die Anzahl der Anfragen wird minimiert.
+  \choice Die Menge der ausgetauschen Daten pro Anfrage (der Traffic) wird minimiert.
+  \choice Die Anzahl der Datenbank-Abfragen wird minimiert.
+  \choice Daten können in einer Graph-Datenbank gespeichert werden.
+  \choice Der Server wird robuster gegenüber Denial-of-Server Angriffen.
+  \end{checkboxes}
 
   \part[2]
   \todo[inline]{Few groups used type resolvers in their assignments.
@@ -327,7 +410,10 @@ function filterTodos(mok, userAuth) {
   \begin{figure}[h]
     \begin{lstlisting}[language=bash]
       query {
-        hello(name: "Again")
+        allStudents(limit: 2) {
+          id
+          fullname(reverse: true)
+        }
       }
     \end{lstlisting}
     \caption{Graphql query}
@@ -347,19 +433,18 @@ function filterTodos(mok, userAuth) {
 \makeemptybox{18em}
 \begin{figure}[h]
   \lstinputlisting[
+    basicstyle=\footnotesize\ttfamily,
     numbers=left,
     numberstyle=\footnotesize,
     numbersep=3em,
     extendedchars=true,
-    basicstyle=\footnotesize\ttfamily,
     language=JavaScript
-  ]{assets/code/graphql/index.js}
+  ]{code/graphql/index.js}
   \caption{Apollo server implementation}
   \label{fig:apollo-server}
 \end{figure}
 \end{parts}
 
-\clearpage
 
 \question Neo4J
 \todo[inline]{Behaviour of MERGE}
@@ -369,6 +454,30 @@ function filterTodos(mok, userAuth) {
 
 
 \begin{parts}
+
+  \part[5]
+  Für welche der folgenden Klauseln in der Graph-Datenbank-Anfragesprache
+  \texttt{cypher} gibt es eine äquivalente Klausel in \texttt{SQL}:
+  \begin{checkboxes}
+    \choice \texttt{MATCH (node:LABEL) }
+    \choice \texttt{MATCH (node)-[:RELATED]->(otherNode) }
+    \choice \texttt{OPTIONAL MATCH (node)-[:RELATED]->(othernode) }
+    \choice \texttt{WHERE node.property = 'somevalue'}
+    \choice \texttt{MATCH (node)-[*]->(yetAnotherNode)}
+  \end{checkboxes}
+
+  \part[2] Können in einer Neo4J Datenbank Fremdschlüssel auf fehlende Einträge
+  zeigen? Solche Zeiger ins Leere heißen auch "dangling pointer". Begründe deine
+  Antwort:
+  \fillwithdottedlines{4em}
+
+  \part[1] Wieviele "Labels" darf ein Knoten in einer Neo4J Datenbank haben?
+  Antwort: \fillin
+
+  \part[1] Wieviele "Typen" darf eine Beziehung in einer Neo4J Datenbank haben?
+  Antwort: \fillin
+
+
   \part
   Consider the cypher statements:
   \begin{lstlisting}
@@ -378,7 +487,7 @@ function filterTodos(mok, userAuth) {
   Figure~\ref{fig:neo4j:graph-before-merge} shows how the graph looks initially.
   \begin{figure}[h]
     \centering
-    \includesvg[width=0.2\textwidth]{./assets/neo4j/before-merge.svg}
+    \includesvg[width=0.2\textwidth]{./neo4j/before-merge.svg}
     \caption{Romeo and Juliet at the beginning of the story}
     \label{fig:neo4j:graph-before-merge}
   \end{figure}
@@ -391,7 +500,7 @@ function filterTodos(mok, userAuth) {
   The graph looks like shown in figure~\ref{fig:neo4j:graph-after-merge}.
   \begin{figure}[h]
     \centering
-    \includesvg[width=0.4\textwidth]{./assets/neo4j/after-merge.svg}
+    \includesvg[width=0.4\textwidth]{./neo4j/after-merge.svg}
     \caption{Oops, we have two Romeos and two Juliets now}
     \label{fig:neo4j:graph-after-merge}
   \end{figure}
@@ -435,28 +544,81 @@ function filterTodos(mok, userAuth) {
 \todo[inline]{SSR: JS globals e.g. `document` or `window`}
 
 \begin{parts}
-  \part[2] What are the pros and cons of a single page application and
-  client-side-rendering in comparison with a traditional multi-page and
-  server-side-rendered application?
-  \fillwithdottedlines{8em}
-  \part[1] What is isomorphic code?
+  \part[4]
+  Zu den Vorteilen von client-seitig gerenderten ``Single-page-applications''
+  gegenüber traditionellen server-seitig gerenderten Web-Anwendungen gehören
+  unter anderem:
+  \begin{checkboxes}
+    \choice Weniger Last auf dem Server
+    \choice Desktop-ähnliches Nutzererlebnis
+    \choice Größerer Anteil Nutzdaten in der Kommunikation zwischen Client- und Server
+    \choice Bessere Suchmaschinen-Optimierung
+    \choice Kompatibilität mit älteren Browsern
+  \end{checkboxes}
+
+  \part[1] Was ist isomorpher Quellcode?
   \fillwithdottedlines{4em}
-  \part[2] NuxtJS provides server-side-rendering for VueJS. What is the motivation
-  to do both server-side-rendering and client-side-rendering?
-  \fillwithdottedlines{8em}
-  \part Have a look at this diagram which shows the different components and
-  its responsibilities.
-  \missingfigure{Add component diagram}
-  \missingfigure{Add backend response as JSON}
+
+  \part[3]
+  Welche dieser sog.\ "JavaScript globals" sollte in Quellcode vermieden werden,
+  welcher auch von server-seitig vorgerenderten Web-Anwendungen ausgeführt wird:
+  \begin{checkboxes}
+    \choice \texttt{document}
+    \choice \texttt{console}
+    \choice \texttt{window}
+  \end{checkboxes}
+
+  \part[1] Zu welcher Art von Fehler kommt es, wenn man trotzdem einer dieser
+  "globals" in einem NodeJS Prozess aufruft?
+  \fillwithdottedlines{2em}
+
+  \part
+  Wirf einen Blick auf die Vue-Komponente im Code-Beispiel~\ref{fig:vue-example}.
+  Wenn in den folgenden Teilaufgaben Änderung im Quelltext vorgenommen werden
+  sollen, können diese direkt in die Abbildung eingepflegt werden.
   \begin{subparts}
-  \subpart[3]
-  What is the minimal data that needs to get passed as
-  property down to the subcomponents respectively? Write your answer as an
-  annotation in the diagram.
-  \subpart[3] What are the events that should get emitted from the subcomponents to
-  the parent components respectively? Write your answer as an
-  annotation in the diagram.
+    \subpart[1]
+    Offenbar hat sich ein Fehler eingeschlichen. Eigentlich soll die Methode
+    \texttt{handleClick} beim Klick auf den Knopf ausgelöst werden. Durch welche
+    Änderung kann der Fehler behoben werden?
+    \subpart[1]
+    Wenn die Methode \texttt{handleClick} ausgelöst wird, welchen Wert hat dann
+    \texttt{message}?
+
+    Antwort: \fillin
+    \subpart[2]
+    Füge ein \texttt{<input>} Feld hinzu, dessen Texteingabe mit dem Zustand
+    \texttt{message} verknüpft ist. Bei jeder Text-Eingabe soll sich also der
+    Wert von \texttt{message} verändern.
+    \subpart[2]
+    Implementiere eine computed property namens \texttt{reversedMessage}, welche
+    den String \texttt{message} umdreht. Tipp:
+    \begin{lstlisting}
+      someString.split('').reverse().join('')
+    \end{lstlisting}
+    Dreht eine lokale Variable \texttt{someString} herum.
+    \subpart[1]
+    Warum ist es eigentlich sinnvoll, \texttt{reversedMessage} als computed
+    property zu implementieren?
+    \fillwithdottedlines{4em}
+    \subpart[1]
+    Was spricht dagegen, \texttt{reversedMessage} als Zustand in \texttt{data}
+    zu initialisieren und zur Laufzeit zu verändern?
+    \fillwithdottedlines{4em}
+    \subpart[1]
+    Was spricht dagegen, es als Methode zu implementieren und als
+    \texttt{reversedMessage()} im ``template'' aufzurufen?
+    \fillwithdottedlines{4em}
   \end{subparts}
+\begin{figure}[h]
+  \centering
+  \lstinputlisting[
+    numbers=left,
+    language=HTML
+  ]{code/vuejs/Example.vue}
+  \caption{Eine kleine VueJS-Komponente}
+  \label{fig:vue-example}
+\end{figure}
 \end{parts}
 
 \clearpage
@@ -467,27 +629,83 @@ function filterTodos(mok, userAuth) {
 \todo[inline]{User story template - who, what, why?}
 \todo[inline]{Cucumber scenarios and readability}
 \begin{parts}
-\part[2]
-What are the issues with the following user story?
-\missingfigure{Add user story}
-\part[2]
-Write down a cucumber scenario which could be a valid acceptance criteria for
-the user story.
+  \part[1] Im Kurs haben wir die ``Testing-Pyramide'' und den
+  ``Testing-Diamanten'' kennengelernt. Beides sind Modelle, die eine
+  Hilfestellung bieten sollen, um zu einem ausgewogenen Verhältnis der
+  jeweiligen Test-Klassen zu finden.
+  Welche Klasse von Tests hat laut dem ``Testing-Diamanten'' den größten Wert
+  und sollte deshalb besonders oft implementiert werden?
+
+  Antwort: \fillin
+
+  \part[2] Für welchen Zweck nutzt man Cucumber Testing?
+  \fillwithdottedlines{4em}
+
+  \part[2] Die Schablone eine User-Story sieht wie folgt aus:
+  \begin{lstlisting}
+  As a <role>
+  I want to do <feature>
+  In order to <benefit>
+  \end{lstlisting}
+  Diese Schablone soll dazu dienen, dass man bei der Erfassung von Anforderungen
+  bestimmte Informationen nicht vergisst, z.B. die Zielgruppe und den Grund für
+  eine gewünschte Funktion. Warum ist es so wichtig, diese Informationen stets
+  zu dokumentieren?
+  \fillwithdottedlines{8em}
 \end{parts}
-\clearpage
 
 \question CSS
-\missingfigure{Some HTML to select elements from}
+\begin{figure}[h]
+  \centering
+  \lstinputlisting[
+    numbers=left,
+    language=HTML
+  ]{code/css/example.html}
+  \caption{Ein beispielhaftes HTML Dokument}
+  \label{fig:example-html}
+\end{figure}
 \begin{parts}
 \part[3]
-  Which element(s) are selected with this CSS selector?
-  \todo[inline]{Three different CSS selectors here}
+  Welche HTML-Elemente werden bzw.\ welches HTML-Element wird in Abbildung~\ref{fig:example-html}
+  mit den folgenden CSS Selektoren selektiert? Gib als Antwort eine Zeilennummer
+  an:
+  \begin{subparts}
+    \subpart
+    \begin{lstlisting}
+
+    .login-form:first-child
+
+    \end{lstlisting}
+
+    Antwort: \fillin
+
+    \subpart
+
+    \begin{lstlisting}
+
+    .login-form :first-child
+
+    \end{lstlisting}
+
+    Antwort: \fillin
+
+    \subpart
+
+    \begin{lstlisting}
+
+    .login-form > :first-child
+
+    \end{lstlisting}
+
+    Antwort: \fillin
+  \end{subparts}
 \part[1]
-  Write down a CSS selector to select all input fields in the above example
+ Mit welchen CSS-Selektor können alle Eingabefelder selektiert werden?
+
+ Antwort: \fillin
 
 \end{parts}
 
-\clearpage
 
 \question Code Review
 \todo[inline]{I will use a VueJS component or an apollo server test as a
