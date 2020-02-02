@@ -7,6 +7,8 @@
 \usepackage{svg}
 \usepackage{listings}
 \usepackage{todonotes}
+\usepackage{subfig}
+
 \usepackage[english,ngerman]{babel}
 \lstset{basicstyle=\ttfamily,
   showstringspaces=false,
@@ -108,12 +110,6 @@ Robert Schäfer
 
 
 \question Project Management
-      \todo[inline]{ Mentoring }
-      \todo[inline]{ Knowledge transfer }
-      \todo[inline]{ Code Reviews }
-      \todo[inline]{ Testing }
-      \todo[inline]{ Continous Integration }
-
 \begin{parts}
   \part[1] Vervollständige den folgenden Satz:
   Das Motto unseres Kurses ist: ``Le\_\_n and S\_\_\_e''
@@ -184,101 +180,84 @@ Robert Schäfer
 
 
 \question Git
-  \todo[inline]{git rebase}
-  \todo[inline]{git clean}
-  \todo[inline]{git reflog}
-  \todo[inline]{git reset}
-  \todo[inline]{git blame}
-  \todo[inline]{git remote}
-  \todo[inline]{git checkout <REFERENCE> -- path/to/file}
-  \todo[inline]{Difference between working tree and index}
-  \todo[inline]{How to write better commit messages}
 \begin{parts}
-
-\part[1]
- What data is hashed in order to generate a git commit id? Enumerate at least three
- attributes.
-\fillwithdottedlines{4em}
-
-\part[2]
-  Is \texttt{git reset <ID> --hard} reversible? If yes, how can you reverse it? If
-  no, please explain why.
-\fillwithdottedlines{8em}
-
-\part[2]
-  Is \texttt{git clean --force} reversible? If yes, how can you reverse it? If
-  no, please explain why.
-\fillwithdottedlines{8em}
-
 \part
-  \todo[inline]{We will do the following exercise the other way around: Instead
-  of you writing down the git commands that produce a given history, I will give
-  you some commands and your task is to draw the resulting git history.}
-  Consider the following scenario: You forgot to create a feature branch and
-  committed on branch \texttt{master} by accident.\\
+  Folgendes Scenario: Wir haben vergessen, rechtzeitig einen ``Feature-branch''
+  zu erstellen und jetzt zeigt der \texttt{master} branch auf unseren letzten
+  commit mit der ID~``G''. Abbildung~\ref{fig:git:initial} visualisiert den
+  \texttt{git} Graph zu diesem Zeitpunkt.
 
-  Now you want to create a pull request. In order to do that you create a new
-  branch with:
-  \begin{lstlisting}
-  git checkout -b feature-branch
-  \end{lstlisting}
-  You can see your current git history in figure~\ref{fig:git:1}.
+  Unser Ziel ist es, nachträglich einen Feature-Branch zu erstellen damit wir
+  einen Pull Request mit dem gewünschten Commit-Log erstellen können. Außerdem
+  wollen wir unseren lokalen \texttt{master} branch auf den Stand des
+  \texttt{origin/master} zurücksetzen. Als letztes strukturieren wir die commits
+  mit einem interaktiven \texttt{rebase} um, mit dem Ziel, unserem Team das
+  ``Code-Review'' erleichtern.
 
 \begin{figure}[h]
   \centering
-  \includesvg[width=0.8\textwidth]{git/1.svg}
-  \caption{After \texttt{git checkout -b feature-branch}}
-  \label{fig:git:1}
+  \includesvg[width=0.8\textwidth]{git/initial.svg}
+  \caption{Visualisierung des initialen \texttt{git}-Graphen.}
+  \label{fig:git:initial}
 \end{figure}
 
 \begin{subparts}
-\subpart[1]
-  What are the commands that produce a git history as shown in
-  figure~\ref{fig:git:2}?\\
-\fillwithdottedlines{8em}
-
-\begin{figure}[h]
-  \centering
-  \includesvg[width=0.8\textwidth]{git/2.svg}
-  \caption{Remove commits from \texttt{master}}
-  \label{fig:git:2}
-\end{figure}
-
-
-
-\subpart[1]
-  Consider your git history looks as shown in figure~\ref{fig:git:2}.
-  On wich commit do you need to rebase in order to produce a git rebase log as
-  shown in figure~\ref{fig:rebase-log} and finally a git history as shown
-  in figure~\ref{fig:git:3}?
+  \subpart[1]
+  Im ersten Schritt führen wir den folgenden Befehl aus:
   \begin{lstlisting}
-    git checkout feature-branch
-    git rebase --interactive ....
+  git checkout -b feature-branch
   \end{lstlisting}
+  Wie verändert sich der \texttt{git}-Graph? Skizziere den Graphen:
+  \makeemptybox{12em}
 
-\begin{figure}[h]
-  \centering
-  \includesvg[width=0.8\textwidth]{git/3.svg}
-  \caption{Commits contain changes of the commits on top of the respective nodes}
-  \label{fig:git:3}
-\end{figure}
+  \subpart[1]
+  Im nächsten Schritt führen wir den folgenden Befehl aus:
+  \begin{lstlisting}
+  git checkout master
+  \end{lstlisting}
+  Wie verändert sich der \texttt{git}-Graph? Skizziere den Graphen:
+  \makeemptybox{12em}
 
+  \subpart[1]
+  Wir setzen den \texttt{master} auf den Stand des \texttt{origin/master} zurück
+  mit diesem Befehl:
+  \begin{lstlisting}
+  git reset origin/master --hard
+  \end{lstlisting}
+  Skizziere den \texttt{git}-Graphen:
+  \makeemptybox{12em}
 
-  \subpart[2] How do you need to change the rebase log in
-  figure~\ref{fig:rebase-log} to produce a git history as shown in
-  figure~\ref{fig:git:3}?
+  \subpart[1]
+  Wir wechseln zurück auf den branch \texttt{feature-branch} mit diesem Befehl:
+  \begin{lstlisting}
+  git checkout feature-branch
+  \end{lstlisting}
+  Schließlich beginnen wir ein interaktives \texttt{rebase} mit diesem Befehl:
+  \begin{lstlisting}
+  git rebase origin/master --interactive
+  \end{lstlisting}
+  Danach öffnet sich mein Editor mit einer Liste von commits. Welche commits
+  befinden sich in dieser Liste?
+  \fillwithdottedlines{3em}
 
-  \begin{figure}[h]
-    \begin{lstlisting}[language=bash]
-    pick C      ..........................
-    pick D      ..........................
-    pick E      ..........................
-    pick F      ..........................
-    pick G      ..........................
-    \end{lstlisting}
-    \caption{Rebase log of your editor}
-    \label{fig:rebase-log}
-  \end{figure}
+  \subpart[1]
+  Die Liste der commits sortiere ich neu, entferne einige commits und
+  verschmelze commits mit \texttt{squash}. Das sieht so aus:
+  \begin{lstlisting}
+    pick E      commit message of E
+    pick D      squash commit message of D
+    squash F    with commit message of F
+    pick C      commit message of C
+  \end{lstlisting}
+  Wenn ich jetzt diese Änderung am ``rebase-log'' abschließe, dann löse ich das
+  \texttt{rebase} aus. Dieser Prozess wird aber einmal unterbrochen. Warum?
+  \fillwithdottedlines{3em}
+
+  \subpart[1]
+  Wie sieht der \texttt{git}-Graph letztendlich aus? Skizziere den finalen
+  Graphen:
+  \makeemptybox{12em}
+
 
 \end{subparts}
 
@@ -371,19 +350,18 @@ function filterTodos(mok, userAuth) {
   welche Aufgaben mit den Begriffen gemeint sind und grenze sie voneinander ab.
   \fillwithdottedlines{6em}
 \part[1]
-  Richtig oder Falsch: Die Nutzdaten (der Payload) eines JWT (JSON-Web-Token)
-  werden verschlüsselt übertragen.
+  Werden die Nutzdaten (der Payload) eines JWT (JSON-Web-Token) verschlüsselt
+  übertragen?
   \begin{choices}
-    \choice Richtig
-    \choice Falsch
+    \choice Ja
+    \choice Nein
   \end{choices}
 \part[1]
-  Richtig oder Falsch: Wenn der Schlüssel zur Überprüfung der Signatur der
-  JSON-Web-Token erneuert wird, werden alle bis dahin ausgelieferten Token
-  invalidiert. 
+  Wenn der Schlüssel zur Überprüfung der Signatur der JSON-Web-Token erneuert
+  wird, werden daraufhin alle bis dahin ausgelieferten Token ungültig?
   \begin{choices}
-    \choice Richtig
-    \choice Falsch
+    \choice Ja
+    \choice Nein
   \end{choices}
 \end{parts}
 
@@ -459,6 +437,8 @@ function filterTodos(mok, userAuth) {
 \end{parts}
 
 
+\clearpage
+
 \question Neo4J
 \begin{parts}
 
@@ -473,7 +453,7 @@ function filterTodos(mok, userAuth) {
   \end{subparts}
 
     \part
-    Betrachte die \texttt{cypher} query:
+    Betrachte die \texttt{cypher} Anfrage:
     \begin{lstlisting}
     MATCH (node)-[*]->(yetAnotherNode) RETURN *
     \end{lstlisting}
@@ -503,38 +483,39 @@ function filterTodos(mok, userAuth) {
 
 
   \part
-  Consider the cypher statements:
+  Wir arbeiten auf einer leeren Neo4J Datenbank. In die Neo4J-Webkonsole geben
+  wir folgende \texttt{cypher} Befehle ein:
   \begin{lstlisting}
   CREATE(romeo:Person {name: 'Romeo'})
   CREATE(juliet:Person {name: 'Juliet'})
   \end{lstlisting}
-  Figure~\ref{fig:neo4j:graph-before-merge} shows how the graph looks initially.
-  \begin{figure}[h]
-    \centering
-    \includesvg[width=0.2\textwidth]{./neo4j/before-merge.svg}
-    \caption{Romeo and Juliet at the beginning of the story}
-    \label{fig:neo4j:graph-before-merge}
-  \end{figure}
+  Abbildung~\ref{fig:neo4j:graph-merge}~(a) zeigt eine Graph-Visualisierung
+  nachdem wir die Befehle ausgeführt haben.
 
-  When you run the following statement:
+  Nun geben wir die folgende \texttt{cypher} Befehle ein:
   \begin{lstlisting}
   MERGE(:Person {name: 'Romeo'})-[:LOVES]->(:Person {name: 'Juliet'})
   \end{lstlisting}
-
-  The graph looks like shown in figure~\ref{fig:neo4j:graph-after-merge}.
   \begin{figure}[h]
-    \centering
-    \includesvg[width=0.4\textwidth]{./neo4j/after-merge.svg}
-    \caption{Oops, we have two Romeos and two Juliets now}
-    \label{fig:neo4j:graph-after-merge}
+      \centering
+      \subfloat[Vor dem \texttt{MERGE}]{\includesvg[inkscapelatex=false, width=0.2\textwidth]{./neo4j/before-merge.svg}}
+      \qquad
+      \qquad
+      \subfloat[Nach dem \texttt{MERGE}]{\includesvg[inkscapelatex=false, width=0.25\textwidth]{./neo4j/after-merge.svg}}
+      \caption{Warum entstehen Duplikate?}
+      \label{fig:neo4j:graph-merge}
   \end{figure}
+
+
+  Jetzt sieht der Graph wie auf Abbildung~\ref{fig:neo4j:graph-merge}~(b) aus.
   \begin{subparts}
     \subpart[1]
-    How can you fix the cypher statement so that we don't get duplicate nodes?
+    Wie können die \texttt{cypher} Befehle so verändert werden, dass keine
+    Duplikate mehr entstehen?
     \makeemptybox{8em}
     \subpart[2]
-    What has happened, why have duplicate records been created at all? Can you
-    explain this?
+    Warum enstehen überhaupt Duplikate? Wie verhält sich \texttt{MERGE} hier in
+    diesem Beispiel und warum entstehen daraufhin die zwei zusätzliche Knoten?
     \fillwithdottedlines{8em}
   \end{subparts}
 \end{parts}
@@ -542,14 +523,6 @@ function filterTodos(mok, userAuth) {
 \clearpage
 
 \question VueJS and NuxtJS
-\todo[inline]{VueJS: component composition pattern}
-\todo[inline]{VueJS: data bindings and events}
-\todo[inline]{VueJS: computed properties}
-\todo[inline]{VueJS: watchers}
-\todo[inline]{Nuxt: asyncData}
-\todo[inline]{Nuxt: page components and routing}
-\todo[inline]{SSR: JS globals e.g. `document` or `window`}
-
 \begin{parts}
   \part[4]
   Zu den Vorteilen von client-seitig gerenderten ``Single-page-applications''
@@ -575,7 +548,7 @@ function filterTodos(mok, userAuth) {
     \choice \texttt{window}
   \end{checkboxes}
 
-  \part[1] Zu welcher Art von Fehler kommt es, wenn man trotzdem einer dieser
+  \part[1] Zu welcher Art von Fehler kommt es, wenn man trotzdem eines dieser
   ``globals'' in einem NodeJS Prozess aufruft?
   \fillwithdottedlines{2em}
 
@@ -620,6 +593,7 @@ function filterTodos(mok, userAuth) {
 \begin{figure}[h]
   \centering
   \lstinputlisting[
+    basicstyle=\footnotesize\ttfamily,
     numbers=left,
     language=HTML
   ]{code/vuejs/Example.vue}
@@ -631,10 +605,6 @@ function filterTodos(mok, userAuth) {
 \clearpage
 
 \question Fullstack testing and Requirements Engineering
-\todo[inline]{Benefits and drawbacks of fullstack testing}
-\todo[inline]{Common pitfalls of fullstack testing, e.g. timeouts and checking non-existing HTML elements}
-\todo[inline]{User story template - who, what, why?}
-\todo[inline]{Cucumber scenarios and readability}
 \begin{parts}
   \part[1] Im Kurs haben wir die ``Testing-Pyramide'' und den
   ``Testing-Diamanten'' kennengelernt. Beides sind Modelle, die eine
@@ -714,32 +684,60 @@ function filterTodos(mok, userAuth) {
 
 
 \question Code Review
-\todo[inline]{I will use a VueJS component or an apollo server test as a
-code example for the code review}
 \begin{parts}
-\part[10] Give a code review of the following pull request. Find and annotate
-  issues in the code. You will get a point only if you can explain what the
-  problem is. You can get another point if you can give a suggestion how to fix
-  the problem. There are about 20 issues in the code example. It is enough if
-  you can find 10 issues and explain the problem. Alternatively you can also
-  find 5 issues, explain the problem \textbf{and} write down the source code as
-  a suggestion to fix it. Anything in between is also possible.
+\part[10] Die folgenden Code-Beispiele sind Auszüge aus den Abgaben der
+  Hausaufgaben und enthalten Schwächen. Finde diese Schwächen und schlage eine
+  Verbesserung vor. Wenn du eine Schwäche finden kannst und eine sinnvolle
+  Verbesserung vorschlägst, gibt es dafür einen Punkt. Wenn ein schwerwiegendes
+  Problem vorliegt und du es erklären kannst, gibt es dafür einen weiteren
+  Punkt.
 
-\todo[inline]{Non-atomic test cases}
-\todo[inline]{Mixing async/await with then/catch}
-\todo[inline]{Not sanitizing strings and having a cypher injection vulnerability}
-\todo[inline]{C-style for loop}
-\todo[inline]{Writing 'should' in test case descriptions}
-\todo[inline]{Not closing sessions}
-\todo[inline]{Multiline string without backticks}
-\todo[inline]{Using index literals or keys instead of array/object destructuring}
-\todo[inline]{Merge objects with ... spread operator}
-\todo[inline]{Secrets (e.g. API keys or SSH keys) checked into source code}
-\todo[inline]{Not waiting for a promise to finish - tests pass before even checking a result}
-\todo[inline]{Nested if-clauses instead of guard clauses}
-\todo[inline]{Expose user listing in login resolver - slight security issue}
-\todo[inline]{Clients cannot update their cache becaus types have no ID in type definitions}
-\todo[inline]{Not using hard-coded values for expectations - danger of false negatives}
+  Es spielt keine Rolle, welches Code-Beispiel du dir aussuchst, es werden alle
+  Verbesserungen und Erklärungen für diese Aufgabe summiert.
+\begin{figure}[h]
+  \lstinputlisting[
+    basicstyle=\ttfamily,
+    numbers=left,
+    numberstyle=\footnotesize,
+    numbersep=3em,
+    extendedchars=true,
+    language=JavaScript
+  ]{code/review/component-tests/1.js}
+  \caption{Auszug aus einem VueJS Komponenten Test}
+  \label{fig:apollo-server}
+\end{figure}
+\begin{figure}[h]
+  \lstinputlisting[
+    basicstyle=\ttfamily,
+    numbers=left,
+    numberstyle=\footnotesize,
+    numbersep=3em,
+    extendedchars=true,
+    language=JavaScript
+  ]{code/review/component-tests/2.js}
+  \caption{Auszug aus einem VueJS Komponenten Test}
+  \label{fig:apollo-server}
+\end{figure}
+\begin{figure}[h]
+  \lstinputlisting[
+    basicstyle=\ttfamily,
+    numbers=left,
+    numberstyle=\footnotesize,
+    numbersep=3em,
+    extendedchars=true,
+    language=JavaScript
+  ]{code/review/apollo-server/typeDefs.js}
+  \caption{Die GraphQL Typendefinitionen eines Apollo-Servers. Mit \texttt{token}
+  ist ein JWT Bearer token gemeint. Das Feld \texttt{password} ist tatsächlich
+  ein Benutzerpasswort und ist entsprechend sensibel.}
+  \label{fig:apollo-server}
+\end{figure}
+
+\clearpage
+  Hier können Probleme ausführlicher erklärt werden, wenn der Platz neben den
+  Code nicht ausreichen sollte. Bitte die Zeilennummer und die Abbildung angeben
+  um mir die Zuordnung zu erleichtern
+\makeemptybox{55em}
 
 \end{parts}
 
