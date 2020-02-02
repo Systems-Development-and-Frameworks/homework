@@ -80,16 +80,16 @@ Name:\enspace\hrulefill & Matrikelnummer:\enspace\hrulefill
     Deine Note in der Endklausur sagt nichts über dein Talent als
     Fullstack-EntwicklerIn aus. Viele wesentliche Fähigkeiten können nicht in
     einer schriftlichen Prüfung bewertet werden, z.B. selbstständiges Lernen,
-    Wissensvermittlung, Einfühlungsvermögen und Hilfsbereitschaft innerhalb des
-    Teams.\\
+    Wissensvermittlung, Einfühlungsvermögen und Hilfsbereitschaft innerhalb
+    eines Teams.\\
 
-    Der primäre Zweck der Endklausur ist es, eine formelle Anforderung der
-    Universität zu erfüllen, nämlich zu einer quantifizierbare Metrik pro
-    Teilnehmer zu finden.\\
+    Der Zweck dieser Endklausur ist es, eine Zahl für jede Teilnehmerin und
+    jeden Teilnehmer zu ermitteln. Das ist eine formelle Anforderung der
+    Universität.\\
 
     Abgesehen davon dient die Klausur als Motivation: Wenn du diesen Satz
     liest, dann bereitest du dich wahrscheinlich auf die Prüfung vor. In diesem
-    Fall hat die Endklausur und die Probeklausur ihren Zweck erfüllt.
+    Fall haben die Endklausur und die Probeklausur ihren Zweck erfüllt.
 
 \begin{center}
 Viel Erfolg! \\
@@ -137,7 +137,7 @@ Robert Schäfer
   Software-Tests helfen dabei:
   \begin{checkboxes}
   \choice Regressionen zu vermeiden
-  \choice das Verhaltens der Anwendung zu dokumentieren
+  \choice das Verhalten der Anwendung zu dokumentieren
   \choice Abhängigkeiten im Quellcode zu erkennen und zu vermeiden
   \choice bei der Software-Architektur, etwa bei beim Design von Schnittstellen
   \choice bei der Wartung des Quellcodes, z.B. beim Refactoring
@@ -147,14 +147,15 @@ Robert Schäfer
   \end{checkboxes}
 
   \part
-  Wir haben in unserem Kurs einen Software-Test als ``positiv'' definiert, wenn er
-  fehlschlägt. (Also ähnlich wie ein ``positiver'' medizinischer Test, welcher
-  aussagt, dass eine Testperson mit einer Krankheit infiziert sei.)
+  Wir haben in unserem Kurs einen Software-Test als ``positiv'' definiert, wenn
+  er fehlschlägt. (Also ähnlich wie ein ``positiver'' medizinischer Test,
+  welcher beduetet, dass eine Testperson wahrscheinlich krank ist, z.~B.
+  HIV-positiv.)
 
-  Fehlerhafte Software-Tests können zu folgenden Problemen führen:
+  Falsch implementierte Software-Tests können zu folgenden Problemen führen:
   \begin{choices}
     \choice Das Team verliert an Disziplin und das Vertrauen in Software-Testing.
-      Es beginnt Änderungen am Quellcode zu akzeptieren, obwohl der Build-Server
+      Es beginnt, Änderungen am Quellcode zu akzeptieren, obwohl der Build-Server
       fehlgeschlagen ist.
     \choice Es kommt zu Verzögerungen beim Ausrollen der Anwendung (Deployment).
     \choice Die Endbenutzer können betroffene Funktionen der Anwendung nicht mehr nutzen.
@@ -171,28 +172,38 @@ Robert Schäfer
   \end{subparts}
 
     \part[2]
-    Mit welcher Technik kann man ``falsch-negative'' Tests vorbeugen? Anders
+    Mit welcher Technik kann man ``falsch-negativen'' Tests vorbeugen? Anders
     gefragt: Wie kann man sicherstellen, dass ein Software-Test überhaupt einen
     Fehler aufzeigen würde?
-    \fillwithdottedlines{4em}
+    \fillwithdottedlines{8em}
 
 \end{parts}
 
 
 \question Git
 \begin{parts}
+\part[1]
+  Ändert ein \texttt{git commit --amend} die commit id?
+  \begin{choices}
+    \choice Ja
+    \choice Nein
+  \end{choices}
+\part[1]
+  Wie könnte man ein \texttt{git commit --amend} wieder rückgängig machen?
+  \fillwithdottedlines{4em}
+
 \part
-  Folgendes Scenario: Wir haben vergessen, rechtzeitig einen ``Feature-branch''
-  zu erstellen und jetzt zeigt der \texttt{master} branch auf unseren letzten
-  commit mit der ID~``G''. Abbildung~\ref{fig:git:initial} visualisiert den
+  Folgendes Szenario: Wir haben vergessen, rechtzeitig einen ``Feature-branch''
+  zu erstellen und jetzt zeigt der \texttt{master} branch auf den commit mit
+  der ID~``G''. Abbildung~\ref{fig:git:initial} visualisiert den
   \texttt{git} Graph zu diesem Zeitpunkt.
 
-  Unser Ziel ist es, nachträglich einen Feature-Branch zu erstellen damit wir
-  einen Pull Request mit dem gewünschten Commit-Log erstellen können. Außerdem
-  wollen wir unseren lokalen \texttt{master} branch auf den Stand des
-  \texttt{origin/master} zurücksetzen. Als letztes strukturieren wir die commits
-  mit einem interaktiven \texttt{rebase} um, mit dem Ziel, unserem Team das
-  ``Code-Review'' erleichtern.
+  Unser Ziel ist es, nachträglich einen Feature-Branch zu erstellen, damit wir
+  einen ``Pull Request'' mit einer gewünschten Liste an commits erstellen
+  können. Außerdem wollen wir unseren lokalen \texttt{master} branch auf den
+  Stand des \texttt{origin/master} zurücksetzen. Als letztes strukturieren wir
+  die commits mit einem interaktiven \texttt{rebase} um, mit dem Ziel, unserem
+  Team das ``Code-Review'' zu erleichtern.
 
 \begin{figure}[h]
   \centering
@@ -208,7 +219,7 @@ Robert Schäfer
   git checkout -b feature-branch
   \end{lstlisting}
   Wie verändert sich der \texttt{git}-Graph? Skizziere den Graphen:
-  \makeemptybox{12em}
+  \makeemptybox{16em}
 
   \subpart[1]
   Im nächsten Schritt führen wir den folgenden Befehl aus:
@@ -216,7 +227,7 @@ Robert Schäfer
   git checkout master
   \end{lstlisting}
   Wie verändert sich der \texttt{git}-Graph? Skizziere den Graphen:
-  \makeemptybox{12em}
+  \makeemptybox{16em}
 
   \subpart[1]
   Wir setzen den \texttt{master} auf den Stand des \texttt{origin/master} zurück
@@ -225,7 +236,7 @@ Robert Schäfer
   git reset origin/master --hard
   \end{lstlisting}
   Skizziere den \texttt{git}-Graphen:
-  \makeemptybox{12em}
+  \makeemptybox{16em}
 
   \subpart[1]
   Wir wechseln zurück auf den branch \texttt{feature-branch} mit diesem Befehl:
@@ -236,27 +247,29 @@ Robert Schäfer
   \begin{lstlisting}
   git rebase origin/master --interactive
   \end{lstlisting}
-  Danach öffnet sich mein Editor mit einer Liste von commits. Welche commits
+  Danach öffnet sich der Editor mit einer Liste von commits. Welche commits
   befinden sich in dieser Liste?
   \fillwithdottedlines{3em}
 
   \subpart[1]
-  Die Liste der commits sortiere ich neu, entferne einige commits und
-  verschmelze commits mit \texttt{squash}. Das sieht so aus:
+  Die Liste der commits wird neu sortiert, einige commits entfernt oder
+  mit \texttt{squash} verschmolzen. Das sieht so aus:
   \begin{lstlisting}
     pick E      commit message of E
     pick D      squash commit message of D
     squash F    with commit message of F
     pick C      commit message of C
   \end{lstlisting}
-  Wenn ich jetzt diese Änderung am ``rebase-log'' abschließe, dann löse ich das
-  \texttt{rebase} aus. Dieser Prozess wird aber einmal unterbrochen. Warum?
-  \fillwithdottedlines{3em}
+  Wenn jetzt diese Änderung am ``rebase-log'' abgeschlosssen werden, dann wird
+  der \texttt{rebase}-Prozess ausgelöst. Dieser Prozess wird aber einmal
+  unterbrochen. Warum?
+  \fillwithdottedlines{8em}
 
   \subpart[1]
-  Wie sieht der \texttt{git}-Graph letztendlich aus? Skizziere den finalen
-  Graphen:
-  \makeemptybox{12em}
+  Wie sieht der \texttt{git}-Graph letztendlich aus? Wenn neue commits
+  entstanden sind, wähle einen beliebigen, freien Buchstaben als neue Commit ID.
+  Skizziere den finalen Graphen:
+  \makeemptybox{16em}
 
 
 \end{subparts}
@@ -269,7 +282,7 @@ Robert Schäfer
 
 \begin{parts}
 \part[2] Was sind ``higher order functions''?
-\fillwithdottedlines{2em}
+\fillwithdottedlines{4em}
 
 \part[2] Im folgenden Code-Beispiel wird eine Funktion namens
   \texttt{higherOrderFunction} deklariert, die Argumente der Funktion heißen
@@ -303,7 +316,8 @@ function higherOrderFunction(some, arguments, you, can, choose) {
   Die folgenden Code-Beispiele enthalten unnötige temporäre Zustände. Zustände
   sind immer schlecht, weil sie mögliche Fehlerquellen sind. Wie können die
   folgenden Code-Beispiele umgeschrieben (refactored) werden, um die unnötigen
-  Zustände zu eliminieren? Das Verhalten des Codes darf sich nicht verändern.
+  Zustände zu eliminieren? Das Verhalten des Codes sollte sich nicht wesentlich
+  verändern.
 \begin{lstlisting}[extendedchars=true,basicstyle=\footnotesize\ttfamily,language=JavaScript]
 function findNextId (){
   let lastId = 0;
@@ -316,7 +330,7 @@ function findNextId (){
   return lastId;
 }
 \end{lstlisting}
-\makeemptybox{12em}
+\makeemptybox{16em}
 
 \begin{lstlisting}[extendedchars=true,basicstyle=\footnotesize\ttfamily,language=JavaScript]
 function filterTodos(mok, userAuth) {
@@ -330,7 +344,7 @@ function filterTodos(mok, userAuth) {
   return retArray
 }
 \end{lstlisting}
-\makeemptybox{12em}
+\makeemptybox{16em}
 
 \begin{subparts}
   \subpart[3]
@@ -346,9 +360,12 @@ function filterTodos(mok, userAuth) {
 \question Authorization and Authentication
 \begin{parts}
 \part[2]
-  Was bedeuten die Begriffe ``Authorization'' und ``Authentication''? Erkläre,
-  welche Aufgaben mit den Begriffen gemeint sind und grenze sie voneinander ab.
-  \fillwithdottedlines{6em}
+  Was bedeuten die Begriffe ``Authorization'' und ``Authentication''? Füge im
+  folgenden Lückentext die beiden Begriffe an der richtigen Stelle ein:\\
+
+  Bei der \fillin[][2in] wird festgestellt, welcher Benutzer eine Anfrage an den
+  Server sendet. Sobald der Benutzer bekannt ist, klärt die \fillin[][2in] ob
+  der Benutzer auch auf eine Ressource zugreifen darf.
 \part[1]
   Werden die Nutzdaten (der Payload) eines JWT (JSON-Web-Token) verschlüsselt
   übertragen?
@@ -446,10 +463,10 @@ function filterTodos(mok, userAuth) {
   Wie wird das relationale Datenmodell in ein graph-basiertes Datenmodell
   übertragen? Nimm als Beispiel eine Neo4J-Datenbank.
   \begin{subparts}
-    \subpart[1] Der Name einer Tabelle wird zu: \fillin
-    \subpart[1] Die Spalten in einer Tabelle werden zu: \fillin
-    \subpart[1] Eine Zeile in einer Tabelle wird zu: \fillin
-    \subpart[1] Fremdschlüssel zu anderen Tabellen werden zu: \fillin
+    \subpart[1] Tabellen-Namen werden zu: \fillin
+    \subpart[1] Tabellen-Spalten werden zu: \fillin
+    \subpart[1] Einträge in Tabellen (Zeilen) werden zu: \fillin
+    \subpart[1] Fremdschlüssel zwischen Einträgen werden zu: \fillin
   \end{subparts}
 
     \part
@@ -470,32 +487,27 @@ function filterTodos(mok, userAuth) {
       \end{choices}
     \end{subparts}
 
-  \part[2] Können in einer Neo4J Datenbank Fremdschlüssel auf fehlende Einträge
+  \part[2] Können in einer Neo4J-Datenbank Fremdschlüssel auf fehlende Einträge
   zeigen? Solche Zeiger ins Leere heißen auch ``dangling pointer''. Begründe deine
   Antwort:
   \fillwithdottedlines{4em}
 
-  \part[1] Wieviele ``Labels'' darf ein Knoten in einer Neo4J Datenbank haben?
+  \part[1] Wieviele ``Labels'' darf ein Knoten in einer Neo4J-Datenbank haben?
   Antwort: \fillin
 
-  \part[1] Wieviele ``Typen'' darf eine Beziehung in einer Neo4J Datenbank haben?
+  \part[1] Wieviele ``Typen'' darf eine Beziehung in einer Neo4J-Datenbank haben?
   Antwort: \fillin
 
 
   \part
-  Wir arbeiten auf einer leeren Neo4J Datenbank. In die Neo4J-Webkonsole geben
+  Wir arbeiten auf einer leeren Neo4J-Datenbank. In die Neo4J-Webkonsole geben
   wir folgende \texttt{cypher} Befehle ein:
   \begin{lstlisting}
-  CREATE(romeo:Person {name: 'Romeo'})
-  CREATE(juliet:Person {name: 'Juliet'})
+CREATE(romeo:Person {name: 'Romeo'})
+CREATE(juliet:Person {name: 'Juliet'})
   \end{lstlisting}
-  Abbildung~\ref{fig:neo4j:graph-merge}~(a) zeigt eine Graph-Visualisierung
+  Abbildung~\ref{fig:neo4j:graph-merge}~(a) zeigt eine Graph-Visualisierung,
   nachdem wir die Befehle ausgeführt haben.
-
-  Nun geben wir die folgende \texttt{cypher} Befehle ein:
-  \begin{lstlisting}
-  MERGE(:Person {name: 'Romeo'})-[:LOVES]->(:Person {name: 'Juliet'})
-  \end{lstlisting}
   \begin{figure}[h]
       \centering
       \subfloat[Vor dem \texttt{MERGE}]{\includesvg[inkscapelatex=false, width=0.2\textwidth]{./neo4j/before-merge.svg}}
@@ -506,17 +518,29 @@ function filterTodos(mok, userAuth) {
       \label{fig:neo4j:graph-merge}
   \end{figure}
 
+  Nun geben wir die folgende \texttt{cypher} Befehle ein:
+  \begin{lstlisting}
+MERGE(:Person {name: 'Romeo'})-[:LOVES]->(:Person {name: 'Juliet'})
+  \end{lstlisting}
+
 
   Jetzt sieht der Graph wie auf Abbildung~\ref{fig:neo4j:graph-merge}~(b) aus.
   \begin{subparts}
     \subpart[1]
     Wie können die \texttt{cypher} Befehle so verändert werden, dass keine
     Duplikate mehr entstehen?
-    \makeemptybox{8em}
+    \makeemptybox{14em}
     \subpart[2]
-    Warum enstehen überhaupt Duplikate? Wie verhält sich \texttt{MERGE} hier in
-    diesem Beispiel und warum entstehen daraufhin die zwei zusätzliche Knoten?
-    \fillwithdottedlines{8em}
+    Wenn wir initial auf dem Stand von Abbildung~\ref{fig:neo4j:graph-merge}~(a)
+    \emph{zweimal hintereinander} folgende \texttt{cypher} Befehle ausführen,
+    wie sieht der Graph dann aus?
+    \begin{lstlisting}
+MATCH(romeo:Person {name: 'Romeo'})
+MATCH(juliet:Person {name: 'Juliet'})
+CREATE(romeo)-[:LOVES]->(juliet)
+    \end{lstlisting}
+    Skizziere den Graphen in der Datenbank:
+    \makeemptybox{14em}
   \end{subparts}
 \end{parts}
 
@@ -524,7 +548,7 @@ function filterTodos(mok, userAuth) {
 
 \question VueJS and NuxtJS
 \begin{parts}
-  \part[4]
+  \part[3]
   Zu den Vorteilen von client-seitig gerenderten ``Single-page-applications''
   gegenüber traditionellen server-seitig gerenderten Web-Anwendungen gehören
   unter anderem:
@@ -534,10 +558,8 @@ function filterTodos(mok, userAuth) {
     \choice Größerer Anteil Nutzdaten in der Kommunikation zwischen Client- und Server
     \choice Bessere Suchmaschinen-Optimierung
     \choice Kompatibilität mit älteren Browsern
+    \choice Schneller initialer Seitenaufruf (``initial page load'')
   \end{checkboxes}
-
-  \part[1] Was ist isomorpher Quellcode?
-  \fillwithdottedlines{4em}
 
   \part[3]
   Welche dieser sog.\ ``JavaScript globals'' sollte in Quellcode vermieden werden,
@@ -550,7 +572,7 @@ function filterTodos(mok, userAuth) {
 
   \part[1] Zu welcher Art von Fehler kommt es, wenn man trotzdem eines dieser
   ``globals'' in einem NodeJS Prozess aufruft?
-  \fillwithdottedlines{2em}
+  \fillwithdottedlines{4em}
 
   \part
   Wirf einen Blick auf die Vue-Komponente im Code-Beispiel~\ref{fig:vue-example}.
@@ -562,7 +584,7 @@ function filterTodos(mok, userAuth) {
     \texttt{handleClick} beim Klick auf den Knopf ausgelöst werden. Durch welche
     Änderung kann der Fehler behoben werden?
     \subpart[1]
-    Wenn die Methode \texttt{handleClick} ausgelöst wird, welchen Wert hat dann
+    Wenn die Methode \texttt{handleClick} aufgerufen wird, welchen Wert hat dann
     \texttt{message}?
 
     Antwort: \fillin
@@ -578,17 +600,9 @@ function filterTodos(mok, userAuth) {
     \end{lstlisting}
     Dreht eine lokale Variable \texttt{someString} herum.
     \subpart[1]
-    Warum ist es eigentlich sinnvoll, \texttt{reversedMessage} als computed
-    property zu implementieren?
-    \fillwithdottedlines{4em}
-    \subpart[1]
-    Was spricht dagegen, \texttt{reversedMessage} als Zustand in \texttt{data}
-    zu initialisieren und zur Laufzeit zu verändern?
-    \fillwithdottedlines{4em}
-    \subpart[1]
-    Was spricht dagegen, es als Methode zu implementieren und als
-    \texttt{reversedMessage()} im ``template'' aufzurufen?
-    \fillwithdottedlines{4em}
+    Warum ist es performanter, \texttt{reversedMessage} als computed
+    property zu implementieren anstatt als Methode \texttt{reversedMessage()}?
+    \fillwithdottedlines{8em}
   \end{subparts}
 \begin{figure}[h]
   \centering
@@ -615,8 +629,16 @@ function filterTodos(mok, userAuth) {
 
   Antwort: \fillin
 
-  \part[2] Für welchen Zweck nutzt man Cucumber Testing?
-  \fillwithdottedlines{4em}
+  \part[2] Was ist das Alleinstellungsmerkmal von Cucumber Tests?
+  \begin{choices}
+    \choice ``Specification by example'', d.h. anstelle abstrakter Dokumentation
+    wird das Verhalten der Anwendung anhand von Beispielen beschrieben.
+    \choice ``Executable documentation'', d.h. dadurch dass die Dokumentation
+    regelmäßig vom Build-Server ausgeführt wird, kann die Dokumentation nicht
+    mehr veralten (``out-of-date'').
+    \choice Software-Tests werden in menschliche Sprache übersetzt, sodass auch
+    Nicht-Programmierer die Tests lesen und nachvollziehen können.
+  \end{choices}
 
   \part[2] Die Schablone eine User-Story sieht wie folgt aus:
   \begin{lstlisting}
@@ -678,7 +700,7 @@ function filterTodos(mok, userAuth) {
 \part[1]
  Mit welchen CSS-Selektor können alle Eingabefelder selektiert werden?
 
- Antwort: \fillin
+  Antwort: \fillin[][2in]
 
 \end{parts}
 
@@ -688,9 +710,24 @@ function filterTodos(mok, userAuth) {
 \part[10] Die folgenden Code-Beispiele sind Auszüge aus den Abgaben der
   Hausaufgaben und enthalten Schwächen. Finde diese Schwächen und schlage eine
   Verbesserung vor. Wenn du eine Schwäche finden kannst und eine sinnvolle
-  Verbesserung vorschlägst, gibt es dafür einen Punkt. Wenn ein schwerwiegendes
-  Problem vorliegt und du es erklären kannst, gibt es dafür einen weiteren
-  Punkt.
+  Verbesserung vorschlägst, gibt es dafür je einen Punkt.\\
+
+  Über einige dieser Schwächen haben wir ausführlich während der Vorlesung und
+  während der Übungen und in den Code-Reviews gesprochen. Dazu gehöhren:
+  \begin{itemize}
+    \item
+      Häufige Ursachen für ``falsch-negative'' oder ``falsch-positive'' Tests,
+    \item
+      Sicherheitslücken oder unnötige Preisgabe von empfindlichen Informationen,
+    \item
+      häufige Ursachen für Programmfehler, z.~B. vermeidbare Zustände,
+    \item
+      sowie Verletzungen von Spezifikationen.
+  \end{itemize}
+  Es gibt einen weiteren Punkt, wenn du erklärst, wie man diese
+  ``schwerwiegenden'' Fehler in Zukunft verhindern kannst. Auf der letzten Seite
+  gibt es genug Platz für Erklärungen.
+
 
   Es spielt keine Rolle, welches Code-Beispiel du dir aussuchst, es werden alle
   Verbesserungen und Erklärungen für diese Aufgabe summiert.
@@ -734,10 +771,10 @@ function filterTodos(mok, userAuth) {
 \end{figure}
 
 \clearpage
-  Hier können Probleme ausführlicher erklärt werden, wenn der Platz neben den
-  Code nicht ausreichen sollte. Bitte die Zeilennummer und die Abbildung angeben
-  um mir die Zuordnung zu erleichtern
-\makeemptybox{55em}
+  Hier können Probleme ausführlicher erklärt werden, wenn der Platz neben dem
+  Code nicht ausreichen sollte. Bitte die Zeilennummer und die Abbildung
+  angeben, um die Zuordnung zu erleichtern.
+\fillwithdottedlines{\stretch{1}}
 
 \end{parts}
 
