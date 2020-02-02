@@ -7,6 +7,7 @@
 \usepackage{svg}
 \usepackage{listings}
 \usepackage{todonotes}
+\usepackage[english,ngerman]{babel}
 \lstset{basicstyle=\ttfamily,
   showstringspaces=false,
   showspaces=false,
@@ -47,7 +48,7 @@
 
 %%%%% Cover page
 
-\coverfirstpageheader{HTW Berlin \\ Department of Computer Science}{\includesvg{logo}}{Systems-Development\\ and Frameworks}
+\coverfirstpageheader{HTW Berlin \\ Angewandte Informatik}{\includesvg{logo}}{Systems-Development\\ and Frameworks}
 \runningheadrule
 \runningfootrule
 \onehalfspacing
@@ -66,35 +67,36 @@
 \noindent
 \begin{tabular}{@{}p{.4\textwidth}@{\hspace{2cm}}p{.4\textwidth}@{}}
   \\
-Name:\enspace\hrulefill & Matriculation number:\enspace\hrulefill
+Name:\enspace\hrulefill & Matrikelnummer:\enspace\hrulefill
 \end{tabular}
 \noindent
-\vspace{0.5cm}
+\vspace{5em}
 
 \setlength{\fboxsep}{1em}
-\fbox{
-  \parbox{\textwidth}{
-\begin{minipage}{6.5in}
-Your grade in the following exam does not reflect your talent as a fullstack
-developer. Many skills that are essential for every developer cannot be
-assessed in a written exam, e.g. self-organization, communication of knowledge,
-empathy, helping out your co-workers.\\
+\noindent\fbox{
+  \parbox{\textwidth - 2em}{
+    Deine Note in der Endklausur sagt nichts über dein Talent als
+    Fullstack-EntwicklerIn aus. Viele wesentliche Fähigkeiten können nicht in
+    einer schriftlichen Prüfung bewertet werden, z.B. selbstständiges Lernen,
+    Wissensvermittlung, Einfühlungsvermögen und Hilfsbereitschaft innerhalb des
+    Teams.\\
 
-The primary purpose of this exam is to generate an objective metric for your
-grade which is a formal requirement of the university.\\
+    Der primäre Zweck der Endklausur ist es, eine formelle Anforderung der
+    Universität zu erfüllen, nämlich zu einer quantifizierbare Metrik pro
+    Teilnehmer zu finden.\\
 
-Besides that, the exam may work as a motivation for you to learn: When you read
-this sentence you are probably preparing yourself for the exam, so you learn
-something along the way.
+    Abgesehen davon dient die Klausur als Motivation: Wenn du diesen Satz
+    liest, dann bereitest du dich wahrscheinlich auf die Prüfung vor. In diesem
+    Fall hat die Endklausur und die Probeklausur ihren Zweck erfüllt.
 
 \begin{center}
-Good luck! \\
+Viel Erfolg! \\
 Robert Schäfer
 \end{center}
 
-\end{minipage}
 }}
 
+\vspace{3em}
 \begin{center}
 \gradetable[h][questions]
 % Or use \gradetable[v][questions]
@@ -126,7 +128,6 @@ Robert Schäfer
   \choice Ein hoher Busfaktor ist besser.
   \choice Ein niedriger Busfaktor ist besser.
   \end{choices}
-  Anwort: \fillin
 
   \part[3]
   Wie kann der Wissenstransfer im Team gewährleistet werden?
@@ -134,7 +135,7 @@ Robert Schäfer
   gelernt haben:
   \fillwithdottedlines{6em}
 
-  \part[8]
+  \part[4]
   Wobei helfen automatisierte Software-Tests?
 
   Software-Tests helfen dabei:
@@ -150,8 +151,8 @@ Robert Schäfer
   \end{checkboxes}
 
   \part
-  Wir haben in unserem Kurs einen Software-Test als "positiv" definiert, wenn er
-  fehlschlägt. (Also ähnlich wie ein "positiver" medizinischer Test, welcher
+  Wir haben in unserem Kurs einen Software-Test als ``positiv'' definiert, wenn er
+  fehlschlägt. (Also ähnlich wie ein ``positiver'' medizinischer Test, welcher
   aussagt, dass eine Testperson mit einer Krankheit infiziert sei.)
 
   Fehlerhafte Software-Tests können zu folgenden Problemen führen:
@@ -166,15 +167,15 @@ Robert Schäfer
 
   \begin{subparts}
     \subpart[2]
-    Welche dieser Probleme entstehen durch "falsch-positive" Software-Tests?
+    Welche dieser Probleme entstehen durch ``falsch-positive'' Software-Tests?
     Auswahl: \fillin
     \subpart[2]
-    Welche dieser Probleme entstehen durch "falsch-negative" Software-Tests?
+    Welche dieser Probleme entstehen durch ``falsch-negative'' Software-Tests?
     Auswahl: \fillin
   \end{subparts}
 
     \part[2]
-    Mit welcher Technik kann man "falsch-negative" Tests vorbeugen? Anders
+    Mit welcher Technik kann man ``falsch-negative'' Tests vorbeugen? Anders
     gefragt: Wie kann man sicherstellen, dass ein Software-Test überhaupt einen
     Fehler aufzeigen würde?
     \fillwithdottedlines{4em}
@@ -288,14 +289,14 @@ Robert Schäfer
 \question Funktionale Programmierung
 
 \begin{parts}
-\part[2] Was sind "higher order functions"?
+\part[2] Was sind ``higher order functions''?
 \fillwithdottedlines{2em}
 
 \part[2] Im folgenden Code-Beispiel wird eine Funktion namens
   \texttt{higherOrderFunction} deklariert, die Argumente der Funktion heißen
   \texttt{some, arguments, you, can} und \texttt{choose}. Bitte schreibe
   eine Implementierung, sodass die Funktion \emph{ganz offensichtlich} zu einer
-  "higher-order function" wird.
+  ``higher-order function'' wird.
 \begin{lstlisting}[extendedchars=true,basicstyle=\footnotesize\ttfamily,language=JavaScript]
 function higherOrderFunction(some, arguments, you, can, choose) {
   // Write down any implementation, which obviously turns this function into a
@@ -311,11 +312,14 @@ function higherOrderFunction(some, arguments, you, can, choose) {
 \end{lstlisting}
 
 \part
-  \todo[inline]{Array.prototype.forEach}
-  \todo[inline]{Array.prototype.map}
-  \todo[inline]{Array.prototype.find}
-  \todo[inline]{Array.prototype.filter}
-  \todo[inline]{Array.prototype.reduce}
+  \todo[inline]{
+    Lerne folgende Methoden auf \texttt{Array.prototype}:
+      \texttt{forEach},
+      \texttt{map},
+      \texttt{find},
+      \texttt{filter},
+      \texttt{reduce}
+  }
 
   Die folgenden Code-Beispiele enthalten unnötige temporäre Zustände. Zustände
   sind immer schlecht, weil sie mögliche Fehlerquellen sind. Wie können die
@@ -348,8 +352,6 @@ function filterTodos(mok, userAuth) {
 }
 \end{lstlisting}
 \makeemptybox{12em}
-
-  \missingfigure{Add one more code example here}
 
 \begin{subparts}
   \subpart[3]
@@ -396,17 +398,28 @@ function filterTodos(mok, userAuth) {
   \choice Die Menge der ausgetauschen Daten pro Anfrage (der Traffic) wird minimiert.
   \choice Die Anzahl der Datenbank-Abfragen wird minimiert.
   \choice Daten können in einer Graph-Datenbank gespeichert werden.
-  \choice Der Server wird robuster gegenüber Denial-of-Server Angriffen.
+  \choice Der Server wird robuster gegenüber Denial-of-Service Angriffen.
   \end{checkboxes}
+\part
+  Die Methodensignatur eines resolvers enthält vier Argumente, nämlich
+  \texttt{parent}, \texttt{args}, \texttt{context} und \texttt{resolveInfo}.
+  \begin{subparts}
+    \subpart[1]
+    Sollte das Argument \texttt{context} in allen resolvern gleich sein?
+    \begin{choices}
+      \choice Ja
+      \choice Nein
+    \end{choices}
+    \subpart[1]
+    Wozu wird das Argument \texttt{resolveInfo} genutzt?
+    \fillwithdottedlines{4em}
+  \end{subparts}
 
   \part[2]
-  \todo[inline]{Few groups used type resolvers in their assignments.
-  Understanding the difference between a top level resolver and a type resolver
-  is crucial. You should also know the use cases, for what you should use a top
-  level resolver and when to use a type resolver.}
-  Look at the implementation in figure~\ref{fig:apollo-server}. When we send
-  the graphql query in figure~\ref{fig:graphql-query} to the server, what is the
-  response of the server?
+  Schau auf die Implementierung eines Apollo-Servers in
+  Abbildung~\ref{fig:apollo-server}. Wenn wir die GraphQL Anfrage in
+  Abbildung~\ref{fig:graphql-query} an den Server schicken, mit welcher Antwort
+  reagiert der Server?
   \begin{figure}[h]
     \begin{lstlisting}[language=bash]
       query {
@@ -421,14 +434,14 @@ function filterTodos(mok, userAuth) {
   \end{figure}
   \makeemptybox{12em}
 
-\part What gets written to the terminal of the backend? Write down the output of
-  the \texttt{console.log} statements. You will get points for the following:
+  \part Was schreibt der Server als Ausgabe aufs Terminal? Schreibe die
+  \texttt{console.log} Ausgaben auf. Folgende korrekte Angaben werden bewertet:
 \begin{subparts}
-  \subpart[1] Correct selection of traversed calls
-  \subpart[1] Correct number of calls
-  \subpart[1] Correct order of calls
-  \subpart[1] Correct value of \texttt{parent}
-  \subpart[1] Correct value of \texttt{args}
+  \subpart[1] Korrekte Auswahl, welche Log-Ausgaben überhaupt erreicht werden
+  \subpart[1] Korrekte Anzahl aller Ausgaben
+  \subpart[1] Korrekte Reihenfolge der Ausgaben
+  \subpart[1] Korrekter Wert des Arguments \texttt{parent}
+  \subpart[1] Korrekter Wert des Arguments \texttt{args}
 \end{subparts}
 \makeemptybox{18em}
 \begin{figure}[h]
@@ -447,34 +460,45 @@ function filterTodos(mok, userAuth) {
 
 
 \question Neo4J
-\todo[inline]{Behaviour of MERGE}
-\todo[inline]{Pattern with multiple hops (e.g. friend of a friend)}
-\todo[inline]{How to select nodes without a particular relationship}
-\todo[inline]{OPTIONAL MATCH}
-
-
 \begin{parts}
 
-  \part[5]
-  Für welche der folgenden Klauseln in der Graph-Datenbank-Anfragesprache
-  \texttt{cypher} gibt es eine äquivalente Klausel in \texttt{SQL}:
-  \begin{checkboxes}
-    \choice \texttt{MATCH (node:LABEL) }
-    \choice \texttt{MATCH (node)-[:RELATED]->(otherNode) }
-    \choice \texttt{OPTIONAL MATCH (node)-[:RELATED]->(othernode) }
-    \choice \texttt{WHERE node.property = 'somevalue'}
-    \choice \texttt{MATCH (node)-[*]->(yetAnotherNode)}
-  \end{checkboxes}
+  \part
+  Wie wird das relationale Datenmodell in ein graph-basiertes Datenmodell
+  übertragen? Nimm als Beispiel eine Neo4J-Datenbank.
+  \begin{subparts}
+    \subpart[1] Der Name einer Tabelle wird zu: \fillin
+    \subpart[1] Die Spalten in einer Tabelle werden zu: \fillin
+    \subpart[1] Eine Zeile in einer Tabelle wird zu: \fillin
+    \subpart[1] Fremdschlüssel zu anderen Tabellen werden zu: \fillin
+  \end{subparts}
+
+    \part
+    Betrachte die \texttt{cypher} query:
+    \begin{lstlisting}
+    MATCH (node)-[*]->(yetAnotherNode) RETURN *
+    \end{lstlisting}
+    \begin{subparts}
+      \subpart
+      Was bedeutet der Stern in den eckigen Klammern im ``pattern'' dieser
+      query?
+      \fillwithdottedlines{4em}
+      \subpart
+      Ist so eine Anfrage auch in einer relationalen Datenbank mit SQL möglich?
+      \begin{choices}
+        \choice Ja
+        \choice Nein
+      \end{choices}
+    \end{subparts}
 
   \part[2] Können in einer Neo4J Datenbank Fremdschlüssel auf fehlende Einträge
-  zeigen? Solche Zeiger ins Leere heißen auch "dangling pointer". Begründe deine
+  zeigen? Solche Zeiger ins Leere heißen auch ``dangling pointer''. Begründe deine
   Antwort:
   \fillwithdottedlines{4em}
 
-  \part[1] Wieviele "Labels" darf ein Knoten in einer Neo4J Datenbank haben?
+  \part[1] Wieviele ``Labels'' darf ein Knoten in einer Neo4J Datenbank haben?
   Antwort: \fillin
 
-  \part[1] Wieviele "Typen" darf eine Beziehung in einer Neo4J Datenbank haben?
+  \part[1] Wieviele ``Typen'' darf eine Beziehung in einer Neo4J Datenbank haben?
   Antwort: \fillin
 
 
@@ -513,23 +537,6 @@ function filterTodos(mok, userAuth) {
     explain this?
     \fillwithdottedlines{8em}
   \end{subparts}
-
-  \part
-  Here is the visualization of a graph.
-  \missingfigure{Add graph visualization of the current state in the database}
-  When you send the following cypher statement to the database:
-  \missingfigure{Add cypher statement}
-  \begin{subparts}
-  \subpart[3] How does the result set look like?
-  \makeemptybox{12em}
-  \subpart[3] How many records are in the result set?
-  \fillwithdottedlines{2em}
-  \subpart[3] Here is a graph visualization of a desired state in the database.
-  \missingfigure{Add graph visualization of the desired state in the database}
-  Write down a single cypher statement that produces the desired result.
-  \makeemptybox{12em}
-  \fillwithdottedlines{2em}
-  \end{subparts}
 \end{parts}
 
 \clearpage
@@ -560,7 +567,7 @@ function filterTodos(mok, userAuth) {
   \fillwithdottedlines{4em}
 
   \part[3]
-  Welche dieser sog.\ "JavaScript globals" sollte in Quellcode vermieden werden,
+  Welche dieser sog.\ ``JavaScript globals'' sollte in Quellcode vermieden werden,
   welcher auch von server-seitig vorgerenderten Web-Anwendungen ausgeführt wird:
   \begin{checkboxes}
     \choice \texttt{document}
@@ -569,7 +576,7 @@ function filterTodos(mok, userAuth) {
   \end{checkboxes}
 
   \part[1] Zu welcher Art von Fehler kommt es, wenn man trotzdem einer dieser
-  "globals" in einem NodeJS Prozess aufruft?
+  ``globals'' in einem NodeJS Prozess aufruft?
   \fillwithdottedlines{2em}
 
   \part
@@ -667,8 +674,7 @@ function filterTodos(mok, userAuth) {
 \begin{parts}
 \part[3]
   Welche HTML-Elemente werden bzw.\ welches HTML-Element wird in Abbildung~\ref{fig:example-html}
-  mit den folgenden CSS Selektoren selektiert? Gib als Antwort eine Zeilennummer
-  an:
+  mit den folgenden CSS Selektoren selektiert? Gib als Antwort Zeilennummern an:
   \begin{subparts}
     \subpart
     \begin{lstlisting}
