@@ -1,4 +1,7 @@
-\documentclass[addpoints]{exam}
+\documentclass[
+ % addpoints, ngerman
+addpoints,a4paper,ngerman,answers
+]{exam}
 %\documentclass[12pt,addpoints,answers]{exam} % To print with answers
 \usepackage{amsmath}
 \usepackage{graphicx}
@@ -8,6 +11,18 @@
 \usepackage{listings}
 \usepackage{todonotes}
 \usepackage{subfig}
+
+
+
+\pointpoints{Punkt}{Punkte}
+\renewcommand{\solutiontitle}{\noindent\textbf{Lösung:}\enspace}
+
+
+\chqword{Frage}
+\chpgword{Seite}
+\chpword{Punkte}
+\chsword{Erreicht}
+\chtword{Gesamt}
 
 \usepackage[english,ngerman]{babel}
 \lstset{basicstyle=\ttfamily,
@@ -50,7 +65,14 @@
 
 %%%%% Cover page
 
-\coverfirstpageheader{HTW Berlin \\ Angewandte Informatik}{\includesvg{logo}}{Systems-Development\\ and Frameworks}
+\coverfirstpageheader{
+  HTW Berlin \\ Angewandte Informatik
+}{
+  \includesvg{logo}
+}{
+  Systems-Development\\ and Frameworks
+}
+
 \runningheadrule
 \runningfootrule
 \onehalfspacing
@@ -74,9 +96,9 @@ Name:\enspace\hrulefill & Matrikelnummer:\enspace\hrulefill
 \noindent
 \vspace{5em}
 
-\setlength{\fboxsep}{1em}
+\setlength{\fboxsep}{2em}
 \noindent\fbox{
-  \parbox{\textwidth - 2em}{
+  \parbox{\textwidth - 4em}{
     Deine Note in der Endklausur sagt nichts über dein Talent als
     Fullstack-EntwicklerIn aus. Viele wesentliche Fähigkeiten können nicht in
     einer schriftlichen Prüfung bewertet werden, z.B. selbstständiges Lernen,
@@ -100,7 +122,8 @@ Robert Schäfer
 
 \vspace{3em}
 \begin{center}
-\gradetable[h][questions]
+  \gradetable[h][questions]
+
 % Or use \gradetable[v][questions]
 \end{center}
 
@@ -129,9 +152,9 @@ Robert Schäfer
   Wie kann der Wissenstransfer im Team gewährleistet werden?
   Nenne mindestens drei unterscheidbare Methodiken, die wir im Kurs kennen
   gelernt haben:
-  \fillwithdottedlines{6em}
+  \fillwithdottedlines{8em}
 
-  \part[4]
+  \part[6]
   Wobei helfen automatisierte Software-Tests?
 
   Software-Tests helfen dabei:
@@ -143,13 +166,13 @@ Robert Schäfer
   \choice bei der Wartung des Quellcodes, z.B. beim Refactoring
   \choice die Korrektheit des Quellcodes zu beweisen
   \choice sicherzustellen, dass die Anforderungen des Kunden bzw. Endbenutzers erfüllt sind
-  \choice Aussagen über das Laufzeitverhalten zu treffen, z.B. Komplexitätsklassen von Algorithmen
+  \choice das Laufzeitverhalten zu beschreiben, z.B. Komplexitätsklassen von Algorithmen
   \end{checkboxes}
 
   \part
   Wir haben in unserem Kurs einen Software-Test als ``positiv'' definiert, wenn
   er fehlschlägt. (Also ähnlich wie ein ``positiver'' medizinischer Test,
-  welcher beduetet, dass eine Testperson wahrscheinlich krank ist, z.~B.
+  welcher bedeutet, dass eine Testperson wahrscheinlich krank ist, z.~B.
   HIV-positiv.)
 
   Falsch implementierte Software-Tests können zu folgenden Problemen führen:
@@ -165,9 +188,12 @@ Robert Schäfer
   \begin{subparts}
     \subpart[2]
     Welche dieser Probleme entstehen durch ``falsch-positive'' Software-Tests?
+
     Auswahl: \fillin
     \subpart[2]
+
     Welche dieser Probleme entstehen durch ``falsch-negative'' Software-Tests?
+
     Auswahl: \fillin
   \end{subparts}
 
@@ -195,7 +221,7 @@ Robert Schäfer
 \part
   Folgendes Szenario: Wir haben vergessen, rechtzeitig einen ``Feature-branch''
   zu erstellen und jetzt zeigt der \texttt{master} branch auf den commit mit
-  der ID~``G''. Abbildung~\ref{fig:git:initial} visualisiert den
+  der ID~\texttt{G}. Abbildung~\ref{fig:git:initial} visualisiert den
   \texttt{git} Graph zu diesem Zeitpunkt.
 
   Unser Ziel ist es, nachträglich einen Feature-Branch zu erstellen, damit wir
@@ -218,7 +244,8 @@ Robert Schäfer
   \begin{lstlisting}
   git checkout -b feature-branch
   \end{lstlisting}
-  Wie verändert sich der \texttt{git}-Graph? Skizziere den Graphen:
+  Wie verändert sich der \texttt{git}-Graph? Skizziere den Graphen auf der
+  nächsten Seite:
   \makeemptybox{16em}
 
   \subpart[1]
@@ -265,7 +292,7 @@ Robert Schäfer
   unterbrochen. Warum?
   \fillwithdottedlines{8em}
 
-  \subpart[1]
+  \subpart[2]
   Wie sieht der \texttt{git}-Graph letztendlich aus? Wenn neue commits
   entstanden sind, wähle einen beliebigen, freien Buchstaben als neue Commit ID.
   Skizziere den finalen Graphen:
@@ -283,16 +310,17 @@ Robert Schäfer
 \begin{parts}
 \part[2] Was sind ``higher order functions''?
 \fillwithdottedlines{4em}
+\newpage
 
 \part[2] Im folgenden Code-Beispiel wird eine Funktion namens
   \texttt{higherOrderFunction} deklariert, die Argumente der Funktion heißen
   \texttt{some, arguments, you, can} und \texttt{choose}. Bitte schreibe
   eine Implementierung, sodass die Funktion \emph{ganz offensichtlich} zu einer
   ``higher-order function'' wird.
-\begin{lstlisting}[extendedchars=true,basicstyle=\footnotesize\ttfamily,language=JavaScript]
+\begin{lstlisting}[extendedchars=true,basicstyle=\ttfamily,language=JavaScript]
 function higherOrderFunction(some, arguments, you, can, choose) {
-  // Write down any implementation, which obviously turns this function into a
-  // higher order function.
+  // Write down any implementation, which obviously turns this
+  // function into a higher order function.
   // ...
 
 
@@ -304,56 +332,70 @@ function higherOrderFunction(some, arguments, you, can, choose) {
 \end{lstlisting}
 
 \part
-  \todo[inline]{
-    Lerne folgende Methoden auf \texttt{Array.prototype}:
-      \texttt{forEach},
-      \texttt{map},
-      \texttt{find},
-      \texttt{filter},
-      \texttt{reduce}
-  }
-
   Die folgenden Code-Beispiele enthalten unnötige temporäre Zustände. Zustände
-  sind immer schlecht, weil sie mögliche Fehlerquellen sind. Wie können die
-  folgenden Code-Beispiele umgeschrieben (refactored) werden, um die unnötigen
+  sind immer ungünstig, weil sie mögliche Fehlerquellen sein können. Wie können
+  die folgenden Code-Beispiele umgeschrieben (refactored) werden, um die unnötigen
   Zustände zu eliminieren? Das Verhalten des Codes sollte sich nicht wesentlich
   verändern.
-\begin{lstlisting}[extendedchars=true,basicstyle=\footnotesize\ttfamily,language=JavaScript]
-function findNextId (){
+
+  Es gibt für jedes Code-Beispiel einen Punkt, wenn die richtige Funktion von
+  \texttt{Array.prototype} ausgewählt wird.
+  Für jedes korrekte Refactoring eines Code-Beispiels gibt es einen weiteren
+  Punkt. Geringfügige Syntax-Fehler führen zu keinem Punktabzug.
+  \begin{subparts}
+  \subpart[2]
+\begin{lstlisting}[extendedchars=true,basicstyle=\ttfamily,language=JavaScript]
+function findNextId (todos){
   let lastId = 0;
-  for (i = 0; i < data.todos.length; i++) {
-      if (data.todos[i].id > lastId) {
-          lastId = data.todos[i].id;
+  for (i = 0; i < todos.length; i++) {
+      if (todos[i].id > lastId) {
+          lastId = todos[i].id;
       }
   }
   lastId += 1;
   return lastId;
 }
-\end{lstlisting}
-\makeemptybox{16em}
 
-\begin{lstlisting}[extendedchars=true,basicstyle=\footnotesize\ttfamily,language=JavaScript]
-function filterTodos(mok, userAuth) {
+function refactoredFindNextId(todos){
+  // your code goes here...
+
+
+
+
+
+
+
+
+  return lastId;
+}
+\end{lstlisting}
+\newpage
+\subpart[2]
+\begin{lstlisting}[extendedchars=true,basicstyle=\ttfamily,language=JavaScript]
+function filterTodos(todos, userAuth) {
   var retArray = []
 
-  for (var i = 0; i < mok.length; i++) {
-      if (mok[i].userAuth == userAuth) {
-          retArray.push(mok[i])
+  for (var i = 0; i < todos.length; i++) {
+      if (todos[i].userAuth == userAuth) {
+          retArray.push(todos[i])
       }
   }
   return retArray
 }
-\end{lstlisting}
-\makeemptybox{16em}
 
-\begin{subparts}
-  \subpart[3]
-  Es gibt für jedes Code-Beispiel einen Punkt, wenn die richtige Funktion von
-  \texttt{Array.prototype} ausgewählt wird.
-  \subpart[3]
-  Für jedes korrekte Refactoring eines Code-Beispiels gibt es einen weiteren
-  Punkt. Geringfügige Syntax-Fehler führen zu keinem Punktabzug.
-\end{subparts}
+
+function refactoredFilterTodos(todos, userAuth) {
+  // your code goes here
+
+
+
+
+
+
+  return retArray
+}
+\end{lstlisting}
+  \end{subparts}
 \end{parts}
 
 
@@ -367,7 +409,7 @@ function filterTodos(mok, userAuth) {
   Server sendet. Sobald der Benutzer bekannt ist, klärt die \fillin[][2in] ob
   der Benutzer auch auf eine Ressource zugreifen darf.
 \part[1]
-  Werden die Nutzdaten (der Payload) eines JWT (JSON-Web-Token) verschlüsselt
+  Werden die Nutzdaten (``Payload'') eines ``JWT Bearer token'' verschlüsselt
   übertragen?
   \begin{choices}
     \choice Ja
@@ -382,10 +424,12 @@ function filterTodos(mok, userAuth) {
   \end{choices}
 \end{parts}
 
+\clearpage
+
 \question GraphQL and Apollo-Server
 
 \begin{parts}
-\part[7] Welche Probleme löst GraphQL in Bezug auf REST?
+\part[4] Welche Probleme löst GraphQL in Bezug auf REST?
   \begin{checkboxes}
   \choice HTTP-Caching Mechanismen werden besser ausgenutzt .
   \choice Auf dem Client kann die Benutzeroberfläche automatisch aktualisiert werden.
@@ -394,6 +438,7 @@ function filterTodos(mok, userAuth) {
   \choice Die Anzahl der Datenbank-Abfragen wird minimiert.
   \choice Daten können in einer Graph-Datenbank gespeichert werden.
   \choice Der Server wird robuster gegenüber Denial-of-Service Angriffen.
+  \choice Die API kann automatisch dokumentiert werden
   \end{checkboxes}
 \part
   Die Methodensignatur eines resolvers enthält vier Argumente, nämlich
@@ -405,9 +450,9 @@ function filterTodos(mok, userAuth) {
       \choice Ja
       \choice Nein
     \end{choices}
-    \subpart[1]
+    \subpart[2]
     Wozu wird das Argument \texttt{resolveInfo} genutzt?
-    \fillwithdottedlines{4em}
+    \fillwithdottedlines{6em}
   \end{subparts}
 
   \part[2]
@@ -427,7 +472,7 @@ function filterTodos(mok, userAuth) {
     \caption{Graphql query}
     \label{fig:graphql-query}
   \end{figure}
-  \makeemptybox{12em}
+  \makeemptybox{18em}
 
   \part Was schreibt der Server als Ausgabe aufs Terminal? Schreibe die
   \texttt{console.log} Ausgaben auf. Folgende korrekte Angaben werden bewertet:
@@ -439,9 +484,9 @@ function filterTodos(mok, userAuth) {
   \subpart[1] Korrekter Wert des Arguments \texttt{args}
 \end{subparts}
 \makeemptybox{18em}
-\begin{figure}[h]
+\begin{figure}[t!]
   \lstinputlisting[
-    basicstyle=\footnotesize\ttfamily,
+    basicstyle=\ttfamily,
     numbers=left,
     numberstyle=\footnotesize,
     numbersep=3em,
@@ -607,7 +652,7 @@ CREATE(romeo)-[:LOVES]->(juliet)
 \begin{figure}[h]
   \centering
   \lstinputlisting[
-    basicstyle=\footnotesize\ttfamily,
+    basicstyle=\ttfamily,
     numbers=left,
     language=HTML
   ]{code/vuejs/Example.vue}
@@ -653,6 +698,7 @@ CREATE(romeo)-[:LOVES]->(juliet)
   \fillwithdottedlines{8em}
 \end{parts}
 
+\newpage
 \question CSS
 \begin{figure}[h]
   \centering
@@ -670,7 +716,6 @@ CREATE(romeo)-[:LOVES]->(juliet)
   \begin{subparts}
     \subpart
     \begin{lstlisting}
-
     .login-form:first-child
 
     \end{lstlisting}
@@ -680,7 +725,6 @@ CREATE(romeo)-[:LOVES]->(juliet)
     \subpart
 
     \begin{lstlisting}
-
     .login-form :first-child
 
     \end{lstlisting}
@@ -690,7 +734,6 @@ CREATE(romeo)-[:LOVES]->(juliet)
     \subpart
 
     \begin{lstlisting}
-
     .login-form > :first-child
 
     \end{lstlisting}
