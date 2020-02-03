@@ -1,4 +1,3 @@
-const { applyMiddleware } = require('graphql-middleware')
 const { ApolloServer, gql } = require('apollo-server')
 const { makeExecutableSchema } = require('graphql-tools')
 
@@ -12,24 +11,13 @@ type Student {
 
 type Query {
   student(id: ID): Student
-  allStudents(limit: Int): [Student]
+  allStudents: [Student]
 }
 `
 const students = [
-  { id: 1, firstname: 'Alice', lastname: 'Wonderland' },
-  { id: 2, firstname: 'Bob', lastname: 'Builder' },
-  { id: 3, firstname: 'Mallory', lastname: 'Malicious' },
+  { id: '1', firstname: 'Bob', lastname: 'Builder' },
+  { id: '2', firstname: 'Alice', lastname: 'Wonderland' },
 ]
-
-const middleware = {
-  Student: {
-    fullname: (resolve, parent, args, context, resolveInfo) => {
-      const result = resolve(parent, args, context, resolveInfo)
-      console.log('Student.fullname resolved:', result)
-      return result
-    }
-  }
-}
 
 const resolvers = {
   Query: {
@@ -39,12 +27,12 @@ const resolvers = {
     },
     allStudents: (parent, args, context, resolveInfo) => {
       console.log('Query.allStudents:', parent, args)
-      return students.slice(0, args.limit || students.length)
+      return students
     },
   },
   Student: {
     fullname: (parent, args, context, resolveInfo) => {
-      console.log('Student.fullname:', parent, args)
+      console.log('Student.fullname:', parent.id, args)
       if (args.reverse) return [parent.lastname, parent.firstname].join(', ')
       return [parent.firstname, parent.lastname].join(' ')
     }
@@ -52,7 +40,6 @@ const resolvers = {
 }
 
 let schema = makeExecutableSchema({ typeDefs, resolvers })
-schema = applyMiddleware(schema, middleware )
 const server = new ApolloServer({ schema });
 server.listen().then(({ url }) => {
   console.log(`🚀 Server ready at ${url}`);

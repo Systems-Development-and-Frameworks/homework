@@ -10,7 +10,7 @@
       Click me
     </button>
     <p>
-      {{ reversedMessage }}
+      {{ exclaimedMessage }}
     </p>
   </div>
 </template>
@@ -19,19 +19,24 @@
 export default {
   data() {
     return {
-      message: 'Hello!'
+      message: 'Hello'
     }
   },
   computed: {
-    // Hier kann die computed property namens `reversedMessage` implementiert
+    // Hier kann die computed property namens `exclaimedMessage` implementiert
     // werden
+
+
+
+
+
 
 
 
   },
   methods: {
     handleClick() {
-      this.message = `${this.message}!`
+      this.message = this.message.split('').reverse().join('')
     },
   },
 }

@@ -24,7 +24,7 @@ addpoints,a4paper,ngerman,answers
 \chsword{Erreicht}
 \chtword{Gesamt}
 
-\usepackage[english,ngerman]{babel}
+\usepackage[ngerman]{babel}
 \lstset{basicstyle=\ttfamily,
   showstringspaces=false,
   showspaces=false,
@@ -55,10 +55,10 @@ addpoints,a4paper,ngerman,answers
 \pagestyle{headandfoot}
 \firstpageheadrule
 \firstpageheader{Name:} { } {Systems-Development and Frameworks}
-\firstpagefooter{}{Final Exam, Page \thepage\ of \numpages}
+\firstpagefooter{}{Endklausur, Seite \thepage\ von \numpages}
 {}
 \runningheader{Name:} { } {Systems-Development and Frameworks}
-\runningfooter{}{Final Exam, Page \thepage\ of \numpages}
+\runningfooter{}{Endklausur, Seite \thepage\ von \numpages}
 {}
 \runningheadrule
 \runningfootrule
@@ -67,9 +67,7 @@ addpoints,a4paper,ngerman,answers
 
 \coverfirstpageheader{
   HTW Berlin \\ Angewandte Informatik
-}{
-  \includesvg{logo}
-}{
+}{}{
   Systems-Development\\ and Frameworks
 }
 
@@ -109,9 +107,7 @@ Name:\enspace\hrulefill & Matrikelnummer:\enspace\hrulefill
     jeden Teilnehmer zu ermitteln. Das ist eine formelle Anforderung der
     Universität.\\
 
-    Abgesehen davon dient die Klausur als Motivation: Wenn du diesen Satz
-    liest, dann bereitest du dich wahrscheinlich auf die Prüfung vor. In diesem
-    Fall haben die Endklausur und die Probeklausur ihren Zweck erfüllt.
+    Abgesehen davon dient die Klausur als Motivation für euch zum Lernen.
 
 \begin{center}
 Viel Erfolg! \\
@@ -144,8 +140,8 @@ Robert Schäfer
   \part[1]
   Was ist besser? Ein möglichst hoher Busfaktor oder ein niedriger Busfaktor?
   \begin{choices}
-  \choice Ein hoher Busfaktor ist besser.
   \choice Ein niedriger Busfaktor ist besser.
+  \choice Ein hoher Busfaktor ist besser.
   \end{choices}
 
   \part[3]
@@ -159,14 +155,14 @@ Robert Schäfer
 
   Software-Tests helfen dabei:
   \begin{checkboxes}
-  \choice Regressionen zu vermeiden
-  \choice das Verhalten der Anwendung zu dokumentieren
   \choice Abhängigkeiten im Quellcode zu erkennen und zu vermeiden
-  \choice bei der Software-Architektur, etwa bei beim Design von Schnittstellen
-  \choice bei der Wartung des Quellcodes, z.B. beim Refactoring
-  \choice die Korrektheit des Quellcodes zu beweisen
-  \choice sicherzustellen, dass die Anforderungen des Kunden bzw. Endbenutzers erfüllt sind
   \choice das Laufzeitverhalten zu beschreiben, z.B. Komplexitätsklassen von Algorithmen
+  \choice die Korrektheit des Quellcodes zu beweisen
+  \choice bei der Software-Architektur, etwa bei beim Design von Schnittstellen
+  \choice Regressionen zu vermeiden
+  \choice sicherzustellen, dass die Anforderungen des Kunden bzw. Endbenutzers erfüllt sind
+  \choice das Verhalten der Anwendung zu dokumentieren
+  \choice bei der Wartung des Quellcodes, z.B. beim Refactoring
   \end{checkboxes}
 
   \part
@@ -177,12 +173,12 @@ Robert Schäfer
 
   Falsch implementierte Software-Tests können zu folgenden Problemen führen:
   \begin{choices}
+    \choice Es können Sicherheitslücken entstehen.
+    \choice Es kommt zu Verzögerungen beim Ausrollen der Anwendung (Deployment).
+    \choice Die Endbenutzer können betroffene Funktionen der Anwendung nicht mehr nutzen.
     \choice Das Team verliert an Disziplin und das Vertrauen in Software-Testing.
       Es beginnt, Änderungen am Quellcode zu akzeptieren, obwohl der Build-Server
       fehlgeschlagen ist.
-    \choice Es kommt zu Verzögerungen beim Ausrollen der Anwendung (Deployment).
-    \choice Die Endbenutzer können betroffene Funktionen der Anwendung nicht mehr nutzen.
-    \choice Es können Sicherheitslücken entstehen.
   \end{choices}
 
   \begin{subparts}
@@ -238,20 +234,12 @@ Robert Schäfer
   \label{fig:git:initial}
 \end{figure}
 
+  \newpage
 \begin{subparts}
   \subpart[1]
   Im ersten Schritt führen wir den folgenden Befehl aus:
   \begin{lstlisting}
-  git checkout -b feature-branch
-  \end{lstlisting}
-  Wie verändert sich der \texttt{git}-Graph? Skizziere den Graphen auf der
-  nächsten Seite:
-  \makeemptybox{16em}
-
-  \subpart[1]
-  Im nächsten Schritt führen wir den folgenden Befehl aus:
-  \begin{lstlisting}
-  git checkout master
+  git branch feature-branch
   \end{lstlisting}
   Wie verändert sich der \texttt{git}-Graph? Skizziere den Graphen:
   \makeemptybox{16em}
@@ -270,6 +258,11 @@ Robert Schäfer
   \begin{lstlisting}
   git checkout feature-branch
   \end{lstlisting}
+  Wie verändert sich der \texttt{git}-Graph? Skizziere den Graphen:
+  \makeemptybox{16em}
+
+  \newpage
+  \subpart[1]
   Schließlich beginnen wir ein interaktives \texttt{rebase} mit diesem Befehl:
   \begin{lstlisting}
   git rebase origin/master --interactive
@@ -282,10 +275,9 @@ Robert Schäfer
   Die Liste der commits wird neu sortiert, einige commits entfernt oder
   mit \texttt{squash} verschmolzen. Das sieht so aus:
   \begin{lstlisting}
-    pick E      commit message of E
-    pick D      squash commit message of D
-    squash F    with commit message of F
-    pick C      commit message of C
+pick   F    commit message of F
+pick   D    squash commit message of D
+squash G    with commit message of G
   \end{lstlisting}
   Wenn jetzt diese Änderung am ``rebase-log'' abgeschlosssen werden, dann wird
   der \texttt{rebase}-Prozess ausgelöst. Dieser Prozess wird aber einmal
@@ -309,7 +301,7 @@ Robert Schäfer
 
 \begin{parts}
 \part[2] Was sind ``higher order functions''?
-\fillwithdottedlines{4em}
+\fillwithdottedlines{6em}
 \newpage
 
 \part[2] Im folgenden Code-Beispiel wird eine Funktion namens
@@ -345,18 +337,18 @@ function higherOrderFunction(some, arguments, you, can, choose) {
   \begin{subparts}
   \subpart[2]
 \begin{lstlisting}[extendedchars=true,basicstyle=\ttfamily,language=JavaScript]
-function findNextId (todos){
-  let lastId = 0;
+function findTodo(todos, id){
+  let found
   for (i = 0; i < todos.length; i++) {
-      if (todos[i].id > lastId) {
-          lastId = todos[i].id;
+      if (todos[i].id === id) {
+        found = todos[i]
+        break
       }
   }
-  lastId += 1;
-  return lastId;
+  return found
 }
 
-function refactoredFindNextId(todos){
+function refactoredFindTodo(todos, id){
   // your code goes here...
 
 
@@ -364,35 +356,29 @@ function refactoredFindNextId(todos){
 
 
 
-
-
-  return lastId;
+  // return ?
 }
 \end{lstlisting}
 \newpage
 \subpart[2]
 \begin{lstlisting}[extendedchars=true,basicstyle=\ttfamily,language=JavaScript]
-function filterTodos(todos, userAuth) {
+function incrementIds(ids, addition = 1) {
   var retArray = []
-
-  for (var i = 0; i < todos.length; i++) {
-      if (todos[i].userAuth == userAuth) {
-          retArray.push(todos[i])
-      }
+  for (var i = 0; i < ids.length; i++) {
+    retArray.push(ids[i] + addition)
   }
   return retArray
 }
 
 
-function refactoredFilterTodos(todos, userAuth) {
+function refactoredIncrementIds(todos, addition = 1) {
   // your code goes here
 
 
 
 
 
-
-  return retArray
+  // return ?
 }
 \end{lstlisting}
   \end{subparts}
@@ -431,14 +417,14 @@ function refactoredFilterTodos(todos, userAuth) {
 \begin{parts}
 \part[4] Welche Probleme löst GraphQL in Bezug auf REST?
   \begin{checkboxes}
-  \choice HTTP-Caching Mechanismen werden besser ausgenutzt .
-  \choice Auf dem Client kann die Benutzeroberfläche automatisch aktualisiert werden.
-  \choice Die Anzahl der Anfragen wird minimiert.
-  \choice Die Menge der ausgetauschen Daten pro Anfrage (der Traffic) wird minimiert.
-  \choice Die Anzahl der Datenbank-Abfragen wird minimiert.
   \choice Daten können in einer Graph-Datenbank gespeichert werden.
+  \choice Die Anzahl der Anfragen wird minimiert.
+  \choice HTTP-Caching Mechanismen werden besser ausgenutzt .
   \choice Der Server wird robuster gegenüber Denial-of-Service Angriffen.
+  \choice Die Menge der ausgetauschen Daten pro Anfrage (der Traffic) wird minimiert.
   \choice Die API kann automatisch dokumentiert werden
+  \choice Auf dem Client kann die Benutzeroberfläche automatisch aktualisiert werden.
+  \choice Die Anzahl der Datenbank-Abfragen wird minimiert.
   \end{checkboxes}
 \part
   Die Methodensignatur eines resolvers enthält vier Argumente, nämlich
@@ -457,21 +443,23 @@ function refactoredFilterTodos(todos, userAuth) {
 
   \part[2]
   Schau auf die Implementierung eines Apollo-Servers in
-  Abbildung~\ref{fig:apollo-server}. Wenn wir die GraphQL Anfrage in
-  Abbildung~\ref{fig:graphql-query} an den Server schicken, mit welcher Antwort
-  reagiert der Server?
+  Abbildung~\ref{fig:apollo-server} auf Seite~\pageref{fig:apollo-server}.
+
   \begin{figure}[h]
     \begin{lstlisting}[language=bash]
-      query {
-        allStudents(limit: 2) {
-          id
-          fullname(reverse: true)
+        query {
+          student(id: 2) {
+            id
+            fullname(reverse: true)
+          }
         }
-      }
     \end{lstlisting}
-    \caption{Graphql query}
+    \caption{GraphQL query}
     \label{fig:graphql-query}
   \end{figure}
+  Wenn wir die GraphQL Anfrage in Abbildung~\ref{fig:graphql-query} an den
+  Server schicken, mit welcher Antwort reagiert der Server? Schreibe das JSON
+  Dokument auf.
   \makeemptybox{18em}
 
   \part Was schreibt der Server als Ausgabe aufs Terminal? Schreibe die
@@ -493,7 +481,7 @@ function refactoredFilterTodos(todos, userAuth) {
     extendedchars=true,
     language=JavaScript
   ]{code/graphql/index.js}
-  \caption{Apollo server implementation}
+  \caption{Implementierung eines Apollo-Servers}
   \label{fig:apollo-server}
 \end{figure}
 \end{parts}
@@ -520,11 +508,11 @@ function refactoredFilterTodos(todos, userAuth) {
     MATCH (node)-[*]->(yetAnotherNode) RETURN *
     \end{lstlisting}
     \begin{subparts}
-      \subpart
+      \subpart[2]
       Was bedeutet der Stern in den eckigen Klammern im ``pattern'' dieser
       query?
       \fillwithdottedlines{4em}
-      \subpart
+      \subpart[1]
       Ist so eine Anfrage auch in einer relationalen Datenbank mit SQL möglich?
       \begin{choices}
         \choice Ja
@@ -533,9 +521,9 @@ function refactoredFilterTodos(todos, userAuth) {
     \end{subparts}
 
   \part[2] Können in einer Neo4J-Datenbank Fremdschlüssel auf fehlende Einträge
-  zeigen? Solche Zeiger ins Leere heißen auch ``dangling pointer''. Begründe deine
-  Antwort:
-  \fillwithdottedlines{4em}
+  zeigen? Solche Zeiger ins Leere heißen auch ``dangling pointer''. Begründe
+  deine Antwort:
+  \fillwithdottedlines{6em}
 
   \part[1] Wieviele ``Labels'' darf ein Knoten in einer Neo4J-Datenbank haben?
   Antwort: \fillin
@@ -563,6 +551,7 @@ CREATE(juliet:Person {name: 'Juliet'})
       \label{fig:neo4j:graph-merge}
   \end{figure}
 
+  \newpage
   Nun geben wir die folgende \texttt{cypher} Befehle ein:
   \begin{lstlisting}
 MERGE(:Person {name: 'Romeo'})-[:LOVES]->(:Person {name: 'Juliet'})
@@ -598,20 +587,20 @@ CREATE(romeo)-[:LOVES]->(juliet)
   gegenüber traditionellen server-seitig gerenderten Web-Anwendungen gehören
   unter anderem:
   \begin{checkboxes}
-    \choice Weniger Last auf dem Server
     \choice Desktop-ähnliches Nutzererlebnis
-    \choice Größerer Anteil Nutzdaten in der Kommunikation zwischen Client- und Server
     \choice Bessere Suchmaschinen-Optimierung
     \choice Kompatibilität mit älteren Browsern
     \choice Schneller initialer Seitenaufruf (``initial page load'')
+    \choice Größerer Anteil Nutzdaten in der Kommunikation zwischen Client- und Server
+    \choice Weniger Last auf dem Server
   \end{checkboxes}
 
   \part[3]
   Welche dieser sog.\ ``JavaScript globals'' sollte in Quellcode vermieden werden,
   welcher auch von server-seitig vorgerenderten Web-Anwendungen ausgeführt wird:
   \begin{checkboxes}
-    \choice \texttt{document}
     \choice \texttt{console}
+    \choice \texttt{document}
     \choice \texttt{window}
   \end{checkboxes}
 
@@ -620,9 +609,10 @@ CREATE(romeo)-[:LOVES]->(juliet)
   \fillwithdottedlines{4em}
 
   \part
-  Wirf einen Blick auf die Vue-Komponente im Code-Beispiel~\ref{fig:vue-example}.
-  Wenn in den folgenden Teilaufgaben Änderung im Quelltext vorgenommen werden
-  sollen, können diese direkt in die Abbildung eingepflegt werden.
+  Wirf einen Blick auf die Vue-Komponente im Code-Beispiel in
+  Abbildung~\ref{fig:vue-example}.  Wenn in den folgenden Teilaufgaben Änderung
+  im Quelltext vorgenommen werden sollen, können diese direkt in die Abbildung
+  eingepflegt werden.
   \begin{subparts}
     \subpart[1]
     Offenbar hat sich ein Fehler eingeschlichen. Eigentlich soll die Methode
@@ -638,15 +628,11 @@ CREATE(romeo)-[:LOVES]->(juliet)
     \texttt{message} verknüpft ist. Bei jeder Text-Eingabe soll sich also der
     Wert von \texttt{message} verändern.
     \subpart[2]
-    Implementiere eine computed property namens \texttt{reversedMessage}, welche
-    den String \texttt{message} umdreht. Tipp:
-    \begin{lstlisting}
-      someString.split('').reverse().join('')
-    \end{lstlisting}
-    Dreht eine lokale Variable \texttt{someString} herum.
+    Implementiere eine computed property namens \texttt{exclaimedMessage},
+    welches \texttt{message} zurückgibt, allerdings mit einem Ausrufezeichen am
+    Ende.
     \subpart[1]
-    Warum ist es performanter, \texttt{reversedMessage} als computed
-    property zu implementieren anstatt als Methode \texttt{reversedMessage()}?
+    Warum sind computed properties performanter als Methodenaufrufe?
     \fillwithdottedlines{8em}
   \end{subparts}
 \begin{figure}[h]
@@ -716,8 +702,7 @@ CREATE(romeo)-[:LOVES]->(juliet)
   \begin{subparts}
     \subpart
     \begin{lstlisting}
-    .login-form:first-child
-
+    .reaction-buttons
     \end{lstlisting}
 
     Antwort: \fillin
@@ -725,8 +710,7 @@ CREATE(romeo)-[:LOVES]->(juliet)
     \subpart
 
     \begin{lstlisting}
-    .login-form :first-child
-
+    .post-footer > .button
     \end{lstlisting}
 
     Antwort: \fillin
@@ -734,14 +718,14 @@ CREATE(romeo)-[:LOVES]->(juliet)
     \subpart
 
     \begin{lstlisting}
-    .login-form > :first-child
-
+    .post-footer :first-child
     \end{lstlisting}
 
     Antwort: \fillin
   \end{subparts}
-\part[1]
- Mit welchen CSS-Selektor können alle Eingabefelder selektiert werden?
+
+  \part[1]
+  Mit welchen CSS-Selektor können alle Buttons selektiert werden?
 
   Antwort: \fillin[][2in]
 
@@ -750,13 +734,13 @@ CREATE(romeo)-[:LOVES]->(juliet)
 
 \question Code Review
 \begin{parts}
-\part[10] Die folgenden Code-Beispiele sind Auszüge aus den Abgaben der
+\part[10] Die folgenden drei Code-Beispiele sind Auszüge aus den Abgaben der
   Hausaufgaben und enthalten Schwächen. Finde diese Schwächen und schlage eine
   Verbesserung vor. Wenn du eine Schwäche finden kannst und eine sinnvolle
-  Verbesserung vorschlägst, gibt es dafür je einen Punkt.\\
+  Verbesserung vorschlägst, gibt es dafür einen Punkt.\\
 
   Über einige dieser Schwächen haben wir ausführlich während der Vorlesung und
-  während der Übungen und in den Code-Reviews gesprochen. Dazu gehöhren:
+  während der Übungen und in den Code-Reviews gesprochen. Dazu gehören:
   \begin{itemize}
     \item
       Häufige Ursachen für ``falsch-negative'' oder ``falsch-positive'' Tests,
@@ -765,10 +749,12 @@ CREATE(romeo)-[:LOVES]->(juliet)
     \item
       häufige Ursachen für Programmfehler, z.~B. vermeidbare Zustände,
     \item
-      sowie Verletzungen von Spezifikationen.
+      Verletzungen von Spezifikationen,
+    \item
+      Anti-Patterns in Bezug auf Frameworks.
   \end{itemize}
   Es gibt einen weiteren Punkt, wenn du erklärst, wie man diese
-  ``schwerwiegenden'' Fehler in Zukunft verhindern kannst. Auf der letzten Seite
+  ``gröberen'' Fehler in Zukunft verhindern kann. Auf der letzten Seite
   gibt es genug Platz für Erklärungen.
 
 
@@ -782,21 +768,8 @@ CREATE(romeo)-[:LOVES]->(juliet)
     numbersep=3em,
     extendedchars=true,
     language=JavaScript
-  ]{code/review/component-tests/1.js}
-  \caption{Auszug aus einem VueJS Komponenten Test}
-  \label{fig:apollo-server}
-\end{figure}
-\begin{figure}[h]
-  \lstinputlisting[
-    basicstyle=\ttfamily,
-    numbers=left,
-    numberstyle=\footnotesize,
-    numbersep=3em,
-    extendedchars=true,
-    language=JavaScript
   ]{code/review/component-tests/2.js}
   \caption{Auszug aus einem VueJS Komponenten Test}
-  \label{fig:apollo-server}
 \end{figure}
 \begin{figure}[h]
   \lstinputlisting[
@@ -810,7 +783,17 @@ CREATE(romeo)-[:LOVES]->(juliet)
   \caption{Die GraphQL Typendefinitionen eines Apollo-Servers. Mit \texttt{token}
   ist ein JWT Bearer token gemeint. Das Feld \texttt{password} ist tatsächlich
   ein Benutzerpasswort und ist entsprechend sensibel.}
-  \label{fig:apollo-server}
+\end{figure}
+\begin{figure}[h]
+  \lstinputlisting[
+    basicstyle=\ttfamily,
+    numbers=left,
+    numberstyle=\footnotesize,
+    numbersep=3em,
+    extendedchars=true,
+    language=JavaScript
+  ]{code/review/apollo-server/resolvers.js}
+  \caption{Auszüge aus GraphQL resolver Implementierungen}
 \end{figure}
 
 \clearpage
