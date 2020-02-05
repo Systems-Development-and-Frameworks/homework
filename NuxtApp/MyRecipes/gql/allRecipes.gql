@@ -1,0 +1,8 @@
+{
+    allRecipes {
+        id
+        title
+        thumbnail
+        previewText
+    }
+}

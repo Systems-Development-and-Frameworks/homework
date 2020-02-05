@@ -1,0 +1,8 @@
+query Recipe($id: ID!) {
+    Recipe(id: $id) {
+        id
+        title
+        thumbnail
+        previewText
+    }
+}

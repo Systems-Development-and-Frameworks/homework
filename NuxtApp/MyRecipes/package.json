@@ -1,0 +1,19 @@
+{
+  "name": "MyRecipes",
+  "version": "1.0.0",
+  "description": "My superior Nuxt.js project",
+  "author": "Rico Stucke",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/apollo": "^4.0.0-rc19",
+    "graphql-tag": "^2.10.2",
+    "nuxt": "^2.0.0"
+  },
+  "devDependencies": {}
+}
