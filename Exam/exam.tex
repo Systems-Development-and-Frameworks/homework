@@ -150,7 +150,7 @@ Robert Schäfer
   gelernt haben:
   \fillwithdottedlines{8em}
 
-  \part[6]
+  \part[4]
   Wobei helfen automatisierte Software-Tests?
 
   Software-Tests helfen dabei:
@@ -371,7 +371,7 @@ function incrementIds(ids, addition = 1) {
 }
 
 
-function refactoredIncrementIds(todos, addition = 1) {
+function refactoredIncrementIds(ids, addition = 1) {
   // your code goes here
 
 
@@ -448,7 +448,7 @@ function refactoredIncrementIds(todos, addition = 1) {
   \begin{figure}[h]
     \begin{lstlisting}[language=bash]
         query {
-          student(id: 2) {
+          student(id: "2") {
             id
             fullname(reverse: true)
           }
@@ -547,7 +547,7 @@ CREATE(juliet:Person {name: 'Juliet'})
       \qquad
       \qquad
       \subfloat[Nach dem \texttt{MERGE}]{\includesvg[inkscapelatex=false, width=0.25\textwidth]{./neo4j/after-merge.svg}}
-      \caption{Warum entstehen Duplikate?}
+      \caption{Offenbar entstehen Duplikate}
       \label{fig:neo4j:graph-merge}
   \end{figure}
 
@@ -562,7 +562,8 @@ MERGE(:Person {name: 'Romeo'})-[:LOVES]->(:Person {name: 'Juliet'})
   \begin{subparts}
     \subpart[1]
     Wie können die \texttt{cypher} Befehle so verändert werden, dass keine
-    Duplikate mehr entstehen?
+    Duplikate mehr entstehen? Es sollten auch nach mehrmaligen Ausführen der
+    Befehle keine Duplikate mehr entstehen.
     \makeemptybox{14em}
     \subpart[2]
     Wenn wir initial auf dem Stand von Abbildung~\ref{fig:neo4j:graph-merge}~(a)
@@ -610,7 +611,7 @@ CREATE(romeo)-[:LOVES]->(juliet)
 
   \part
   Wirf einen Blick auf die Vue-Komponente im Code-Beispiel in
-  Abbildung~\ref{fig:vue-example}.  Wenn in den folgenden Teilaufgaben Änderung
+  Abbildung~\ref{fig:vue-example}. Wenn in den folgenden Teilaufgaben Änderung
   im Quelltext vorgenommen werden sollen, können diese direkt in die Abbildung
   eingepflegt werden.
   \begin{subparts}
