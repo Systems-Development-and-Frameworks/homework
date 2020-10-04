@@ -1,17 +1,16 @@
 # Systems Development and Frameworks - 2020/21
 
-| Github Alias                                         | Name         |
-| ---------------------------------------------------- | ------------ |
-| [@your](https://github.com/your)                     | Alice A.     |
-| [@github-account](https://github.com/github-account) | Bob B.       |
-| [@goes-here](https://github.com/goes-here)           | Mallory M.   |
-
-
 ## How to submit homework
 
 Create a team on Github in the Organization `Systems-Development-and-Frameworks`
 and invite your team members. As a next step, create your own homework
 repository and add it to your team.
+
+
+<p align="center">
+  <img src="https://media.giphy.com/media/dNgK7Ws7y176U/giphy.gif" alt="homework" width="50%">
+<p>
+
 
 ### Best practices
 
