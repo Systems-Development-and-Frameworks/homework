@@ -1,4 +1,4 @@
-# Systems Development and Frameworks - Group Assignments - Winter Term 2019/20
+# Systems Development and Frameworks - Homework - Winter Term 2020/21
 
 | Github Alias                                         | Name         |
 | ---------------------------------------------------- | ------------ |
