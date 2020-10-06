@@ -3,7 +3,6 @@
 This is the homework repository of course `Systems Development and Frameworks`
 at `Hochschule für Technik und Wirtschaft` in Berlin.
 
-
 <p align="center">
   <img src="https://media.giphy.com/media/dNgK7Ws7y176U/giphy.gif" alt="homework" width="50%">
 <p>
