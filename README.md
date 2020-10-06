@@ -17,7 +17,6 @@ at `Hochschule für Technik und Wirtschaft` in Berlin.
 
 You can also have a look on the community checklist to get inspiration:
 
-
 ![community checklist](./.github/img/community_checklist.png)
 
 ### How to submit homework
