@@ -8,8 +8,12 @@ at `Hochschule für Technik und Wirtschaft` in Berlin.
   <img src="https://media.giphy.com/media/dNgK7Ws7y176U/giphy.gif" alt="homework" width="50%">
 <p>
 
+## Homework - Exercise #0
 
-## Setup
+* **Tell us your Team name. Team names must be alphanumeric**
+  * Kudos for a team name with a corresponding emoji
+  * We will setup a team on Github and Moodle for you
+* **Replace `README.md` with individual content. Be creative!**
 
 Make a copy of this repository and ensure that each member of your team has
 sufficient access. Replace the content of this `README.md` with your individual
@@ -20,11 +24,7 @@ You can also have a look on the community checklist to get inspiration:
 
 ![community checklist](./.github/img/community_checklist.png)
 
-### Exercise #0
-
-* Replace `README.md` according to [#setup](#setup)!
-
-## How to submit homework
+### How to submit homework
 
 You have to create a feature branch first, commit your code and push it to your
 copy of the homework repository. Then create a pull request with your feature
@@ -32,8 +32,6 @@ branch as the target branch and request a review from your teachers.
 
 
 ![create pull request](./.github/img/create_pr.png)
-
-### Best practices
 
 Make sure that you *watch* the original homework repository. That's where we
 update exercise descriptions. Keep your own copy up-to-date by merging in new
