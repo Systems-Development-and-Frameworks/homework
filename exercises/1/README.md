@@ -1,7 +1,7 @@
 # VueJS
 
 
-Due date: **28.09.2020**
+Due date: **28.10.2020**
 
 
 ## Goal
