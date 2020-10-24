@@ -1,16 +1,23 @@
 <template>
   <div>
     <div class="news-list-wrapper">
-      <h1>News List</h1>
-      <NewsItem v-for="item in orderedItmes" :key="item.id" :item="item" @update="update" @remove="remove" />
+      <template v-if="items.length">
+        <h1>News List</h1>
+        <button @click="toggleAscendingOrder">
+          Reverse order
+        </button>
+        <NewsItem v-for="item in orderedItmes" :key="item.id" :item="item" @update="update" @remove="remove" />
+      </template>
+      <p v-else>The list is empty :(</p>
     </div>
     <NewsForm :nextId="nextId" @create="create" />
   </div>
 </template>
 
 <script>
-import NewsItem from './NewsItem.vue'
-import NewsForm from './NewsForm.vue'
+import NewsItem from '@/components/NewsItem/NewsItem.vue'
+import NewsForm from '@/components/NewsForm/NewsForm.vue'
+
 export default {
   components: {
     NewsItem,
@@ -21,11 +28,13 @@ export default {
   },
   data() {
     return {
-      items: [...this.initialItems]
+      items: [...this.initialItems],
+      ascending: false,
     }
   },
   computed: {
     orderedItmes() {
+      if(this.ascending) return [...this.items].sort((a, b) => a.votes - b.votes)
       return [...this.items].sort((a, b) => b.votes - a.votes)
     },
     nextId() {
@@ -33,6 +42,9 @@ export default {
     },
   },
   methods: {
+    toggleAscendingOrder() {
+      this.ascending = !this.ascending
+    },
     remove(removedItem) {
       this.items = this.items.filter((item) => item.id !== removedItem.id)
     },
@@ -48,6 +60,6 @@ export default {
 
 <style>
 .news-list-wrapper {
-  padding: 5em 0;
+  padding-bottom: 5em;
 }
 </style>

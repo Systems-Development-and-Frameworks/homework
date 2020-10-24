@@ -7,17 +7,27 @@ yarn install
 
 ### Compiles and hot-reloads for development
 ```
-yarn serve
+yarn run serve
 ```
 
 ### Compiles and minifies for production
 ```
-yarn build
+yarn run build
+```
+
+### Run your unit tests
+```
+yarn run test:unit
+```
+
+### Run your storybook stories
+```
+yarn run storybook
 ```
 
 ### Lints and fixes files
 ```
-yarn lint
+yarn run lint
 ```
 
 ### Customize configuration

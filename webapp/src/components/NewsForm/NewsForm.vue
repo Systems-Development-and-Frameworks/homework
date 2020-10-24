@@ -1,6 +1,7 @@
 <template>
   <form @submit.prevent="create">
-    <input v-model.trim="formData.title">
+    <label aria-label="title" for="title"></label>
+    <input id="title" v-model.trim="formData.title">
     <button type="submit">
       Create
     </button>
