@@ -83,7 +83,7 @@ YourComponent/
 In our lecture of October 21st 2020 we covered online open-source communities and git internals. These topics are not (yet) part of the current homework but will be a task in the upcoming homeworks and/or the final exam. So it's a great opportunity for you to practice the following:
 
 :rocket: Record an online pair-programming.
-- Choose someone who is not a member of your team, preferably some member of an open-source online community but another team member is fine, too.
+- Choose someone who is not a member of your team, preferably some member of an open-source online community but a member of another team is fine, too.
 - Record the pair-programming to [PeerTube](https://joinpeertube.org/en/) or [YouTube](https://www.youtube.com/) and send the link to the video to us
 - Kudos if you publish the video :+1: otherwise mark the video as "unlisted"
 
