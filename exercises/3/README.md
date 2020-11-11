@@ -63,6 +63,7 @@ Also, make sure that it's possible to nest your queries 'indefinitely' without n
       * Find at least 6 things (:star: from [Objectives](#objectives)) the other team did or didn't do.
       * Either "Request Changes" or "Approve" *do not just "Comment"*.
       * Suggest changes line-by-line in "Files Changed".
+      * Link to your code review in the description of your own pull request
    2. Request a review from another team
 
 ## Objectives
