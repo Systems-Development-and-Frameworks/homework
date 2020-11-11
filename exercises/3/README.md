@@ -27,7 +27,22 @@ archive/  backend/  exercises/  webapp/  README.md
 
 3. Setup [apollo-server-testing](https://www.apollographql.com/docs/apollo-server/testing/testing/) and add it to your CI/CD pipeline. Setting up `jest` is described [here](https://jestjs.io/docs/en/getting-started#generate-a-basic-configuration-file).
 
-4. Implement a custom `apollo data source` (See [here](https://www.apollographql.com/docs/apollo-server/data/data-sources/) or [here](https://www.apollographql.com/blog/a-deep-dive-on-apollo-data-sources/)). Data can be stored in-memory, no persisting required. For convenience, you can (optionally) seed your database with dummy data when your server starts.
+4. Implement a custom `apollo data source` (General information [here](https://www.apollographql.com/docs/apollo-server/data/data-sources/) and [here](https://www.apollographql.com/blog/a-deep-dive-on-apollo-data-sources/)). Data can be stored in-memory, no persisting required. For convenience, you can (optionally) seed your database with dummy data when your server starts. Here's a blueprint:
+  ```js
+  import { DataSource } from 'apollo-datasource'
+
+  export default class InMemoryDataSource extends DataSource {
+    constructor () {
+      super()
+    }
+
+    initialize ({ context }) {}
+
+    allPosts () {}
+    createPost (data) {}
+    upvotePost(id, user) {}
+  }
+  ```
 
 5. Implement resolvers for the [target schema](#target-schema) and test-drive the following features:
    1. List all posts
