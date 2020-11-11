@@ -4,10 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "apollo-server": "^2.9.15",
-    "graphql": "^14.5.8",
-    "graphql-middleware": "^4.0.2",
-    "graphql-tools": "^4.0.6"
+    "apollo-server": "^2.19.0"
   },
   "devDependencies": {},
   "scripts": {

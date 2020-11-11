@@ -1,7 +1,6 @@
 const { ApolloServer, gql } = require('apollo-server')
-const { makeExecutableSchema } = require('graphql-tools')
 
-const typeDefs = `
+const typeDefs = gql`
 type Student {
   id: ID
   firstname: String
@@ -39,8 +38,7 @@ const resolvers = {
   }
 }
 
-let schema = makeExecutableSchema({ typeDefs, resolvers })
-const server = new ApolloServer({ schema });
+const server = new ApolloServer({ typeDefs, resolvers });
 server.listen().then(({ url }) => {
   console.log(`🚀 Server ready at ${url}`);
 });
