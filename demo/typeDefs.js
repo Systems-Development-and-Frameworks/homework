@@ -7,10 +7,16 @@ const typeDefs = gql`
 
   type Query {
     posts: [Post]
+    promises: [Promise]
   }
 
   type Mutation {
     write(title: String!): Post
+  }
+
+  type Promise {
+    id: ID!
+    nested: Promise
   }
 `
 

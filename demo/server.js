@@ -11,10 +11,27 @@ const context = ({ req, res }) => ({ req, res })
 
 const resolvers = {
   Query: {
-    posts: (parent, args, context) => context.dataSources.db.posts
+    posts: (parent, args, context) => context.dataSources.db.posts,
+    promises: () => {
+      console.log('Started execution!')
+      return [
+        {id: '1', calls: 0},
+        {id: '2', calls: 0},
+        {id: '3', calls: 0},
+      ]
+    }
   },
   Mutation: {
     write: (parent, args, context) => context.dataSources.db.createPost(args)
+  },
+  Promise: {
+    nested: (parent) => new Promise((resolve) => {
+      setTimeout(() => {
+        const calls = parent.calls + 1
+        console.log(`Promise ${parent.id}: ${calls}. nested call`)
+        resolve({...parent, calls})
+      }, parent.id * 1000)
+    })
   }
 }
 
