@@ -13,34 +13,32 @@ Extend exercise [#1](../1), [#2](../2) and [#3](../3) with the new [objectives](
 
 ## Instructions
 
-1. Rebase your `main` branch on top of `homework/main`.
-2. Refactor your current graphql schema to match the new [target schema](#target-schema).
-3. Implement a signup mutation for new users using email and password
+1. Refactor your current graphql schema to match the new [target schema](#target-schema).
+2. Implement a signup mutation for new users using email and password
  * Accept only passwords with a length of at least 8 characters.
  * Make sure the `email` address is not taken by another user.
-4. Implement a login mutation for existing (signed up) users.
+3. Implement a login mutation for existing (signed up) users.
   * Add a graphql [context](https://www.apollographql.com/docs/apollo-server/api/apollo-server/#context) to your Apollo Server and verify a [JWT Bearer token](https://jwt.io/introduction/) from the `Authorization` HTTP request header, see our [hints](#hints).
-5. Do not commit common security mistakes:
+4. Do not commit common security mistakes:
   * Use [bcrypt](https://www.npmjs.com/package/bcrypt) to hash passwords.
   * Do not check your JWT secret into version control, see our [hints](#hints).
   * Do not expose password hashes in the JWT payload. Also do not expose private information like `email` unnecessarily.
   * Specific to our use-case: Make sure a JWT is only valid if a corresponding user in the database exists. The user might have been deleted or disabled since the JWT was issued.
-6. Test-drive the following refactorings:
+5. Test-drive the following refactorings:
   * `write` a post assigns the authenticated user as author.
     * Unauthenticated requests throw an error.
   * `upvote` a post assigns the authenticated user as voter.
     * Unauthenticated requests throw an error.
-7. PR Review:
+6. PR Review:
   * Review a pull request of another team.
     * Find at least 6 things (:star: from [Objectives](#objectives)) the other team did or didn't do.
     * Either "Request Changes" or "Approve" *do not just "Comment"*.
     * Suggest changes line-by-line in "Files Changed".
     * Link to your code review in the description of your own pull request.
   * Request a review from another team
+7. Rebase your `main` branch on top of `homework/main`.
 
 ## Objectives
-
-:star: For a successful rebase on `homework/main`.
 
 :star: For an implemented `signup` feature.
 
@@ -59,6 +57,8 @@ Extend exercise [#1](../1), [#2](../2) and [#3](../3) with the new [objectives](
 :star: For assigning the authenticated user to a post in `write` and `upvote` mutations.
 
 :star: For requesting a review and reviewing another team's PR according to the instructions.
+
+:star: For a successful rebase on `homework/main`.
 
 All objectives must be implemented according to the [instructions](#instructions).
 
