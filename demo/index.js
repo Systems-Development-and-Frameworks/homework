@@ -1,12 +1,15 @@
-import Server from './server'
+import { ApolloServer } from 'apollo-server';
+import Server from './src/server';
 
 const playground = {
   settings: {
-    'schema.polling.enable': false
-  }
-}
-const server = new Server({ playground })
+    'schema.polling.enable': false,
+  },
+};
 
-server.listen().then(({ url }) => {
-  console.log(`🚀  Server ready at ${url}`)
-})
+(async () => {
+  const server = await Server(ApolloServer, { playground });
+  const { url } = await server.listen();
+  // eslint-disable-next-line no-console
+  console.log(`🚀  Server ready at ${url}`);
+})();
