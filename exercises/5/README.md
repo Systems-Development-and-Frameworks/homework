@@ -29,10 +29,10 @@ scenario), put them into a `.env` file and encrypt this file with [git-crypt](ht
 Do the following:
   * Install `git-crypt`,
   * rebase your branch on latest `homework/main`,
-  * add your files to `/.gitattributes` according to the [documentation](https://github.com/AGWA/git-crypt#using-git-crypt),
   * download the symmetric key from our [Moodle course](https://moodle.htw-berlin.de/course/view.php?id=29222),
   * move the symmetric key to `/git-crypt-key`,
-  * and run `git-crypt unlock git-crypt-key` in the root folder.
+  * run `git-crypt unlock git-crypt-key` in the root folder,
+  * and add your files to `/.gitattributes` according to the [documentation](https://github.com/AGWA/git-crypt#using-git-crypt).
 
 3. Refactor your mutations and queries. Ensure that data created during a
 mutation is persisted, ie. it is still there after a server restart. Any
