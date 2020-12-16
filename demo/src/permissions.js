@@ -20,6 +20,7 @@ const permissions = shield({
   Mutation: {
     '*': deny,
     login: allow,
+    signup: allow,
   },
 }, {
   allowExternalErrors: true,

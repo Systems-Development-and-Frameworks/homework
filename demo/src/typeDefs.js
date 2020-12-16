@@ -6,7 +6,8 @@ type Query {
 }
 
 type Mutation {
-  login(personId: ID!): String
+  login(email: String!, password: String!): String
+  signup(name: String!, email: String, password: String!): String
 }
 
 extend type Person {

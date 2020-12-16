@@ -3,11 +3,11 @@ import { applyMiddleware } from 'graphql-middleware';
 import typeDefs from './typeDefs';
 import Resolvers from './resolvers';
 import permissions from './permissions';
-import GraphCmsSchema from './graphCms/schema';
+import GraphCmsSchema, { executor } from './graphCms/schema';
 
 export default async () => {
   const graphCmsSchema = await GraphCmsSchema();
-  const resolvers = Resolvers({ subschema: graphCmsSchema });
+  const resolvers = Resolvers([{ schema: graphCmsSchema, executor }]);
 
   let gatewaySchema = stitchSchemas({
     subschemas: [

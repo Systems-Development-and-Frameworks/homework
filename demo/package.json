@@ -13,6 +13,7 @@
     "@graphql-tools/stitch": "^7.1.4",
     "@graphql-tools/wrap": "^7.0.3",
     "apollo-server": "^2.19.0",
+    "bcrypt": "^5.0.0",
     "cross-fetch": "^3.0.6",
     "dotenv": "^8.2.0",
     "esm": "^3.2.25",
