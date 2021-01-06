@@ -106,6 +106,7 @@ Please, encrypt your API keys with a symmetric key shared in our [Moodle course]
 Since you are using an external API, you **must** use mocks in your software
 tests when your resolvers would otherwise call your endpoint. You do not want
 your build server to produce traffic during builds or other side-effects.
+You can generate the mock gql file with [get-graphql-schema from Prisma](https://github.com/prisma-labs/get-graphql-schema)
 
 You must choose a headless CMS with a GraphQL endpoint that supports queries
 **and mutations**. Have a look into [this comparison](https://cms-comparison.io/#/list)
