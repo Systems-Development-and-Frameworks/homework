@@ -1,3 +1,4 @@
+""" This can be generated with https://github.com/prisma-labs/get-graphql-schema """
 directive @mark(
   """Marks if field is localized"""
   localized: Boolean
