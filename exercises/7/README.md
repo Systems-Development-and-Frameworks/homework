@@ -56,12 +56,21 @@ In this exercise, we will connect our Webapp with the backend. During that, we c
    Furthermore, you might want to use [Vuex](https://vuex.vuejs.org/) for a
    globally accessible `isAuthenticated` getter method. There is a [nuxt integration](https://nuxtjs.org/docs/2.x/directory-structure/store).
 
-   * Hint: To initialize the store in full static mode, you could use a [plugin](https://nuxtjs.org/docs/2.x/directory-structure/plugins/):
+   * Hint: Due to a bug, `nuxt-apollo` does not properly read the cookie containing `apollo-token` in SSR. See this [PR](https://github.com/nuxt-community/apollo-module/pull/358). If you need `this.$apolloHelpers.getToken` in SSR you could either follow the PR or parse the cookie like this:
    ```js
-    export default function ({ app, store }) {
-      const token = app.$apolloHelpers.getToken()
-      store.commit('auth/setToken', token)
-    }
+   // in store/index.js
+   import cookie from 'cookie'
+
+   export const actions = {
+     nuxtServerInit(store, context) {
+       const { req } = context.ssrContext
+       if (!req) return // static site generation
+       const parsedCookies = cookie.parse(req.headers.cookie)
+       const token = parsedCookies['apollo-token']
+       if (!token) return
+       store.commit('auth/setToken', token)
+     },
+   }
    ```
    * Hint2: You might want to decode the id of the current user from the JWT with [jwt-decode](https://github.com/auth0/jwt-decode).
 
