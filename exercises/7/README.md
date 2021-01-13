@@ -29,7 +29,7 @@ In this exercise, we will connect our Webapp with the backend. During that, we c
       * "SSR/SSG" as Rendering mode
       * The deployment target you decided on in Instruction #0.
       * [@nuxtjs/pwa](https://pwa.nuxtjs.org/) for the progressive web app
-   * Copy all relevant code (most importantly your components) from your old `webapp/` folder to your new one. 
+   * Copy all relevant code (most importantly your components including your specs and stories) from your old `webapp/` folder to your new one. 
    * Delete the old `webapp/` folder. Make sure the new one is in the same location.
    * Commit this refactoring in a *separate* PR and merge it into your `main` branch. This will keep the content of "Files Changed" tab
    small and help mentors to review your code.
