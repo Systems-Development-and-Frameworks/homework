@@ -74,14 +74,16 @@ In this exercise, we will connect our Webapp with the backend. During that, we c
    ```
    * Hint2: You might want to decode the id of the current user from the JWT with [jwt-decode](https://github.com/auth0/jwt-decode).
 
-6. Make sure that your `upvote`, `delete` and `write` mutations hit
+6. Make sure that your `upvote` and `write` mutations hit
    your backend. If you use `vue-apollo`, it will update your cache
-   automatically if you request the `ID` field in your mutations.
+   automatically if you request the `ID` field in your mutations. 
+   
 
 7. Your buttons should behave according to the authentication state. E.g. you
    could only display `upvote` when the user is logged in. Alternatively,
-   you could redirect to `/login` if the user is not logged in. Also, show
-   `delete` only for authors, same goes for `edit` (if you have such a button).
+   you could redirect to `/login` if the user is not logged in.
+   Add a `delete` and `edit` button to your news-entries which only shows for authors.
+   Connecting them to your backend is optional though.
 
 8. PR Review:
   * Review a pull request of another team.
@@ -108,7 +110,7 @@ In this exercise, we will connect our Webapp with the backend. During that, we c
 
 :star: For an upvote button that behaves according to the authentication state of your user
 
-:star: For a delete button that is only visible to the author of the post.
+:star: For a delete and edit button that is only visible to the author of the post.
 
 :star: For [Lighthouse](https://developers.google.com/web/tools/lighthouse) reporting that your production website is installable as PWA (except HTTPS).
 
